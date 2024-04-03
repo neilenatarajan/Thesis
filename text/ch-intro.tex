@@ -1,0 +1,52 @@
+% \begin{savequote}[8cm]
+% \textlatin{Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...}
+
+% There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+%   \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
+% \end{savequote}
+
+\chapter{\label{ch:intro}Introduction} 
+
+\minitoc
+
+Since early theorising about Artificial Intelligence (AI), experts have noted the transformative potential of such technology. Now, with the popular advent of Machine Learning (ML) models and transformer architecture in particular, we see rapid mass-market adoption of a variety of AI tools. In many fields which deal with sensitive decision-making, this adoption introduces new ethical challenges. In the fields of talent and Talent Identification (TI) in particular, many of these ethical challenges centre on Diversity, Equity, and Inclusion (DEI) or related notions such as equality or justice. In this section, we lay out the case for the application of AI systems (specifically interpretable AI decision assistants) to DEI issues in TI, paying special attention to the potential pitfalls and broader implications of our proposal.
+
+\section{Motivation} % Diversity and Inclusion vs ESG?
+This is where I explain why I'm doing this research. I explain why care about talent identification and how IAIDSTs can solve problems here. I respond to the notion that we should simply not use AI here, and highlight problems in the field already. I explain why this is a problem for Computer Science as well as for Talent Science (tl;dr: additional reasons to care about things xai overlooks because of the application domain)
+
+\section{Positions}
+\subsection{Trust Explanations to Do What They Say} 
+Increasingly, decisions affecting the lives of lay people are made by AI algorithms. And while these algorithms may be useful, they can also be dangerous. Both unwarranted trust in such an algorithm may lead to wrong and damaging decisions, while unwarranted mistrust in such an algorithm may lead to disuse. Neither outcome is favourable. Hardin draws an important distinction between whether someone or something is trusted and whether that trust is well-placed; i.e. it is worthy of trust \cite{hardin_trust_2002}. 
+
+It is clear, then, that trust in AI algorithms should be \textit{calibrated}, so that users are led to trust trustworthy AI systems and distrust untrustworthy AI systems. \textcite{jacovi_formalizing_2021} propose that trust in AI systems can be understood in terms of a contract between the system and the trustor. 
+
+\textcite{jacovi_formalizing_2021} define a model of human-AI trust resting on two key properties: the \textit{vulnerability} of the user to the model and the user's ability to \textit{anticipate} the impact of the AI model’s decisions. In the human context, person $A$ trusts person $B$ if and only if $A$ believes that $B$ will act in $A$'s best interest, and $A$ accepts vulnerability to $B$'s actions. In the machine context, we do not always expect the machine to act in our best interests. Instead, user $U$ trusts AI model $M$ if and only if $U$ can anticipate and accepts vulnerability to $M$'s actions \cite{jacovi_formalizing_2021}.
+
+Moreover, trust often does not have a blanket scope; typically, $U$ will trust $M$ regarding some particular actions or range of actions, though a broader trust will include many such actions. In the algorithmic context, this scope is clearly limited – unlike humans, trust in algorithms should never be broad; warranted trust is always scoped to a region in which the algorithm's actions can be anticipated, and in which users might reasonably accept vulnerability to these actions. Generally, this scope is limited to some subsection of the intended use cases of the AI system. Trust placed in an AI system to do something it was not intended to do is often unwarranted; trust placed in an AI system to do something it does not claim to do is always unwarranted. Thus, for an algorithm to be trustworthy in a given scope, that algorithm should demonstrate both that a user can anticipate behaviour in that scope and that the anticipated behaviour is such that users might accept vulnerability to the algorithm. We call this demonstration a \emph{contract}, and call this sort of trust \emph{contractual trust} \cite{jacovi_formalizing_2021}.
+
+Following this framing, the extent to which an algorithm warrants trust is modulated by the extent to which it adheres to its contract. Therefore, when the developers of an algorithm provide a contract regarding the intended use of an algorithm, we can evaluate the trustworthiness of an algorithm by evaluating adherence to the contract.
+
+One method of evaluating adherence to contract comes from a user observing the AI algorithm's reasoning process by way of an explanation or an interpretation. However, unlike human decision-makers, few algorithms are inherently capable of explaining their reasoning. The growing field of Explainable Artificial Intelligence (xAI) aims to develop methods for explaining the reasoning algorithms, often with a broad goal of increasing warranted trust in algorithms. However, though it is clear that these algorithms often increase trust in algorithms, it is not always clear that this trust is warranted, as demonstrated by \textcite{jacobs_how_2021}. Thus, it seems, there are times where even an explanation of an AI algorithm should be distrusted.
+
+\subsubsection{Trust in Explanations of AI Algorithms}
+Explanation algorithms help us determine whether to trust AI algorithms, but only if we trust the explanation methods. But when can we trust an explanation algorithm? And what are we trusting it to do? The answer that we are trusting these algorithms to \emph{explain} AI systems is insufficient, because what it means to explain is unspecified. AI explainers can be put to a number of different uses, and different algorithms should be trusted for different uses; contracting to behave appropriately in all of these uses is infeasible (an end-user demands a different explanation than a domain expert), so explanations methods should contract to provide only a particular type of explanation.
+
+Much like AI models themselves, we contend that xAI algorithms should be trusted to uphold specific contracts with respect to the ways in which they are used. For example, a model like \textit{recourse}, developed in \textcite{ustun_actionable_2019}, designed to informs end-users of what must be done to change their determination, should not be trusted to report errors in model or to point out the most important features. Similarly, a model like \textit{Scoped Anchors}, developed in \textcite{ribeiro_anchors_2018}, designed to simplify predictions into rule-based approximations, should not be trusted to provide recourse information.
+
+We also contend that xAI methods should be evaluated on whether they can be trusted to do what they say. That is, a good xAI method is one that fulfills its intended use case. Much like trust in AI algorithms, trust in explanations of AI algorithms is contractual; xAI methods should be evaluated in terms of the extent to which they uphold the terms of a contract between the explainer and explainee; and an explainee's trust should be calibrated accordingly. We should not trust an explanation algorithm to do something it has not promised to do. 
+
+The absence of contracts is not a mere conceptual problem; it creates a problematic dialectic and hinders effective critique of xAI methods. To demonstrate this, we consider two particular kinds of AI explanations: SHAP explanations, introduced in \textcite{lundberg_unified_2017}, and counterfactual explanations, introduced in \textcite{wachter_counterfactual_2017}. Both papers focus on the mathematical properties of the explanation algorithm introduce, but neither makes clear what they contend a good explanation consists in or specifies a circumscribed set of use cases for their methods. We consider two evaluation articles: \textcite{kumar_problems_2020}'s evaluation of the SHAP method, and \textcite{barocas_hidden_2020}'s evaluation of counterfactual explanations. Both articles rely on similar notions regarding the purpose of explanations – frameworks that the authors of SHAP and counterfactual explanations do not make clear that they subscribe to. For instance, \textcite{barocas_hidden_2020}'s critique counterfactual explanations on the grounds that they are not useful in providing users with actionable information. Similarly, \textcite{kumar_problems_2020} argue that SHAP cannot be used to inform users' actions.
+
+We contend that, like trust in AI algorithms, trust in AI explanation algorithms is composed of an ability to anticipate the algorithm and an acceptance of vulnerability to the algorithm's actions. In both cases, this trust is only desirable if it is warranted. The scope of the trust, in both cases, should be clearly enumerated in a contract, and AI and explanation algorithms alike should be evaluated for trustworthiness within this scope.
+
+\section{Research Questions [WIP]}
+I enumerate the research questions here, then explain how I intend to answer them.
+
+\section{Research Outputs [WIP]}
+I enumerate the answers to these research questions in the form of research outputs.
+
+\section{Thesis Structure [WIP]}
+I explain the flow of everything and why I've separated the chapters the way I have. E.g., "in chapter 3, we answer X. The reason this ties to the central themes of the research is Y. This leads us into chapter 4, where we answer Z"
+
+\section{Publications [WIP]}
+I list the publications that have come out of this research.
