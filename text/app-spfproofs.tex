@@ -1,0 +1,31 @@
+% \begin{savequote}[8cm]
+% \textlatin{Cor animalium, fundamentum e\longs t vitæ, princeps omnium, Microco\longs mi Sol, a quo omnis vegetatio dependet, vigor omnis \& robur emanat.}
+
+% The heart of animals is the foundation of their life, the sovereign of everything within them, the sun of their microcosm, that upon which all growth depends, from which all power proceeds.
+%   \qauthor{--- William Harvey \cite{harvey_exercitatio_1628}}
+% \end{savequote}
+
+\chapter{\label{app:spfproofs}Proofs for the SPF Theorem}
+
+\minitoc
+
+\section{Proof of Greedy Approximation}
+Here, we prove that the greedy approximation method introduced in Algorithm \ref{alg:frontier} for SPF is a $(1-\frac{1}{e})$-approximation for our standard class of diversity functions subject to a cardinality constraint.
+
+Recall that a diversity function $f: 2^X -> \mathbb{R}^+$  maps a cohort (a set of applicants) to a ``diversity score'' (a non-negative real number). Here, our applicant pool $X$ is represented as a set with applicants as its members, and possible cohorts $C \subseteq X$ are subsets of $X$. We restrict our analysis to standard diversity functions, which we assert are monotonic ($A \subseteq B -> f(A) \leq f(B)$) and submodular ($A \subseteq B \and x \notin B -> f_A(x) \geq f_B(x)$ (here, $f_S(e) = f(S \cup \{e\}) - f(S)$ denote the marginal gain of adding element $e$ to set $S$) .We demonstrate elsewhere that many common understandings of diversity are represented by standard diversity functions.
+
+We now recreate a proof of Theorem \ref{thm:greedy-approximation} first demonstrated in \cite{nemhauser_analysis_1978}.
+
+\begin{theorem}\label{thm:greedy-approximation}
+    Let $(S_0...S_k)$ be a sequence of sets where $S_0$ is the empty set and $S_{i>0}$ is defined by following Algorithm \ref{alg:frontier}. Further, let $O := argmax_S(f(S) : |S| = k)$ be the set of size $k$ that maximizes $f$. Then $f(S_k) \geq (1 - \frac{1}{e})f(O)$. 
+\end{theorem}
+
+\emph{Proof}. Let ${o_1...o_k} = O$ be any ordering of the elements of $O$. Let ${s_i} := S_i - S_{i-1}$ be the element added to $S_{i-1}$ to form $S_i$.
+
+By monotonicity, we have $\forall i . f(O) \leq f(O \cup S_i)$.  We can then write $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} \bigl f(S_i \cup {o_1...o_j}) - f(S_i \cup {o_1...o_{j-1}}) \bigr$. I.e., $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} f_{S_i \cup {o_1...o_{j-1}}}(o_j)$.
+
+By submodularity, $\forall j \in [1...k] . f_{S_i \cup {o_1...o_{j-1}}}(o_j) \leq f_{s_i}(o_j)$. Thus, $f(O) \leq f(S_i) + k*f_{S_i}(s_{i+1})$. 
+
+Since Algorithm \ref{alg:frontier} guarantees that $\forall e \in X - S_i . f_{S_i}(e) \geq f_{S_i}(e)$, it follows that, at every stage, $f(S_{i+1}) - f(S_i) \geq \frac{1}{k} \bigl f(O) - f(S_i) \bigr$. 
+
+Then induction yields $f(O) - f(S_k) \leq {\bigl 1 - \frac{1}{k} \bigr}^k f(O) \leq \frac{1}{e} f(O)$.
