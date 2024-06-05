@@ -9,19 +9,37 @@
 
 \chapter{\label{ch:usingxai}Using Post-Hoc Explainable AI to Identify Talent: Explaining an Applicant Scoring Algorithm with Shapley Values}
 
+% Notes
+% Can we replicate misleading explanations? We have data from this year and last.
+% Are there classes of cases which are plausibly connected to the types of areas that the old non-SHAP decision-making process would have yielded? Can we independently identify these in the new cohort?
+% Maybe: does the new “SHAP” process reduce surprise/disagreement with the algorithm
+% Can we do something qualitatively?
+% How does SHAP have the right kind of effect on decision-making
+% Could we measure the magnitude of disagreement between humans and algorithms?
+% Then qualitatively, ask people why they disagreed with algorithm scores?
+% It’s hard to tie this stuff specifically to the under/over-reliance stuff unless we can argue that more disagreement is good
+% We don’t have ground truth, so the misleading stuff is difficult, but we can argue that disagreement/engagement are both good. We can qualitatively compare the richness/level of understanding/ perceived helpfulness.
+% Do they have more reasons for disagreeing? More specific reasons?
+% Fundamental thought: if SHAP helps the decision makers understand the reason why, but we don’t care about that factor, wouldn’t it be better to change the model so as to not consider that factor as much? Maybe explanation tools are a way of modifying the model here? Can the case study / utility be a change to the model? Maybe decision-makers need to be in the middle of their decision-making process to reconsider the principles, and maybe these decisions are best made using SHAP?
+% Alternative case study idea: maybe various reviewers meet and extract generalisations from the SHAP charts they’ve been using?
+% The idea of individual justice: no set of criteria exists that correctly applies to every case; under this principle, the value of SHAP is to say that “this particular case is an exception to the model, since you don’t want to mess with it in general, you just want to make an exception in this case”
+% The underlying model is trying to predict accept/reject based on previous candidates, which is sort of a ground truth, but not the only truth that decision-makers are interested in; this is a major difference from the misleading explanations thing
+% Another major difference: decision-makers have access to a lot of information the model doesn’t; part of the role of SHAP is to tell decision-makers when that info is important
+% It sounds like the evaluation is qualitative / not-based-on-ground-truth. It’s instead based on decision-maker feedback about when they rely on the explainer system
+% More satisfying to have some case study
+% Can I collect with/without SHAP information on how they collect decisions?
+% Could we apply SHAP to previously made decisions and use SHAP to elucidate the past year confusions? This was a part of the design process
+% Does this necessarily need to be qualitative?
+% Also: do we want to change the model next year based on the decisions made with this algorithm? I.e., should we rely more or less on specific features? This is sort of necessarily qualitative. Also, this could be taken from the design process, since this happened in the interviews
+% This makes a good argument for why we can’t just do an RCT 
+
 \minitoc
 
-We develop a SHAP-based procedure for explaining the decisions made by an applicant scoring algorithm used in a talent investment organisation. We take into account the original functions of SHAP explanations and provide a contract for the intended use case of our procedure: to systematically reveal insights about the underlying algorithm itself, help us better understand counterintuitive results, and instruct us on where this algorithm should be modified. We explore decisions made by the talent investment organisation and analyse the applicant scoring algorithm using the SHAP tool. We discover... Finally, we discuss the potential for extending this tool to use in decision-making and note strategies to combat mis-calibrated trust.
-
 \section{Introduction}
-To-do
-
-\section{Explaining Applicant Resumes with Highlighting and Blinding}
-We develop a white-box explanation algorithm for highlighting the resumes of job applicants and scoring them. We use only the highlights themselves, opting for an evaluative AI approach, and provide a contract for the intended use case of our algorithm. We then implement this tool in the hiring process of an organisation and conduct a field study on its impact on hiring decision-making. We discover...
+We develop a SHAP-based procedure for explaining the decisions made by an applicant scoring algorithm used in a talent investment organisation. We take into account the original functions of SHAP explanations and provide a contract for the intended use case of our procedure: to systematically reveal insights about the underlying algorithm itself, help us better understand counterintuitive results, and instruct us on where this algorithm should be modified. We explore decisions made by the talent investment organisation and analyse the applicant scoring algorithm using the SHAP tool. We discover that professionals prefer a mixture of verbal and visual explanation, and often require context for decisions not in a real selection procedure, as a case study. Finally, we discuss the potential for extending this tool to use in decision-making and note strategies to combat mis-calibrated trust.
 
 (To-do)
 
-\section{Explaining an Applicant Scoring Algorithm with Shapley Values}
-
+\section{....}
 
 (To-do)
