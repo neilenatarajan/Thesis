@@ -39,14 +39,75 @@ The absence of contracts is not a mere conceptual problem; it creates a problema
 
 We contend that, like trust in AI algorithms, trust in AI explanation algorithms is composed of an ability to anticipate the algorithm and an acceptance of vulnerability to the algorithm's actions. In both cases, this trust is only desirable if it is warranted. The scope of the trust, in both cases, should be clearly enumerated in a contract, and AI and explanation algorithms alike should be evaluated for trustworthiness within this scope.
 
-\section{Research Questions [WIP]}
-(To-do) I enumerate the research questions here, then explain how I intend to answer them.
+\section{Design Recommendations}
+Throughout this thesis, we explore three case studies considering different applications of AI systems as DSTs to tasks in talent identification. In each case study, we discover unique findings implying specific design recommendations for the development of AI systems as DSTs. However, three main principles emerge in many of the case studies. These principles are: human-centrism, trustworthiness through transparency, and the qualitative / quantitative (QQ) balance.
 
-\section{Research Outputs [WIP]}
-(To-do) I enumerate the answers to these research questions in the form of research outputs.)
+\subsection{Human-Centrism}
+The \emph{human-centrism} principle states:
 
-\section{Thesis Structure [WIP]}
-(To-do) I explain the flow of everything and why I've separated the chapters the way I have. E.g., "in chapter 3, we answer X. The reason this ties to the central themes of the research is Y. This leads us into chapter 4, where we answer Z"
+\begin{quote}
+    Human-Centrism: Humans should always be in the loop. Most obviously, humans should have final say. Less obvious, humans should have design input.
+\end{quote}
 
-\section{Publications [WIP]}
-(To-do) I list the publications that have come out of this research.
+Human-centrism is often held in high importance in the field of human-computer interaction \cite{findasource}. Moreso in the context of AI systems. However, while it is often important to center humans in the application of an AI system, the nature of AI models often means they are developed before the user or use-case is considered \cite{findasource}. This, we note, is at direct odds with our principle of human-centrism. We recommend instead that, at least in the high-stakes context of talent identification, stakeholders should be involved in all stages of the AI system's lifecycle, from design to deployment.
+
+The importance of user design input is made clear when we consider the idiosyncratic needs of different talent investment programs. As we find in Chapter \ref{ch:usingxai}, different selectors have different needs from explanations: some prefer visual explanations, while others prefer verbal explanations; some are pre-primed with a desire to engage deeply with the information provided, others are primed to index decisions on a single factor. Similarly, as we find in Chapter \ref{ch:iaicasestudy}, different selectors have different preferences around who to select: some place special importance on the roles applicants play in groups, others place a special emphasis on diversity metrics; some consider the applicants who preform the best on tests to be the most talented, others consider the applicants who preform the best in projects or interviews to be the most talented. While systems can be designed to accommodate these differences, this must be understood early in the design process.
+
+\subsection{Trustworthiness Through Transparency}
+The \emph{trustworthiness through transparency} principle states:
+
+\begin{quote}
+    Trustworthiness Through Transparency: When possible, AI systems should be trustworthy. When not possible, they should reveal through transparency their untrustworthiness.
+\end{quote}
+
+The explainable AI community places great importance on discussions of trust and trustworthiness \cite{jacovi_formalizing_2021,vereschak_how_2021}. While it is well-understood that explanation systems impact user trust in AI outputs, the best means to utilise this impact is still debated. Some contend a goal of explainability should be to increase user trust in AI, while others claim it should modulate it \cite{jacovi_formalizing_2021,kruger_problem_2022}. We contend that the goal of explainability should be to increase warranted trust in AI systems. This is to say, users should trust AI systems when they are trustworthy, and distrust them when they are not.  This is especially clear in the context of a DST, where a user distrusting the tool when it is incorrect brings about better overall task performance. In the context of talent identification, where the stakes are high, it is especially important that users trust the AI system only when it is trustworthy. Thus, we contend, AI systems should be trustworthy whenever possible, and when not possible, they should reveal through transparency their untrustworthiness.
+
+Less often discussed is the role of trust in explanation in this context. Concerningly, in Chapter \ref{ch:xailimitations}, we find that popular explanation algorithms, naively applied, often fail to properly modulate trust. However, we also find in Chapter \ref{ch:usingxai} that these algorithms can be modified to better modulate trust. We recommend that, when designing an AI system as a DST, developers should consider the impact of explanation on user trust, and design their explanation systems to modulate trust in a way that is warranted. For explanations, too, should only be trusted when they are trustworthy.
+
+In Chapter \ref{ch:usingxai}, we implement SHAP explanations for the purposes of providing an understanding of relative score importance in an applicant scoring algorithm. We find that SHAP explanations can be used to effectively help users understand the relative importance of different subscores. However, in this case, we find that selectors modulate their trust in bot the scoring algorithm and the SHAP scores using a variety of qualitative factors. They do not use the SHAP explanations to modulate trust in the overall algorithm score. Thus, we recommend the use of SHAP explanations here, but only to understand the importance of the relative subscores.
+
+Conversely, in Chapter \ref{ch:studentuse}, we explore an implementation of a generative AI detector as a means of providing selectors a system to flag or disqualify applicants who rely on generative AI systems to write their essays. While this detector here is a sort of explanation of AI-generated essay text (it explains whether the text was generated by an AI system), it is not the sort of explanation that should be used to modulate trust in the student essay. Unlike in Chapter \ref{ch:usingxai}, where selectors modulate their trust in the algorithm score using a variety of qualitative factors, selectors cannot modulate trust in this detector using other factors. Thus, we recommend against the use of this detector here.
+
+\subsection{Qualitative / Quantitative (QQ) Balance}
+The \emph{QQ balance} principle states:
+
+\begin{quote}
+    QQ Balance: Balance the quantitative and the qualitative. Human decision-makers often require both.
+\end{quote}
+
+Many authors in the talent identification literature make mention of something like the QQ balance principle, but we find that it is often not well-understood. In Chapters \ref{ch:usingxai} and \ref{ch:iaicasestudy}, we find that selectors often require both quantitative and qualitative information to make decisions. When quantitative information is neglected, selectors are forced to make decisions on a case-by-case basis without important numerical context comparing applicants to a larger group; when qualitative information is neglected, selectors are unable to consider applicants holistically, and are reduced to making decisions on a spreadsheet. We recommend that developers of AI systems as DSTs consider the balance between quantitative and qualitative information in their systems, and design their systems to provide both when necessary.
+
+\section{Contributions}
+In this thesis, we make a number of theoretical, technical and practical contributions.
+
+The theoretical contributions are:
+
+\begin{itemize}
+    \item We articulate where talent identification experts should use IAIDSTs to assist in their decision-making, and which IAI systems are appropriate for which purposes
+    \item We apply research-through-design methods to talent identification to produce a novel approach to the creation of human-centric selection tooling
+\end{itemize}
+
+The technical contributions are:
+
+\begin{itemize}
+    \item We develop a novel method for visualising and understanding cohort-level decisions surrounding diversity called the Selection Possibility Frontier
+    \item We further implement a novel algorithm for approximating the Selection Possibility Frontier
+    \item We produce several qualitative, quantitative, and mixed-modal datasets relating to talent identification
+\end{itemize}
+
+The practical contributions are:
+
+\begin{itemize}
+    \item We demonstrate a yet-undemonstrated risk associated with naive application of post-hoc explainability to a range of problems
+    \item We demonstrate the utility and limitation of detection tools for generative-AI-written essays in a scholarship context, and explore implications for scholarship programs
+\end{itemize}
+
+\section{Thesis Structure}
+In Chapter \ref{ch:background}, we provide a background on the field of talent identification, the field of explainable AI, and the field of diversity, equity, and inclusion; we further explore intersections between these fields of research and identify gaps in the literature. Chapters \ref{ch:xailimitations} and \ref{ch:usingxai} contain our first case study examining the limitations and uses of post-hoc xAI. In Chapter \ref{ch:xailimitations}, we explore the limitations of popular xAI methods in the context of talent identification. In Chapter \ref{ch:usingxai}, we explore the use of SHAP explanations in the context of talent identification. Chapters \ref{ch:iaicasestudy} and \ref{ch:spf} contain our second case study investigating a user-centric design approach using more intrinsically interpretable models. In Chapter \ref{ch:iaicasestudy}, we present a participatory design study of the development of an IAIDST for talent identification. In Chapter \ref{ch:spf} we implement one of the designs from Chapter \ref{ch:iaicasestudy}. Chapter \ref{ch:studentuse} contains the entirety of our third case study, and explores the use of generative AI detection tools as DSTs in the context of talent identification. In Chapter \ref{ch:discussion}, we discuss our design recommendations, note limitations of our approach, and conclude.
+
+\section{Publications}
+
+\begin{itemize}
+    \item \textcite{natarajan_trust_2023} Trust Explanations to do What They Say
+    \item \textcite{...} `You Trust Me, But Should You?': Misleading Explanations of AI Outputs
+\end{itemize}
