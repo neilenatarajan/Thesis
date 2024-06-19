@@ -10,9 +10,50 @@
 \chapter{\label{ch:discussion}Discussion}
 
 \minitoc
+Intro needs a sociological account of talent identification. What is it? How does it differ from recruitment? What niche within TI do I focus on? I talk about this a bit in the organisation discussion but should go into greater detail here.
+Also: what tools are used in current TI processes (incl. AI)? What tools are being envisioned? What are the challenges of that (I.e., explainability, fairness, diversity, generative AI, etc.)? Which do I focus on?
 
-\section{Implications and Recommendations}
+\section{Design Recommendations}
+\subsection{All Recommendations}
 (To-do) Here we analyse the implications of using IAIDSTs in talent identification. We first look at the strengths and limitations of post-hoc explanations and prescribe appropriate use cases for these types of IAIDSTs. Second, we examine the strengths and weaknesses of intrinsically interpretable models, including purpose-built models, and make similar prescriptions. Finally, we distil our insights in purpose-building IAIDSTs for TI professionals and extrapolate to general recommendations.
+
+\subsection{Central Themes}
+Throughout this thesis, we explore three different applications of AI systems as DSTs to tasks in talent identification. In each, we discover unique findings implying specific design recommendations for the development of AI systems as DSTs. However, three main principles emerge in many of the case studies. These principles are: human-centrism, trustworthiness through transparency, and the qualitative / quantitative (QQ) balance.
+
+\subsubsection{Human-Centrism}
+The \emph{human-centrism} principle states:
+
+\begin{quote}
+    Human-Centrism: Humans should always be in the loop. Most obviously, humans should have final say. Less obvious, humans should have design input.
+\end{quote}
+
+Human-centrism is often held in high importance in the field of human-computer interaction \cite{findasource}. Moreso in the context of AI systems. However, while it is often important to center humans in the application of an AI system, the nature of AI models often means they are developed before the user or use-case is considered \cite{findasource}. This, we note, is at direct odds with our principle of human-centrism. We recommend instead that, at least in the high-stakes context of talent identification, stakeholders should be involved in all stages of the AI system's lifecycle, from design to deployment.
+
+The importance of user design input is made clear when we consider the idiosyncratic needs of different talent investment programs. As we find in Chapter \ref{ch:usingxai}, different selectors have different needs from explanations: some prefer visual explanations, while others prefer verbal explanations; some are pre-primed with a desire to engage deeply with the information provided, others are primed to index decisions on a single factor. Similarly, as we find in Chapter \ref{ch:iaicasestudy}, different selectors have different preferences around who to select: some place special importance on the roles applicants play in groups, others place a special emphasis on diversity metrics; some consider the applicants who preform the best on tests to be the most talented, others consider the applicants who preform the best in projects or interviews to be the most talented. While systems can be designed to accommodate these differences, this must be understood early in the design process.
+
+\subsubsection{Trustworthiness Through Transparency}
+The \emph{trustworthiness through transparency} principle states:
+
+\begin{quote}
+    Trustworthiness Through Transparency: When possible, AI systems should be trustworthy. When not possible, they should reveal through transparency their untrustworthiness.
+\end{quote}
+
+The explainable AI community places great importance on discussions of trust and trustworthiness \cite{jacovi_formalizing_2021,vereschak_how_2021}. While it is well-understood that explanation systems impact user trust in AI outputs, the best means to utilise this impact is still debated. Some contend a goal of explainability should be to increase user trust in AI, while others claim it should modulate it \cite{jacovi_formalizing_2021,kruger_problem_2022}. We contend that the goal of explainability should be to increase warranted trust in AI systems. This is to say, users should trust AI systems when they are trustworthy, and distrust them when they are not.  This is especially clear in the context of a DST, where a user distrusting the tool when it is incorrect brings about better overall task performance. In the context of talent identification, where the stakes are high, it is especially important that users trust the AI system only when it is trustworthy. Thus, we contend, AI systems should be trustworthy whenever possible, and when not possible, they should reveal through transparency their untrustworthiness.
+
+Less often discussed is the role of trust in explanation in this context. Concerningly, in Chapter \ref{ch:xailimitations}, we find that popular explanation algorithms, naively applied, often fail to properly modulate trust. However, we also find in Chapter \ref{ch:usingxai} that these algorithms can be modified to better modulate trust. We recommend that, when designing an AI system as a DST, developers should consider the impact of explanation on user trust, and design their explanation systems to modulate trust in a way that is warranted. For explanations, too, should only be trusted when they are trustworthy.
+
+In Chapter \ref{ch:usingxai}, we implement SHAP explanations for the purposes of providing an understanding of relative score importance in an applicant scoring algorithm. We find that SHAP explanations can be used to effectively help users understand the relative importance of different subscores. However, in this case, we find that selectors modulate their trust in bot the scoring algorithm and the SHAP scores using a variety of qualitative factors. They do not use the SHAP explanations to modulate trust in the overall algorithm score. Thus, we recommend the use of SHAP explanations here, but only to understand the importance of the relative subscores.
+
+Conversely, in Chapter \ref{ch:studentuse}, we explore an implementation of a generative AI detector as a means of providing selectors a system to flag or disqualify applicants who rely on generative AI systems to write their essays. While this detector here is a sort of explanation of AI-generated essay text (it explains whether the text was generated by an AI system), it is not the sort of explanation that should be used to modulate trust in the student essay. Unlike in Chapter \ref{ch:usingxai}, where selectors modulate their trust in the algorithm score using a variety of qualitative factors, selectors cannot modulate trust in this detector using other factors. Thus, we recommend against the use of this detector here.
+
+\subsubsection{Qualitative / Quantitative (QQ) Balance}
+The \emph{QQ balance} principle states:
+
+\begin{quote}
+    QQ Balance: Balance the quantitative and the qualitative. Human decision-makers often require both.
+\end{quote}
+
+Many authors in the talent identification literature make mention of something like the QQ balance principle, but we find that it is often not well-understood. In Chapters \ref{ch:usingxai} and \ref{ch:iaicasestudy}, we find that selectors often require both quantitative and qualitative information to make decisions. When quantitative information is neglected, selectors are forced to make decisions on a case-by-case basis without important numerical context comparing applicants to a larger group; when qualitative information is neglected, selectors are unable to consider applicants holistically, and are reduced to making decisions on a spreadsheet. We recommend that developers of AI systems as DSTs consider the balance between quantitative and qualitative information in their systems, and design their systems to provide both when necessary.
 
 \section{Limitations and Future Work}
 (To-do) We note the limitations of this research method. We examine first limitations of individual case studies and note how other methodologies might address these limitations. We then raise concerns about our research's external validity, especially with regard to our recommendations and prescriptions. We address these concerns and note ways in which this research should not be used. Finally, we highlight areas in which researchers may continue this work or expand upon it.
