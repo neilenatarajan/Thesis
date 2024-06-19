@@ -11,6 +11,17 @@
 
 \minitoc
 
+% Notes
+% Does the scenario depend on the tool? If it’s like “here’s the impact of selecting candidate A over B on diversity”, then the scenario needs to be like “which do you select”. But if the tool is like “here are the top 10 people from this country” maybe the scenario is “how many do you pick?”
+% Maybe the scenario should just be open ended, since the tools are quite different. Maybe the scenario is just “how do you think you’d use this in the selection process in general?”
+% This will also vary quite a bit based on the selection process. Maybe it’s worth asking how much people would modify their selection process. There’s lots of different decision-making processes that would change how people make decisions. Would people make changes to their processes to use a tool? Do you need to make tools that fit their existing processes?
+% Certain understandings of diversity are very similar to fairML, i.e. the equal acceptance rates understanding. Equal outcomes are also fairML approaches.
+% Does viewing this as a fairML problem help understand this as a type of AI?
+% Does viewing this as a fairML problem introduce related work I need to look at?
+% fairML is figuring out different ways to relax accuracy constraints so as to meet certain other goals, in this case, diversity goals
+% There’s also literature looking at the fairness of parity, decision-making rates, etc., and so this is an extension of some fairML work. This links this problem to fairness in the background, and should probably be mentioned both here and there.
+
+
 \section{Introduction}
 Organizations (e.g. schools, firms, etc.) are perennially interested in selecting \emph{talented} people. And, as discrimination declines \cite{hsieh2019allocation} and social preferences for inclusion grows \cite{minkin2023diversity}, organizations are increasingly interested in selecting diverse cohorts \cite{dwork2012fairness}. But, in computer science, it is well known that both selecting cohorts to maximize diversity and measuring the tradeoff between diversity and average cohort talent are formally complex problems \cite{nemhauser1978analysis, huppenkothen2020entrofy}. While work exists tackling the problem of measuring diversity in talent identification, little of it approaches the problem from a computational angle, despite evidence that algorithmic approaches to talent identification outperform alternative approaches by as much as $50\%$ \cite{kuncel2013mechanical,li2020hiring}. This paper fills this hole by developing an algorithm for approximating the diversity-talent frontier and presenting suggestive case-study evidence that organizations make more efficient selection decisions when they have access to this technology. 
 
