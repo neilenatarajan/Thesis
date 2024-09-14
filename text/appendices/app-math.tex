@@ -1,0 +1,57 @@
+% \begin{savequote}[8cm]
+% \textlatin{Cor animalium, fundamentum e\longs t vitæ, princeps omnium, Microco\longs mi Sol, a quo omnis vegetatio dependet, vigor omnis \& robur emanat.}
+
+% The heart of animals is the foundation of their life, the sovereign of everything within them, the sun of their microcosm, that upon which all growth depends, from which all power proceeds.
+%   \qauthor{--- William Harvey \cite{harvey_exercitatio_1628}}
+% \end{savequote}
+
+\chapter{\label{app:math}Mathematics and Computation}
+
+\minitoc
+
+\section{ChatGPT Code Generation for Chapter \ref{ch:genai}}
+
+\section{Proofs of Submodularity and Monotonicity for Chapter \ref{ch:spf}}
+
+\begin{theorem} 
+    Submodularity is closed under weighted addition. \label{thm:submodularity_additive}
+    \end{theorem}
+    
+    \begin{proof}
+    \begin{equation}
+        \label{eq:submodularity_additive}
+        \begin{split}
+            \forall Y \subseteq U, X \subseteq Y, x \in U \setminus Y, a \geq 0, b \geq 0: & F_1(X \cup \{x\}) - F_1(X) \leq F_1(Y \cup \{x\}) - F_1(Y) \\
+            &\land F_2(X \cup \{x\}) - F_2(X) \leq F_2(Y \cup \{x\}) - F_2(Y) \\
+            \implies & a*F_1(X \cup \{x\}) - a*F_1(X) \leq a*F_1(Y \cup \{x\}) - a*F_1(Y) \\
+            &\land b*F_2(X \cup \{x\}) - b*F_2(X) \leq b*F_2(Y \cup \{x\}) - b*F_2(Y) \\
+            \implies & a*F_1(X \cup \{x\}) - a*F_1(X) + b*F_2(X \cup \{x\}) - b*F_2(X) \\
+            &\leq a*F_1(Y \cup \{x\}) - a*F_1(Y) + b*F_2(Y \cup \{x\}) - b*F_2(Y) \\
+            \implies & a*F_1+b*F_2(X \cup \{x\}) - a*F_1+b*F_2(X) \\
+            &\leq a*F_1+b*F_2(Y \cup \{x\}) - a*F_1+b*F_2(Y) \\ \nonumber
+        \end{split}
+    \end{equation}
+    \end{proof}
+    
+    \begin{theorem} 
+    Monotonicity is closed under weighted addition. \label{thm:monotonicity_additive}
+    \end{theorem}
+    \begin{proof}
+    \begin{equation}
+        \label{eq:mononicity_additive}
+        \begin{split}
+            \forall Y \subseteq U, X \subseteq Y, a \geq 0, b \geq 0: & F_1(X)\leq F_1(Y) \land F_2(X)\leq F_2(Y) \\
+            \implies & a*F_1(X)\leq a*F_1(Y) \land b*F_2(X)\leq b*F_2(Y) \\
+            \implies & a*F_1(X) + b*F_2(X) \leq a*F_1(Y) + b*F_2(Y) \\
+            \implies & a*F_1+b*F_2(X) \leq a*F_1+b*F_2(Y) \\ \nonumber
+        \end{split}
+    \end{equation}
+    \end{proof}
+    
+    \begin{theorem} 
+    The class of functions $F$ as defined in Equation \ref{eq:f_spec} is submodular and monotone.\label{thm:f_sub_mon}
+    \end{theorem}
+    \begin{proof}
+    By construction, $F$ is the weighted sum of $P$ and $D$. But $D$ is the weighted sum of functions $\delta_g^{prop}$ and $\delta_G^{count}$.
+    It is trivial to see that $P$ is submodular and monotone. We have already demonstrated that $\delta_g^{prop}$ and $\delta_G^{count}$ are submodular and monotone. Thus, by Theorems \ref{thm:submodularity_additive} and \ref{thm:monotonicity_additive}, $F$ is submodular and additive.
+    \end{proof}
