@@ -81,7 +81,6 @@ In much of the xAI literature, descriptors such as ``post-hoc'' or ``model-speci
     \includegraphics[width=.9\textwidth]{plots/taxonomy.png}
     \caption{Explainable AI methods are separated into types by this taxonomy. We focus primarily on kinds of post-hoc (model-agnostic) explanations, and highlight a number of explanations following different philosophies (SHAP and Anchor are of particular interest, as both recur in our analyses), but we also consider model confidence statistics, which follow none of these philosophies.}
     \label{fig:taxonomy}
-    \Description{A visual taxonomy of explanation types.}
 \end{figure}
 
 We begin by broadly categorising the space of explainable AI into two subgroups: intrinsically interpretable models and post-hoc explanations \cite{Molnar}. Though intrinsically interpretable models offer solutions for interpretability and often present their own explanations, we (and the xAI critiques we engage with) focus primarily on post-hoc explanations. Key here is that, while intrinsically interpretable models are inherently model-specific, post-hoc methods may reap the benefits of model-agnosticity; thus, a single method may be used on any number of underlying models. This feeds into many of the main criticisms – \textcite{Lipton}'s argument about misleading explanations restricts itself to post-hoc models, we contend, because of this frequent ignorance about the model's internal processes.
@@ -194,13 +193,12 @@ We restrict our research question to tasks familiar to lay people with a well-de
 In both tasks, we construct a predictor model using random forests and augment this predictor with three different explanatory conditions. Our random forest classifier achieves $86\%$ test accuracy on the Adult dataset and $93\%$ test accuracy on the Give Me Some Credit dataset. We use a SHAP explainer to produce one of our explanatory conditions, and an Anchor explainer to produce another; our final explanatory condition is an intrinsic explanation produced by the random forest model. Figure \ref{fig:online_explanations} shows sample explanations produced by these methods. These ultimately form three explanatory conditions: SHAP, Anchor, and Confidence. Note that each participant only receives one model of explanation throughout all 6 cases. 
 
 \subsubsection{Design}
-Both tasks rely on the same 3-between-by-2-within design using repeated measures to capture the same data before and after the presentation of each explanation. The between-subjects factor determines which model is used to generate the explanation a given participant will receive. The within-subjects factor is the repeated-measures `explanation presence' factor. This is either `before explanation' or `after explanation', indexed $before$ or $after$. A flowchart of the study design can be found in Figure \ref{fig:online_flowchart}.
+Both tasks rely on the same 3-between-by-2-within design using repeated measures to capture the same data before and after the presentation of each explanation. The between-subjects factor determines which model is used to generate the explanation a given participant will receive. The within-subjects factor is the repeated-measures `explanation presence' factor. This is either `before explanation' or `after explanation', indexed $before$ or $after$. A of the study design can be found in Figure \ref{fig:online_flowchart}.
 
 \begin{figure*}[htbp]
     \centering
     \includegraphics[width=\textwidth]{plots/online_flowchart.png}
     \caption{Participants in the online study are sorted into six buckets, where each bucket is segregated by explanatory condition and task and shown a brief description of the task (i.e., each participant sees only one of the explanations in Figure \ref{fig:online_explanations}). Then, each participant is shown 6 cases. In each case, participants are shown an applicant profile and a AI output. Participants are asked to agree or disagree with the AI output. Then, participants are given explanations based on their explanatory condition scores. They are then asked again to agree or disagree with the AI output.}
-    \Description{A Flowchart depicting the flow of the workshops.}
     \label{fig:online_flowchart}
 \end{figure*}
 
@@ -556,7 +554,6 @@ Before this study, we obtained informed consent from all participants. As we run
     \includegraphics[width=.9\textwidth]{plots/case_flowchart.png}
     \caption{Each workshop consists of a series of cases relating to a past application decision that was flagged by program reviewers. In each case, participants are shown slides like in Figure \ref{fig:sample_case} and are asked to analyse the algorithm itself and whether the case warrants changes to the algorithm in future years.}
     \label{fig:case_flowchart}
-    \Description{A Flowchart depicting the flow of the workshops.}
 \end{figure}
 
 Both workshops followed an identical protocol. The flow of these workshops is shown in Figure \ref{fig:case_flowchart}, and more detail on the protocol followed can be found in Appendix \ref{app:protocol}.
@@ -570,7 +567,7 @@ In analysing our data, we follow \textcite{braun_using_2006}'s methodology for r
     \includegraphics[width=.9\textwidth]{plots/sample_case.png}
     \caption{Each case explores one applicant from past years chosen by past program reviewers after being flagged as having perplexing algorithm scores. Each case contains the applicant's profile (overall algorithm scores alongside demographic information; the profile is redacted to preserve applicant anonymity), the program reviewers' comments, and the SHAP-based explanation (the score names are replaced with generic labels to preserve program anonymity).}
     \label{fig:sample_case}
-    \Description{A sample case.}
+    
 \end{figure}
 
 \subsection{Results}\label{sec:cs_results}
