@@ -46,7 +46,7 @@ Though the problem of detecting AI-written plagiarism is interesting, it is only
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\textwidth]{plots/study_flow.png}
+  \includegraphics[width=\textwidth]{genai/study_flow.png}
   \caption{This figure describes the flow of our research.}
   \label{fig:flow}
 \end{figure}
@@ -97,7 +97,7 @@ Notably, the decision to disqualify applicants for using genAI (\emph{Disqualifi
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{plots/decision_matrix.png}
+  \includegraphics[width=0.8\textwidth]{genai/decision_matrix.png}
   \caption{This figure places the decisions from Table \ref{tab:decisions} on the Decision Matrix, with axes of `stage' and `stakes'.}
   \label{fig:decision_matrix}
 \end{figure}
@@ -108,7 +108,7 @@ We also work with practitioners to determine what type of properties a detection
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{plots/desiderata_matrix.png}
+  \includegraphics[width=0.8\textwidth]{genai/desiderata_matrix.png}
   \caption{This figure places uses our Decision Matrix to understand properties of genAI detectors required (or, in the case of low-stakes decisions, desired) to support each decision.}
   \label{fig:desiderata_matrix}
 \end{figure}
@@ -186,7 +186,7 @@ To calculate scores, we use the API under default settings for both GPTZero and 
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.4\textwidth]{plots/roc_curve.jpg}
+  \includegraphics[width=0.4\textwidth]{genai/roc_curve.jpg}
   \caption{This Receiver Operating Characteristic (ROC) curve shows the performance of each detector on our data of known providence (Cycle 2022 submissions and ChatGPT responses to Cycle 2022 prompts). While GPTZero's ROC curve has a moderate area under the curve (AUC), Originality.ai's ROC curve has a very high AUC.}
   \label{fig:roc_auc}
 \end{figure}
@@ -232,7 +232,7 @@ We measure discrimination as by whether the detector clearly discriminates posit
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.8\textwidth]{plots/histogram.jpg}
+  \includegraphics[width=0.8\textwidth]{genai/histogram.jpg}
   \caption{These histograms demonstrate the high bimodality and predictive discrimination of both detectors' outputs.}
   \label{fig:histogram}
 \end{figure}
@@ -241,7 +241,7 @@ As can be seen in Figure \ref{fig:histogram}, both detectors' outputs are close 
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.8\textwidth]{plots/confusion.jpg}
+  \includegraphics[width=0.8\textwidth]{genai/confusion.jpg}
   \caption{These confusion matrices again demonstrate the high predictive discriminative capabilities of both detectors' outputs.}
   \label{fig:confusion}
 \end{figure}
@@ -292,7 +292,7 @@ We have already determined in Figure \ref{fig:roc_auc} that Originality.ai has p
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=0.4\textwidth]{plots/calibration.jpg}
+  \includegraphics[width=0.4\textwidth]{genai/calibration.jpg}
   \caption{These calibration curves demonstrate the bimodality of both detectors' outputs. As can be seen, both output statistics fall far below the calibration curve; these output statistics are not calibrated on our data.}
   \label{fig:calibration}
 \end{figure}
@@ -337,7 +337,7 @@ Finally, to analyse performance at low FPR, our organisation set the acceptable 
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{plots/satisfaction_matrix.png}
+  \includegraphics[width=0.8\textwidth]{genai/satisfaction_matrix.png}
   \caption{This figure demonstrates the results of our application of the Decision Matrix, marking the use cases we consider suited for each detector.}
   \label{fig:satisfaction_matrix}
 \end{figure}

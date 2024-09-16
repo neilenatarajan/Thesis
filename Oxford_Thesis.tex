@@ -68,17 +68,29 @@
 
 
 %%%%% INCLUDING PACKAGES
-\usepackage{subfigure}
+
+% Useful for including algorithms and pseudocide
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{tabularx} % Required for inserting images
+
+% Required for inserting images
+\usepackage{tabularx} 
+
+% For subfigures; subfig and subfigure are both superceded by subcaption
 \usepackage{subcaption}
+% \usepackage{subfig}
+% \usepackage{subfigure}
+
 \usepackage{amsmath}
+
+% For graphics (and sets path to the figure path)
 \usepackage{graphicx}
-\usepackage{graphicx}
+\graphicspath{{./figures/}}
+
+
 \usepackage{array}
 \usepackage{multirow}
-\usepackage{subfig}
+
 \usepackage{wrapfig}
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
@@ -91,33 +103,32 @@
 \usepackage{xcolor}         % colors
 
 
-
-\usepackage{dcolumn} % Booktabs column spacing
-\usepackage{etoolbox}
-\usepackage{tikz}
-\usepackage[makeroom]{cancel}
-\usepackage{amssymb}
-\usepackage{adjustbox}
-\usepackage{comment}
-\usepackage{longtable}
-\usepackage{geometry}
-\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
-\usepackage{setspace}
-\usepackage{makecell}
-\usepackage{soulpos} % for the command \hl
-\usepackage{ulem}
-\usepackage{eurosym}
-\usepackage{color}
-\usepackage{sectsty}
-\usepackage{palatino}
-\usepackage{caption}
-\usepackage{pdflscape}
-\usepackage{csquotes}
-\usepackage{changepage}
-\usepackage{alphalph}
-\renewcommand*{\thesubfigure}{%
-\alphalph{\value{subfigure}}%
-}%
+% \usepackage{dcolumn} % Booktabs column spacing
+% \usepackage{etoolbox}
+% \usepackage{tikz}
+% \usepackage[makeroom]{cancel}
+% \usepackage{amssymb}
+% \usepackage{adjustbox}
+% \usepackage{comment}
+% \usepackage{longtable}
+% \usepackage{geometry}
+% \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+% \usepackage{setspace}
+% \usepackage{makecell}
+% \usepackage{soulpos} % for the command \hl
+% \usepackage{ulem}
+% \usepackage{eurosym}
+% \usepackage{color}
+% \usepackage{sectsty}
+% \usepackage{palatino}
+% \usepackage{caption}
+% \usepackage{pdflscape}
+% \usepackage{csquotes}
+% \usepackage{changepage}
+% \usepackage{alphalph}
+% \renewcommand*{\thesubfigure}{%
+% \alphalph{\value{subfigure}}%
+% }%
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
@@ -150,8 +161,6 @@
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
-
-
 
 %%%%% CHOOSE YOUR LINE SPACING HERE
 % This is the official option.  Use it for your submission copy and library copy:
@@ -254,22 +263,20 @@
 \include{text/body/ch-intro}
 \include{text/body/ch-background}
 \include{text/body/ch-genai}
-\include{text/body/ch-xai}
-\include{text/body/ch-diversity}
-\include{text/body/ch-spf}
-\include{text/body/ch-discussion}
+% \include{text/body/ch-xai}
+% \include{text/body/ch-diversity}
+% \include{text/body/ch-spf}
+% \include{text/body/ch-discussion}
 
 %%%%% APPENDICES
 % Starts lettered appendices, adds a heading in table of contents, and adds a
 %    page that just says "Appendices" to signal the end of your main text.
 \startappendices
 % Add or remove any appendices you'd like here:
-\include{text/appendices/app-terminology}
-\include{text/appendices/app-protocols}
-\include{text/appendices/app-math}
-\include{text/appendices/app-figures}
-% \include{text/app-spfproofs}
-
+% \include{text/appendices/app-terminology}
+% \include{text/appendices/app-protocols}
+% \include{text/appendices/app-math}
+% \include{text/appendices/app-figures}
 
 %%%%% REFERENCES
 
