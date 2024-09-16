@@ -17,7 +17,7 @@ We hypothesize that the complexity of selecting personnel in a way that jointly 
 \section{Introduction}\label{sec:introduction}
 The rise of diversity, equity, and inclusion initiatives suggests that various organizations (e.g. schools, firms, social impact programs, etc.) are genuinely interested in selecting for diverse talent. This is driven, at least in part, by recent declines in discrimination \cite{hsieh2019allocation}, increases in the perceived return to diversity \cite{deming2017growing, page2019diversity, noray2023systemic}, and increased social pressure for demographic representation \cite{minkin2023diversity}. In this paper, we hypothesize that the complexity of simultaneously optimizing for talent and diversity leads organizations (even well-intentioned ones) to select within their feasible talent-diversity frontier \cite{nemhauser1978analysis, huppenkothen2020entrofy}. This paper tests this hypothesis by demonstrating and incorporating this complexity into a simple model of cohort selection and testing the empirical predictions of the model using data from a high-profile scholarship and talent investment program. 
 
-We begin by developing a simple model of cohort selection. Organizations receive $N$ applications and must select $n<N$ individuals to construct a cohort from the total set of potential cohorts, each of which is indexed by $c$. The organization seeks to maximize a preference function that is increasing in both a cohort's talent (e.g., the mean performance on an ability measure) and a cohort's diversity (e.g., an inverse distance to a set of target proportions of demographic groups). We then prove that this problem, though simple to state, is computationally complex. This is for two intuitive reasons. First, an individual's contribution to the diversity of the cohort depends on who else will be part of the cohort. Thus, to determine which cohort is the smallest distance from the predefined "ideal" diverse cohort, every possible cohort needs to be assessed. Second, when diversity preferences are for representation of at least two non-mutually exclusive identities (e.g. ethnic minorities and women), optimally selecting members of one group constrains your ability to do the same for the other group. Formally, we show that maximizing functions on subsets is in general non-polynomial. We then show that, when we restrict our attention to functions formalizing diversity as organizations measure it, the `Vertex Cover' problem, known to be $\mathpzc{NP}$-hard, reduces to diversity maximization. This implies that calculating the maximal diversity conditional on cohort performance (what we refer to as the Selection Possibilities Frontier, or SPF) is also $\mathpzc{NP}$-hard. Selecting on the SPF, then, is likely prohibitively costly for many organizations. 
+We begin by developing a simple model of cohort selection. Organizations receive $N$ applications and must select $n<N$ individuals to construct a cohort from the total set of potential cohorts, each of which is indexed by $c$. The organization seeks to maximize a preference function that is increasing in both a cohort's talent (e.g., the mean performance on an ability measure) and a cohort's diversity (e.g., an inverse distance to a set of target proportions of demographic groups). We then prove that this problem, though simple to state, is computationally complex. This is for two intuitive reasons. First, an individual's contribution to the diversity of the cohort depends on who else will be part of the cohort. Thus, to determine which cohort is the smallest distance from the predefined "ideal" diverse cohort, every possible cohort needs to be assessed. Second, when diversity preferences are for representation of at least two non-mutually exclusive identities (e.g. ethnic minorities and women), optimally selecting members of one group constrains your ability to do the same for the other group. Formally, we show that maximizing functions on subsets is in general non-polynomial. We then show that, when we restrict our attention to functions formalizing diversity as organizations measure it, the `Vertex Cover' problem, known to be $\mathbf{NP}$-hard, reduces to diversity maximization. This implies that calculating the maximal diversity conditional on cohort performance (what we refer to as the Selection Possibilities Frontier, or SPF) is also $\mathbf{NP}$-hard. Selecting on the SPF, then, is likely prohibitively costly for many organizations. 
 
 To account for this complexity, we augment our model of cohort selection by forcing organizations to incur a computational marginal cost for each unit of increased cohort diversity. This represents the fact that, to find a more diverse cohort, one must engage in the laborious process of composing potential cohorts and comparing them. This is in sharp contrast to finding more talented cohorts, which is comparatively simple -- and, therefore, modeled as costless -- because each individual's contribution to cohort talent is unrelated to the remainder of the cohort. This simple model has two implications: (1) organizations will tend to select sub-optimal (i.e. non-first-best) cohorts and (2) organizations will improve on both performance and diversity if the gain access to a technology that reduces this computational marginal cost. 
 
@@ -31,11 +31,11 @@ We conclude our empirical analysis by using our SPF estimation procedure to eval
 
 This paper contributes to a growing economics literature studying the influence and potential of algorithms. Most research in this area has focused on measuring the effects of AI tools both at the economy-wide ("macro") level \cite{acemoglu2022automation,babina2024artificial,calvino2023portrait,zolas2021advanced,webb2019impact} and in more specific ("micro") contexts like bail decisions and radiology \cite{albright2023hidden,kleinberg2015prediction,stevenson2019algorithmic,angelova2023algorithmic,imai2023experimental,grimon2022impact,noy2023experimental,brynjolfsson2023generative,bundorf2019humans, mullainathan2019machine, ribers2020machine, agarwal2023combining}. This paper is more closely related to the small subset of this work that \emph{develops} AI tools to improve or assess human problem-solving in some respect.\footnote{Though small in economics, there is a larger literature in computer science that focuses on developing algorithmic tools to replace or improve humans' capacity to solve problems. Most closely related to this paper are machine systems that help organizations select in ways that are "unbiased" \cite{tambe2019artificial,raghavan2020mitigating} or account for "diversity" \cite{gillet2011diversity,huppenkothen2020entrofy}. Our paper differs from these because we account for trade-offs between diversity and other desiderata (e.g. talent, productivity, etc.).}  This includes work that develops methods to compare the efficacy of human vs. AI predictions \cite{kleinberg2018human,rambachan2024identifying} and several papers that develop algorithms specifically to improve the selection or assignment of personnel \cite{li2020hiring,bergman2021seven,kleinberg2018algorithmic,huppenkothen2020entrofy}. Our paper contributes to this literature by developing and applying algorithmic tools to the increasingly relevant diverse talent selection problem. 
 
-Our paper is closely related to \citeA{kleinberg2018algorithmic}, which introduces an algorithm that colleges can use to calculate the most meritorious cohort at any threshold of representation for a single underrepresented group. Their algorithm is straightforward: define a minority group (e.g. black applicants) and the corresponding majority group (e.g. white applicants), rank applicants within each group by measure of merit (e.g. test scores, predicted college performance, etc.), set a threshold for the proportion of those selected who should be part of the minority group, select minority group members from the highest ranking down until the threshold is met, and finally, select the majority group members from the highest ranking down until all slots are filled. Though effective, this procedure only works when the organization aims to represent mutually exclusive minority groups. If diversity preferences are instead for representation of multiple non-mutually exclusive groups (e.g., female applicants and black applicants), this strategy no longer works. This paper relaxes this assumption and outlines the conditions under which the diversity-performance frontier can be estimated regardless of the number or type of identity characteristics organizations seek to represent.
+Our paper is closely related to \textcite{kleinberg2018algorithmic}, which introduces an algorithm that colleges can use to calculate the most meritorious cohort at any threshold of representation for a single underrepresented group. Their algorithm is straightforward: define a minority group (e.g. black applicants) and the corresponding majority group (e.g. white applicants), rank applicants within each group by measure of merit (e.g. test scores, predicted college performance, etc.), set a threshold for the proportion of those selected who should be part of the minority group, select minority group members from the highest ranking down until the threshold is met, and finally, select the majority group members from the highest ranking down until all slots are filled. Though effective, this procedure only works when the organization aims to represent mutually exclusive minority groups. If diversity preferences are instead for representation of multiple non-mutually exclusive groups (e.g., female applicants and black applicants), this strategy no longer works. This paper relaxes this assumption and outlines the conditions under which the diversity-performance frontier can be estimated regardless of the number or type of identity characteristics organizations seek to represent.
 
-This paper is also related to the growing economics literature on the impact of new screening technologies on the productivity and diversity of the personnel that organizations select. An early paper on this topic is \citeA{autor2008does}, which shows that adding personality tests to the job applicant screening process in a national retail firm increased the productivity of selected workers without reducing minority representation among hires. More recently, \citeA{li2020hiring} demonstrate that, within a Fortune 500 tech company, diversity and productivity of hires can be improved by using exploration-based applicant screening algorithms that recommend applicants with rare sets of characteristics at higher rates in order to improve noisy predictions and, therefore, learn how to find promising applicants from atypical backgrounds. Similarly, \citeA{bergman2021seven} show that, across seven colleges, using a prediction algorithm instead of a test to decide whether to place students into remedial classes improves student performance and increases minority representation in college-level (non-remedial) courses. Our paper adds to this literature in two ways. First, rather than focusing on comparing a new screening method to the status quo, this paper develops a procedure for estimating the diversity-performance frontier itself. Second, leveraging the novel design of the scholarship's application process in combination with our estimate of the SPF, we provide new evidence on the efficacy of screening on traditional "merit" measures. 
+This paper is also related to the growing economics literature on the impact of new screening technologies on the productivity and diversity of the personnel that organizations select. An early paper on this topic is \textcite{autor2008does}, which shows that adding personality tests to the job applicant screening process in a national retail firm increased the productivity of selected workers without reducing minority representation among hires. More recently, \textcite{li2020hiring} demonstrate that, within a Fortune 500 tech company, diversity and productivity of hires can be improved by using exploration-based applicant screening algorithms that recommend applicants with rare sets of characteristics at higher rates in order to improve noisy predictions and, therefore, learn how to find promising applicants from atypical backgrounds. Similarly, \textcite{bergman2021seven} show that, across seven colleges, using a prediction algorithm instead of a test to decide whether to place students into remedial classes improves student performance and increases minority representation in college-level (non-remedial) courses. Our paper adds to this literature in two ways. First, rather than focusing on comparing a new screening method to the status quo, this paper develops a procedure for estimating the diversity-performance frontier itself. Second, leveraging the novel design of the scholarship's application process in combination with our estimate of the SPF, we provide new evidence on the efficacy of screening on traditional "merit" measures. 
 
-This paper is also related to work across fields defining fairness and equity in talent selection. Much of this work builds on the \emph{similar treatment principle} whereby individuals who perform similarly on some dimension(s) are treated equally in selection \cite{dwork2012fairness}.\footnote{Though not generally mentioned in this literature, the similar treatment principle is the normative basis on which differential treatment of demographic groups in audit studies is deemed wrong.} This approach has been criticized, however, on the grounds that in circumstances when performance and demographic factors are correlated, employing this principle could substantially reduce the diversity of the chosen cohort, which may not accord with a decision-makers fairness preferences \cite{fleisher2021s}. Furthermore, when measurements of performance are biased in favor of certain demographic groups, similar treatment on the basis of these measurements leads to applicants with the same underlying ability being treated differently \cite{fleisher2021s}. An alternative perspective is to assume fairness and equity are captured by diversity, and instead to measure diversity directly. Three measures are commonly considered: (1) the majority-minority approach, (2) the generalized variance approach, and (3) the entropy statistic (see \citeA{budescu2012measure} for a summary). Following \citeA{huppenkothen2020entrofy}, we measure diversity using an entropy-based approach. We do this for two reasons. First, as \citeA{huppenkothen2020entrofy} demonstrate, versions of an entropic scoring function have mathematical properties (i.e. submodularity and monotonicity) that allow us to both easily estimate the SPF and to bound the error of our estimates. Second, preferences for diversity often take the form of ``closeness to a proportional target for each relevant identity characteristic'', which can be represented easily using entropic functions. Thus, our work adds to the applications of entropy-based methods for measuring diversity.
+This paper is also related to work across fields defining fairness and equity in talent selection. Much of this work builds on the \emph{similar treatment principle} whereby individuals who perform similarly on some dimension(s) are treated equally in selection \cite{dwork2012fairness}.\footnote{Though not generally mentioned in this literature, the similar treatment principle is the normative basis on which differential treatment of demographic groups in audit studies is deemed wrong.} This approach has been criticized, however, on the grounds that in circumstances when performance and demographic factors are correlated, employing this principle could substantially reduce the diversity of the chosen cohort, which may not accord with a decision-makers fairness preferences \cite{fleisher2021s}. Furthermore, when measurements of performance are biased in favor of certain demographic groups, similar treatment on the basis of these measurements leads to applicants with the same underlying ability being treated differently \cite{fleisher2021s}. An alternative perspective is to assume fairness and equity are captured by diversity, and instead to measure diversity directly. Three measures are commonly considered: (1) the majority-minority approach, (2) the generalized variance approach, and (3) the entropy statistic (see \textcite{budescu2012measure} for a summary). Following \textcite{huppenkothen2020entrofy}, we measure diversity using an entropy-based approach. We do this for two reasons. First, as \textcite{huppenkothen2020entrofy} demonstrate, versions of an entropic scoring function have mathematical properties (i.e. submodularity and monotonicity) that allow us to both easily estimate the SPF and to bound the error of our estimates. Second, preferences for diversity often take the form of ``closeness to a proportional target for each relevant identity characteristic'', which can be represented easily using entropic functions. Thus, our work adds to the applications of entropy-based methods for measuring diversity.
 
 The rest of the paper is summarized as follows. Section \ref{sec:model} introduces a simple model of cohort selection with complexity costs and micro-founds the complexity costs by demonstrating the complexity of diversity maximization. Section \ref{sec:spf_alg} we defines the selection possibility frontier, presents an algorithm that generates an estimate of the SPF, and formally derives bounds on these estimates. In Section \ref{sec:case} we apply the SPF procedure to characterize the selection inefficiencies of a talent selection program, show efficiency improvements after using the SPF, and asses the efficacy of alternative screening algorithms. In Section \ref{sec:conclusion}, we discuss our findings and reach a conclusion. 
 
@@ -70,14 +70,14 @@ The solution to this simple version of the model is depicted in Figure \ref{fig:
 
 \subsection{Why Diverse Talent Selection is Complex}\label{subsec:dts_nphard}
 
-So far we have assumed that the organization could costlessly select the cohort on the SPF that maximizes utility. But, what if identifying the first-best cohort is prohibitively costly? In this section we show that, under standard definitions of diversity, the problem is computationally complex (i.e., there is no known algorithm that can solve this problem in polynomial time). In other words, this problem is prohibitively costly to solve in practice. We use this finding as the micro-foundation for a computational marginal cost term which we add to the model, which we use to derive testable predictions. We break our discussion of this problem's complexity into two parts. In Section \ref{subsubsec:int_nphard} we present the intuitive explanation and in Section \ref{subsubsec:proof_nphard} we prove $\mathpzc{NP}$-hardness. 
+So far we have assumed that the organization could costlessly select the cohort on the SPF that maximizes utility. But, what if identifying the first-best cohort is prohibitively costly? In this section we show that, under standard definitions of diversity, the problem is computationally complex (i.e., there is no known algorithm that can solve this problem in polynomial time). In other words, this problem is prohibitively costly to solve in practice. We use this finding as the micro-foundation for a computational marginal cost term which we add to the model, which we use to derive testable predictions. We break our discussion of this problem's complexity into two parts. In Section \ref{subsubsec:int_nphard} we present the intuitive explanation and in Section \ref{subsubsec:proof_nphard} we prove $\mathbf{NP}$-hardness. 
 
 \subsubsection{Diversity Causes Complexity: An Intuitive Explanation}\label{subsubsec:int_nphard}
 
-One way to see why the diverse talent selection problem is complex is to consider how it differs from a simpler special case where an organization only wants sufficient representation of one group. For example, consider a college that aims to accept some target fraction of Black applicants from a pool of Black and white applicants. And, assume the school wants to select as talented a class as possible, where talent is proxied for by test scores, grades, or some combination of the two. In this special case, as shown in \citeA{kleinberg2018algorithmic}, there exists a computationally easy algorithm to calculate the SPF shown below.\footnote{Technically, the algorithm presented by \citeA{kleinberg2018algorithmic} only optimizes for the \emph{most diverse} point on the SPF. Thus, we have added the \textbf{Repeat} step (cycling through the algorithm with different representation thresholds) to enable their algorithm to trace out the SPF.}
+One way to see why the diverse talent selection problem is complex is to consider how it differs from a simpler special case where an organization only wants sufficient representation of one group. For example, consider a college that aims to accept some target fraction of Black applicants from a pool of Black and white applicants. And, assume the school wants to select as talented a class as possible, where talent is proxied for by test scores, grades, or some combination of the two. In this special case, as shown in \textcite{kleinberg2018algorithmic}, there exists a computationally easy algorithm to calculate the SPF shown below.\footnote{Technically, the algorithm presented by \textcite{kleinberg2018algorithmic} only optimizes for the \emph{most diverse} point on the SPF. Thus, we have added the \textbf{Repeat} step (cycling through the algorithm with different representation thresholds) to enable their algorithm to trace out the SPF.}
 
 \begin{algorithm}
-    \caption{A Procedure For Calculating the SPF Based on \citeA{kleinberg2018algorithmic}}\label{alg:kleinberg}
+    \caption{A Procedure For Calculating the SPF Based on \textcite{kleinberg2018algorithmic}}\label{alg:kleinberg}
     \begin{algorithmic}
         \State \textbf{Define} a minority group (Black) and mutually exclusive majority group (white), 
         \State \textbf{Rank} applicants within their group by test score,
@@ -90,7 +90,7 @@ One way to see why the diverse talent selection problem is complex is to conside
 
 What allows this algorithm work is the \emph{mutual exclusivity} of the minority and majority group. This allows one to transform the diverse talent selection problem into two separate talent maximization problems where the organization simply selects the most talented members of each group. This can be extended to any case where target proportions are defined at the level of mutually exclusive group level, even when multiple different demographic dimensions are considered. To be concrete, if the school actually cares about race and gender and, thus, has target proportions for black male, black female, white male, and white female applicants, then the problem can be broken into four separate talent maximization problems where the most talented members of each group are selected until the target proportions are met for each group. 
 
-But what happens if an organization has preferences for representation of \emph{non-mutually exclusive groups}? To continue the running example, this would be analogous to a college that has target proportions for black applicants and female applicants, but not for each race by gender combination. This seemingly small change prevents an organization from transforming the problem into simpler group-specific talent maximization sub-problems. To see this, consider applying the \citeA{kleinberg2018algorithmic} algorithm to each group sequentially; this would mean selecting the best black applicants until reaching the target proportion, then doing the same for female applicants. If the most talented black applicants were male or if there are few talented white females in the pool, having allocated the black slots in this way forces the college to select less talented females than optimal (or, it may inhibit reaching the target proportion for females at all). In short, when diversity preferences are over non-mutually exclusive groups, we cannot cleanly break the problem into simple talent maximization subproblems for disjoint minority groups, so it is not clear how we might extend the \citeA{kleinberg2018algorithmic} algorithm to a general version of the diverse talent selection problem. 
+But what happens if an organization has preferences for representation of \emph{non-mutually exclusive groups}? To continue the running example, this would be analogous to a college that has target proportions for black applicants and female applicants, but not for each race by gender combination. This seemingly small change prevents an organization from transforming the problem into simpler group-specific talent maximization sub-problems. To see this, consider applying the \textcite{kleinberg2018algorithmic} algorithm to each group sequentially; this would mean selecting the best black applicants until reaching the target proportion, then doing the same for female applicants. If the most talented black applicants were male or if there are few talented white females in the pool, having allocated the black slots in this way forces the college to select less talented females than optimal (or, it may inhibit reaching the target proportion for females at all). In short, when diversity preferences are over non-mutually exclusive groups, we cannot cleanly break the problem into simple talent maximization subproblems for disjoint minority groups, so it is not clear how we might extend the \textcite{kleinberg2018algorithmic} algorithm to a general version of the diverse talent selection problem. 
 
 The general diverse talent selection problem, which is the focus of this paper, allows organizations to have preferences for representation of an arbitrary number of overlapping (or disjoint) demographic groups. This aligns more closely with the diversity preferences of real world organizations like colleges, firms, and social impact programs many of which aim to select personnel from various ethnicities, genders, classes, geographies, ideologies, and specialties. Organizations generally state their preferences using statements of the following form: ``the organization desires at least $x\%$ of group $g$'' or ``the organization desires at least one person from $m$ groups". These types of diversity preferences are what is formalized in the function $D(c)$, which will ultimately be defined as an aggregation of a version of the cohort's inverse distance to each diversity goal. We will show that under this conception of $D(c)$, maximizing $F\Big(D(c),P(c)\Big)$ belongs to a class of computationally complex problems. A formal proof of this is included in Subsection \ref{subsubsec:proof_nphard}.
 
@@ -100,10 +100,11 @@ One way to see why this problem is complex is to consider the relationship betwe
 
 Without restrictions on the types of functions that organisations may select for $D$, $P$ the most we can say of $F$ is that its domain is $C$ and its range is $\mathcal{R}$. We prove here that optimising this class of functions is computationally complex.
 
-First, we introduce notions of computational complexity from computer science. The field of computer science considers a problem ``computationally simple'' if that problem is solvable in polynomial time (i.e., if there exists a program guaranteed to output the correct answer in a number of steps upper bounded by some polynomial function of the input). This class of problems is referred to as $\mathpzc{P}$. A problem is ``computationally complex'' if it is not computationally simple, i.e., if it cannot be solved in polynomial-time. In this section, we prove outright that optimizing an arbitrary function on subsets with a fixed cardinality constraint significantly smaller than the universe size is computationally complex. I.e., Theorem \ref{thm:general-nphard} holds.
+First, we introduce notions of computational complexity from computer science. The field of computer science considers a problem ``computationally simple'' if that problem is solvable in polynomial time (i.e., if there exists a program guaranteed to output the correct answer in a number of steps upper bounded by some polynomial function of the input). This class of problems is referred to as $\mathbf{P}$. A problem is ``computationally complex'' if it is not computationally simple, i.e., if it cannot be solved in polynomial-time. In this section, we prove outright that optimizing an arbitrary function on subsets with a fixed cardinality constraint significantly smaller than the universe size is computationally complex. I.e., Theorem \ref{thm:general-nphard} holds.
 
 \begin{theorem}\label{thm:general-nphard}
-    Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (\mathbb{U}) \rightarrow \mathcal{R}\}$ be the set of functions with domain  $\mathcal{P} (\mathbb{U})$ and range $\mathcal{R}$. Then $Opt_{gen}(s_i, n) := argmax_{c \in U \and |c| = n}(s_i(c))$ is not $\mathpzc{P}$ in $n$.
+    This is a thm.
+    % Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (\mathbb{U}) \rightarrow \mathcal{R}\}$ be the set of functions with domain  $\mathcal{P} (\mathbb{U})$ and range $\mathcal{R}$. Then $Opt_{gen}(s_i, n) := argmax_{c \in U \and |c| = n}(s_i(c))$ is not $\mathbf{P}$ in $n$.
 \end{theorem}
 
 \begin{proof}
@@ -124,7 +125,7 @@ By assumption, $Alg_{gen}(s_j, n) = Opt_{gen}(s_i, n)$, but as $\choose{2n}{n} >
 \end{proof}
 
 \subsubsection{Defining of Diversity and Talent}\label{subsubsec:div_talent_def}
-While interesting, the results that the above class of problems is not $\mathpzc{P}$ stops short of informing diversity optimisation in practice. Indeed, though the general class of functions is computationally complex, it could be that specific sub-problems are computationally fast. (In fact, the sub-problem identified by \citeA{kleinberg2018algorithmic} is computationally fast. We discuss further in Section \ref{subsubsec:int_nphard}.)
+While interesting, the results that the above class of problems is not $\mathbf{P}$ stops short of informing diversity optimisation in practice. Indeed, though the general class of functions is computationally complex, it could be that specific sub-problems are computationally fast. (In fact, the sub-problem identified by \textcite{kleinberg2018algorithmic} is computationally fast. We discuss further in Section \ref{subsubsec:int_nphard}.)
 
 However, we contend that the mathematical structure implied by common notions of diversity causes the diverse selection problem to be complex. To prove this, we need to settle on more precise diversity functions that correspond to these common notions. In particular, we will formalize \emph{proportional diversity} and \emph{count diversity}. 
 
@@ -180,38 +181,40 @@ F(D, P, c, \iota) := \iota*D(c)+(1-\iota)*P(c)
 
 \subsubsection{The Complexity of Our Preference Functions $F$}
 
-Much like the class of $\mathpzc{P}$ problems, there is a second class of problems, $\mathpzc{NP}$ that are \textit{verifiable} in polynomial time. It is often assumed in Computer Science (though unproved) that $\mathpzc{P} \neq \mathpzc{NP}$, i.e., that there exist problems in $\mathpzc{NP}$ that are not in $\mathpzc{P}$; we make this assumption here \cite{COPPERSMITH198527}. Yet a third class, the class of ``$\mathpzc{NP}$-hard'' problems, are the problems whose solutions can be used to emulate (with a polynomial-time emulator) solutions to all $\mathpzc{NP}$ problems. If $\mathpzc{P} \neq \mathpzc{NP}$, then all $\mathpzc{NP}$-hard problems are not polynomially solvable.
+Much like the class of $\mathbf{P}$ problems, there is a second class of problems, $\mathbf{NP}$ that are \textit{verifiable} in polynomial time. It is often assumed in Computer Science (though unproved) that $\mathbf{P} \neq \mathbf{NP}$, i.e., that there exist problems in $\mathbf{NP}$ that are not in $\mathbf{P}$; we make this assumption here \cite{COPPERSMITH198527}. Yet a third class, the class of ``$\mathbf{NP}$-hard'' problems, are the problems whose solutions can be used to emulate (with a polynomial-time emulator) solutions to all $\mathbf{NP}$ problems. If $\mathbf{P} \neq \mathbf{NP}$, then all $\mathbf{NP}$-hard problems are not polynomially solvable.
 
-We also bring in the notion of `reduction'. A reduction is simple: $A \leq B$ (i.e., $A$ reduces to $B$) if and only if there exists a polynomial time algorithm that makes some polynomially bounded number of calls to $B$ and thus returns an answer to $A$. In other words, we say that $A$ is $\mathpzc{NP}$-hard if and only if $\forall B \in \mathpzc{NP} A \leq B$. It is clear to see, then, that if $B$ is $\mathpzc{NP}$-hard and $A \leq B$, then $A$ is also $\mathpzc{NP}$-hard.
+We also bring in the notion of `reduction'. A reduction is simple: $A \leq B$ (i.e., $A$ reduces to $B$) if and only if there exists a polynomial time algorithm that makes some polynomially bounded number of calls to $B$ and thus returns an answer to $A$. In other words, we say that $A$ is $\mathbf{NP}$-hard if and only if $\forall B \in \mathbf{NP} A \leq B$. It is clear to see, then, that if $B$ is $\mathbf{NP}$-hard and $A \leq B$, then $A$ is also $\mathbf{NP}$-hard.
 
-We now prove that, when $S$ is restricted to only equations of the form $F$ from Equation \ref{eq:f_spec}, the problem of finding the optimal subset of size $k$ for any $s_i \in S$ is still computationally complex. This time, we rely on the assumption that $\mathpzc{NP}$-hard problems are computationally complex. That is, Theorem \ref{thm:specific-nphard} holds. 
+We now prove that, when $S$ is restricted to only equations of the form $F$ from Equation \ref{eq:f_spec}, the problem of finding the optimal subset of size $k$ for any $s_i \in S$ is still computationally complex. This time, we rely on the assumption that $\mathbf{NP}$-hard problems are computationally complex. That is, Theorem \ref{thm:specific-nphard} holds. 
 
 \begin{theorem}\label{thm:specific-nphard}
-    Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (\mathbb{U}) \rightarrow \mathcal{R}\}$ be the set of functions of type $F$ described in Equation \ref{eq:f_spec}. Then $Opt_{spec}(s_i, n) := argmax_{c \in U \and |c| = n}(s_i(c))$ is $\mathpzc{NP}$-hard in $n$.
+    This is another theorem
+    % Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (\mathbb{U}) \rightarrow \mathcal{R}\}$ be the set of functions of type $F$ described in Equation \ref{eq:f_spec}. Then $Opt_{spec}(s_i, n) := argmax_{c \in U \and |c| = n}(s_i(c))$ is $\mathbf{NP}$-hard in $n$.
 \end{theorem}
 
-In order to do this, and to justify the significance of this result, we bring in the computational complexity of the $VertexCover$ problem, which has been proven to be $\mathpzc{NP}$-hard \cite{COPPERSMITH198527}. $VertexCover$ can be seen in Theorem \ref{thm:vertexcover}.
+In order to do this, and to justify the significance of this result, we bring in the computational complexity of the $VertexCover$ problem, which has been proven to be $\mathbf{NP}$-hard \cite{COPPERSMITH198527}. $VertexCover$ can be seen in Theorem \ref{thm:vertexcover}.
 
 \begin{theorem}\label{thm:vertexcover}
-    Let $G = (V, E)$ be a graph. Let $VC(G, \kappa) := Cov | Cov \subseteq V \and |Cov| = \kappa \and \forall e \in E . \exists v \in Cov . v \in e$ be a function of $G$ that returns a set $Cov$ such that every edge in $G$ is incident on at least one vertex in $Cov$. Then $VC$ in $\mathpzc{NP}$-hard in the number of vertices.
+    This is another theorem
+    % Let $G = (V, E)$ be a graph. Let $VC(G, \kappa) := Cov | Cov \subseteq V \and |Cov| = \kappa \and \forall e \in E . \exists v \in Cov . v \in e$ be a function of $G$ that returns a set $Cov$ such that every edge in $G$ is incident on at least one vertex in $Cov$. Then $VC$ in $\mathbf{NP}$-hard in the number of vertices.
 \end{theorem}
 
 We now prove Theorem \ref{thm:specific-nphard} by reduction to Theorem \ref{thm:vertexcover}.
 
-\begin{proof}
-Suppose for a contradiction that Theorem \ref{thm:specific-nphard} admits some polynomial-time solution $Alg_{spec}$. I.e., $Alg_{spec}(s_i, k )= argmax_{c \in U \and |c| = n}(s_i(c))$.
+% \begin{proof}
+% Suppose for a contradiction that Theorem \ref{thm:specific-nphard} admits some polynomial-time solution $Alg_{spec}$. I.e., $Alg_{spec}(s_i, k )= argmax_{c \in U \and |c| = n}(s_i(c))$.
 
-\begin{algorithm}
-    \caption{An Algorithm for $VC(G = (V,E), \kappa)$}\label{alg:vc_spec}
-    \begin{algorithmic}
-        \State \textbf{Consider} $U := E$
-        \State \textbf{Define} $\vec{\mathbf{g}} := \{g_i = v_i \in e . e \in E | i \in |V|\}$ such that each $g_i$ has length $E$ and corresponds to whether an edge is incident on vertex $v_i$.
-        \State \textbf{Return} $Opt_{spec}(1*D(c, \vec{\mathbf{1}}, \vec{\mathbf{0}}, \vec{\mathbf{0}}, \vec{\mathbf{g}}, \vec{\mathbf{0}})+ 0*P(c)) \geq k$
-    \end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}
+%     \caption{An Algorithm for $VC(G = (V,E), \kappa)$}\label{alg:vc_spec}
+%     \begin{algorithmic}
+%         \State \textbf{Consider} $U := E$
+%         \State \textbf{Define} $\vec{\mathbf{g}} := \{g_i = v_i \in e . e \in E | i \in |V|\}$ such that each $g_i$ has length $E$ and corresponds to whether an edge is incident on vertex $v_i$.
+%         \State \textbf{Return} $Opt_{spec}(1*D(c, \vec{\mathbf{1}}, \vec{\mathbf{0}}, \vec{\mathbf{0}}, \vec{\mathbf{g}}, \vec{\mathbf{0}})+ 0*P(c)) \geq k$
+%     \end{algorithmic}
+% \end{algorithm}
 
-Then consider the algorithm $Alg_{VC}$ that is defined in Algorithm \ref{alg:vc_spec}. But this algorithm solves $VertexCover$ in polynomial time relative to $Opt_{spec}$, and thus is a polynomial time solution to $VertexCover$. Assuming $\mathpzc{P} \neq \mathpzc{NP}$, contradiction!
-\end{proof}
+% Then consider the algorithm $Alg_{VC}$ that is defined in Algorithm \ref{alg:vc_spec}. But this algorithm solves $VertexCover$ in polynomial time relative to $Opt_{spec}$, and thus is a polynomial time solution to $VertexCover$. Assuming $\mathbf{P} \neq \mathbf{NP}$, contradiction!
+% \end{proof}
 
 \subsection{Embedding Complexity into the Model}\label{subsec:dts_w_complexity}
 
@@ -250,11 +253,11 @@ O_{ee}  \equiv &\;  G^2F_{dd} - \alpha p_{ee} < 0, \nonumber \\
 & O_{ep}\frac{\partial p^*}{\partial \alpha} + O_{ee}\frac{\partial e^*}{\partial \alpha} + O_{e\alpha} \equiv 0  \nonumber
 \end{align}
 
-\noindent where $O_{e\alpha} = -p_e$ and, essential for signing the comparative static, $O_{p\alpha} = 0$. We can then solve for $\frac{\partial e^*}{\partial \alpha}$ algebraically (or using Cramer's rule), which gives the following
+\noindent where $O_{e\alpha} = -p_e$ and, essential for signing the comparative static, $O_{p\alpha} = 0$. We can then solve for $\frac{\partial e^*}{\partial \alpha}$ algebraically (or using Cramer's rule), which gives the following:
 
-\begin{equation}
-\frac{\partial e^*}{\partial \alpha} = \frac{-O_{e\alpha}O_{pp}}{O_{ee}O_{pp} - O_{ep}^2} + \cancelto{0}{\frac{O_{ep}O_{p\alpha}}{O_{ee}O_{pp} - O_{ep}^2}} = \frac{p_eO_{pp}}{O_{ee}O_{pp} - O_{ep}^2} < 0, \label{eq:comp_stat}
-\end{equation}
+% \begin{equation}
+% \frac{\partial e^*}{\partial \alpha} = \frac{-O_{e\alpha}O_{pp}}{O_{ee}O_{pp} - O_{ep}^2} + \cancelto{0}{\frac{O_{ep}O_{p\alpha}}{O_{ee}O_{pp} - O_{ep}^2}} = \frac{p_eO_{pp}}{O_{ee}O_{pp} - O_{ep}^2} < 0, \label{eq:comp_stat}
+% \end{equation}
 
 \noindent where the the final inequality holds because of the signs assumed in the first and third second order conditions.  Thus, as complexity costs rise, optimal search effort decreases. Equivalently, a reduction in complexity costs should increase search effort (which we test in Section \ref{sec:case}). This increase in search effort, in turn, reduces the distance of the selected cohort from the SPF since this distance is inversely related to the amount of search exerted. Thus, we have the second prediction from this model. \\
 
@@ -305,25 +308,25 @@ It is well-known that the greedy algorithm yields a $\bigl( 1-\frac{1}{e} \bigr)
 \subsection{Proof of Greedy Approximation}
 Here, we prove that the greedy approximation method introduced in Algorithm \ref{alg:frontier} for SPF is a $(1-\frac{1}{e})$-approximation for our standard class of diversity functions subject to a cardinality constraint.
 
-Recall that an organisation's preference function $f: 2^X -> \mathbb{R}^+$  maps a cohort (a set of applicants) to the weighted sum of a ``diversity score'' and a ``performance score'' (both non-negative, real numbers). Here, our applicant pool $X$ is represented as a set with applicants as its members, and possible cohorts $C \subseteq X$ are subsets of $X$. We prove in the \hyperref[sec:math_appendix]{mathematical appendix} that $f$ is monotonic ($A \subseteq B -> f(A) \leq f(B)$) and submodular ($A \subseteq B \and x \notin B -> f_A(x) \geq f_B(x)$ (here, $f_S(e) = f(S \cup \{e\}) - f(S)$ denote the marginal gain of adding element $e$ to set $S$). We demonstrate elsewhere that many common understandings of diversity are represented by standard diversity functions.
+% Recall that an organisation's preference function $f: 2^X -> \mathbb{R}^+$  maps a cohort (a set of applicants) to the weighted sum of a ``diversity score'' and a ``performance score'' (both non-negative, real numbers). Here, our applicant pool $X$ is represented as a set with applicants as its members, and possible cohorts $C \subseteq X$ are subsets of $X$. We prove in the \hyperref[sec:math_appendix]{mathematical appendix} that $f$ is monotonic ($A \subseteq B -> f(A) \leq f(B)$) and submodular ($A \subseteq B \and x \notin B -> f_A(x) \geq f_B(x)$ (here, $f_S(e) = f(S \cup \{e\}) - f(S)$ denote the marginal gain of adding element $e$ to set $S$). We demonstrate elsewhere that many common understandings of diversity are represented by standard diversity functions.
 
 We now recreate a proof of Theorem \ref{thm:greedy-approximation} first demonstrated in \cite{nemhauser1978analysis}.
 
-\begin{theorem}\label{thm:greedy-approximation}
-    Let $(S_0...S_k)$ be a sequence of sets where $S_0$ is the empty set and $S_{i>0}$ is defined by following Algorithm \ref{alg:frontier} with any $\iota$, $d$, and $p$. Further, let $O := argmax_S(f(S) : |S| = k)$ be the set of size $k$ that maximizes $f: = \iota*d+(1-\iota)*p$. Then $f(S_k) \geq (1 - \frac{1}{e})f(O)$.
-\end{theorem}
+% \begin{theorem}\label{thm:greedy-approximation}
+%     Let $(S_0...S_k)$ be a sequence of sets where $S_0$ is the empty set and $S_{i>0}$ is defined by following Algorithm \ref{alg:frontier} with any $\iota$, $d$, and $p$. Further, let $O := argmax_S(f(S) : |S| = k)$ be the set of size $k$ that maximizes $f: = \iota*d+(1-\iota)*p$. Then $f(S_k) \geq (1 - \frac{1}{e})f(O)$.
+% \end{theorem}
 
-\begin{proof}
-By induction. Let ${o_1...o_k} = O$ be any ordering of the elements of $O$. Let ${s_i} := S_i - S_{i-1}$ be the element added to $S_{i-1}$ to form $S_i$.
+% \begin{proof}
+% By induction. Let ${o_1...o_k} = O$ be any ordering of the elements of $O$. Let ${s_i} := S_i - S_{i-1}$ be the element added to $S_{i-1}$ to form $S_i$.
 
-By monotonicity, we have $\forall i . f(O) \leq f(O \cup S_i)$.  We can then write $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} (f(S_i \cup {o_1...o_j}) - f(S_i \cup {o_1...o_{j-1}}))$. I.e., $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} f_{S_i \cup {o_1...o_{j-1}}}(o_j)$.
+% By monotonicity, we have $\forall i . f(O) \leq f(O \cup S_i)$.  We can then write $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} (f(S_i \cup {o_1...o_j}) - f(S_i \cup {o_1...o_{j-1}}))$. I.e., $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} f_{S_i \cup {o_1...o_{j-1}}}(o_j)$.
 
-By submodularity, $\forall j \in [1...k] . f_{S_i \cup {o_1...o_{j-1}}}(o_j) \leq f_{s_i}(o_j)$. Thus, $f(O) \leq f(S_i) + k*f_{S_i}(s_{i+1})$. 
+% By submodularity, $\forall j \in [1...k] . f_{S_i \cup {o_1...o_{j-1}}}(o_j) \leq f_{s_i}(o_j)$. Thus, $f(O) \leq f(S_i) + k*f_{S_i}(s_{i+1})$. 
 
-Since Algorithm \ref{alg:frontier} guarantees that $\forall e \in X - S_i . f_{S_i}(e) \geq f_{S_i}(e)$, it follows that, at every stage, $f(S_{i+1}) - f(S_i) \geq \frac{1}{k} (f(O) - f(S_i))$.
+% Since Algorithm \ref{alg:frontier} guarantees that $\forall e \in X - S_i . f_{S_i}(e) \geq f_{S_i}(e)$, it follows that, at every stage, $f(S_{i+1}) - f(S_i) \geq \frac{1}{k} (f(O) - f(S_i))$.
 
-Then induction yields $f(O) - f(S_k) \leq (1 - \frac{1}{k})^k f(O) \leq \frac{1}{e} f(O)$.
-\end{proof}
+% Then induction yields $f(O) - f(S_k) \leq (1 - \frac{1}{k})^k f(O) \leq \frac{1}{e} f(O)$.
+% \end{proof}
 
 \section{Applying the SPF to a Talent-Investment Program}\label{sec:case}
 
@@ -359,7 +362,7 @@ In Table \ref{tab:pooled_demo} we show summary statistics of the 5772 applicants
 
 \paragraph{Cognitive Assessments} In all three cycles, applicants took an intelligence test based on the International Cognitive Assessment Resource (ICAR) \cite{condon2014international, subotic2020psychometric}. The full ICAR test is intended to be an accessible and easy-to-understand test that yields a psychometrically validated measure of IQ. Because the program is international, they use only the three item types that are not heavily reliant on English language knowledge: Cube Rotation, Number Sequence, and Matrix Reasoning. All three item types are best described using language from the \hyperlink{https://icar-project.org/types/index.html}{ICAR website}: the Cube Rotation items "present participants with cube renderings and ask participants to identify which of the response choices is a possible rotation of the target stimuli", the Number Sequence items ask participants to "fill in one or two numbers that follow in the sequence", and the Matrix Reasoning items "contain stimuli that are... 3x3 arrays of geometric shapes with one of the nine shapes missing" (similar to those used in Raven's Progressive Matrices) and participants "are instructed to identify which of six geometric shapes presented as response choices will best complete the stimuli". Depictions of each item type are shown in Figure \ref{fig:icar_items}. 
 
-ICAR scores are generated from estimation of a Bayesian generalized linear item response model following \citeA{burkner2021bayesian}. In particular, define an indicator of whether person $p$'s answer to item $i$ is correct as $\psi_{pi}$. $\psi_{pi}$ is modeled as being determined by a respondent effect -- interpreted as a person $p$'s cognitive ability $\theta_p$ -- and an item effect -- interpreted as the item $i$'s difficulty $\xi_i$. The model also includes and additional \emph{discrimination} parameter $\alpha_i$ which allows items to vary in how well they differentiate high ability vs. low ability respondents. Altogether, this means 
+ICAR scores are generated from estimation of a Bayesian generalized linear item response model following \textcite{burkner2021bayesian}. In particular, define an indicator of whether person $p$'s answer to item $i$ is correct as $\psi_{pi}$. $\psi_{pi}$ is modeled as being determined by a respondent effect -- interpreted as a person $p$'s cognitive ability $\theta_p$ -- and an item effect -- interpreted as the item $i$'s difficulty $\xi_i$. The model also includes and additional \emph{discrimination} parameter $\alpha_i$ which allows items to vary in how well they differentiate high ability vs. low ability respondents. Altogether, this means 
 
 \begin{equation}
 \psi_{pi} = f\big(\alpha_i(\theta_p + \xi_i)\big). \nonumber
@@ -494,7 +497,7 @@ One hypothesis about how peer scores vs. traditional metrics differ is the \emph
 
 \section{Conclusion} \label{sec:conclusion}
 
-In this paper we have introduced the notion of a selection possibilities frontier via a simple model of diverse talent selection with complexity costs, micro-founded the complexity costs by showing that the diverse talent selection problem is $\mathpzc{NP}$-hard, developed an algorithm to estimate the SPF, and used this estimate to both test the predictions of our model and demonstrate a wide range of applications of our framework. Substantively, we showed that a high-profile scholarship and talent selection program could improve the efficiency of selection by using the SPF estimate to select both higher performing and more diverse cohorts. 
+In this paper we have introduced the notion of a selection possibilities frontier via a simple model of diverse talent selection with complexity costs, micro-founded the complexity costs by showing that the diverse talent selection problem is $\mathbf{NP}$-hard, developed an algorithm to estimate the SPF, and used this estimate to both test the predictions of our model and demonstrate a wide range of applications of our framework. Substantively, we showed that a high-profile scholarship and talent selection program could improve the efficiency of selection by using the SPF estimate to select both higher performing and more diverse cohorts. 
 
 In an age of rapidly expanding interest in selecting from diverse talent pools (signaled by the growth of DEI), this paper has wide-ranging policy implications. First, the paper suggests that organizations will face extreme difficulty executing on their diversity goals unless they are willing to adopt more sophisticated selection technology. Second, this paper contributes methods that are particularly useful for assessing the diversity impacts of alternative merit-based selection strategies. This is particularly relevant in contexts like hiring, where not appropriately considering the diversity implications of selection strategies can result in lawsuits, and U.S. university admissions non-merit-based selection has become a legal gray area despite university commitments to diversity. 
 
@@ -504,31 +507,22 @@ In an age of rapidly expanding interest in selecting from diverse talent pools (
 
 \begin{figure}[!htb]
     \centering
-        \caption{The Selection Problem Without Complexity}\label{fig:model_spf}
-      \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{\figurepath/model_spf.png} 
-        \begin{notes}
-    This figure depicts an example solution to an iteration of the selection problem with no computational costs, which is described in Equation \ref{eq:selection_simple}. The solid blue curve represents the selection possibilities frontier (SPF), the dotted blue curve represents the organizations indifference curve corresponding to the highest achievable utility, and the blue dot represents the diversity and performance of the optimal choice (i.e. the first-best solution). 
-        \end{notes}
+        \caption{This figure depicts an example solution to an iteration of the selection problem with no computational costs, which is described in Equation \ref{eq:selection_simple}. The solid blue curve represents the selection possibilities frontier (SPF), the dotted blue curve represents the organizations indifference curve corresponding to the highest achievable utility, and the blue dot represents the diversity and performance of the optimal choice (i.e. the first-best solution). }\label{fig:model_spf}
+      \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{spf/model_spf.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{The Selection Problem With Complexity}\label{fig:model_complex}
-      \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{\figurepath/model_complex.png} 
-        \begin{notes}
-    This figure depicts an example solution to an iteration of the selection problem with complexity induced search costs, which is described in Equation \ref{eq:objective}. As in Figure \ref{fig:model_spf}, the solid blue curve represents the SPF, the dotted blue curve represents the organization's indifference curve corresponding to the highest achievable utility without search costs, and the blue dot represents the diversity and performance of the first-best solution. Additionally, the solid red curve represents the accessible frontier with optimal search, the dotted red curve that represents the highest achievable utility with search costs, and the red dot that represents the diversity and performance of the optimal cohort with search costs (i.e. the second-best solution).
-        \end{notes}
+        \caption{This figure depicts an example solution to an iteration of the selection problem with complexity induced search costs, which is described in Equation \ref{eq:objective}. As in Figure \ref{fig:model_spf}, the solid blue curve represents the SPF, the dotted blue curve represents the organization's indifference curve corresponding to the highest achievable utility without search costs, and the blue dot represents the diversity and performance of the first-best solution. Additionally, the solid red curve represents the accessible frontier with optimal search, the dotted red curve that represents the highest achievable utility with search costs, and the red dot that represents the diversity and performance of the optimal cohort with search costs (i.e. the second-best solution).}\label{fig:model_complex}
+      \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{spf/model_complex.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{The Selection Problem With Complexity and Access to the SPF}\label{fig:model_spf_est}
-      \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{\figurepath/model_spf_est.png} 
-        \begin{notes}
-    This figure depicts an example solution to an iteration of the selection problem with complexity induced search costs, which is described in Equation \ref{eq:objective}. As in Figure \ref{fig:model_spf}, the solid blue curve represents the SPF, the dotted blue curve represents the organization's indifference curve corresponding to the highest achievable utility without search costs, and the blue dot represents the diversity and performance of the first-best solution. And, as in \ref{fig:model_spf}, the solid red curve represents the accessible frontier with optimal search, the dotted red curve that represents the highest achievable utility with search costs, and the red dot that represents the diversity and performance of the second-best cohort with poor search technology (i.e. high $\alpha$). And, the green curves and dot represent the SPF estimate that is accessible with an improved search technology and new second-best solution, respectively. The difference between the initial second-best solution and the new solution is a graphical representation of the implications of the comparative static signed in Equation \ref{eq:comp_stat} ($\frac{\partial e^*}{\partial \alpha}$).
-        \end{notes}
+        \caption{This figure depicts an example solution to an iteration of the selection problem with complexity induced search costs, which is described in Equation \ref{eq:objective}. As in Figure \ref{fig:model_spf}, the solid blue curve represents the SPF, the dotted blue curve represents the organization's indifference curve corresponding to the highest achievable utility without search costs, and the blue dot represents the diversity and performance of the first-best solution. And, as in \ref{fig:model_spf}, the solid red curve represents the accessible frontier with optimal search, the dotted red curve that represents the highest achievable utility with search costs, and the red dot that represents the diversity and performance of the second-best cohort with poor search technology (i.e. high $\alpha$). And, the green curves and dot represent the SPF estimate that is accessible with an improved search technology and new second-best solution, respectively. The difference between the initial second-best solution and the new solution is a graphical representation of the implications of the comparative static signed in Equation \ref{eq:comp_stat} ($\frac{\partial e^*}{\partial \alpha}$).}\label{fig:model_spf_est}
+      \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{spf/model_spf_est.png}
     \end{figure}
     
     
@@ -538,149 +532,112 @@ In an age of rapidly expanding interest in selecting from diverse talent pools (
     \begin{center}
     \begin{figure}[!htb]
     \centering
-        \caption{Program Selection Design}\label{fig:design}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{results/figures/selection_design_schematic.png} 
-        \begin{notes}
-        This figure schematizes the key elements of the talent investment program's data collection and selection process. 
-        \end{notes}
+        \caption{This figure schematizes the key elements of the talent investment program's data collection and selection process. }\label{fig:design}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{background/selection_design_schematic.png} 
     \end{figure}
     \end{center}
     \vfill
     
     
     \newpage
-    \begin{landscape}
+    
     \begin{figure}[!htb]
     \centering
-        \caption{Distribution of Applicant Countries (Top 5 Labeled) }\label{fig:country_dist_all}
-      \includegraphics[width=1.3\textwidth,height=\textheight,keepaspectratio]{\figurepath/candidate_countries.png} 
-        \begin{notes}
-        Data come from surveys completed by applicants. Data are pooled across all three application cohorts. Overall applicants come from 153 different countries. The distribution of proportions of applicants by country in this figure are limited to the 50 countries from which there were the most applicants. The top 5 countries are labeled on the figure. 
-        \end{notes}
+        \caption{Distribution of Applicant Countries Data come from surveys completed by applicants. Data are pooled across all three application cohorts. Overall applicants come from 153 different countries. The distribution of proportions of applicants by country in this figure are limited to the 50 countries from which there were the most applicants. The top 5 countries are labeled on the figure.  }\label{fig:country_dist_all}
+      \includegraphics[width=1.3\textwidth,height=\textheight,keepaspectratio]{spf/candidate_countries.png} 
     \end{figure}
-    \end{landscape}
     
     
     \begin{figure}[!htb]
         \centering
-        \caption{Distributions of Applicant Project Topics and Reviewer Expertise} \label{fig:topic_expertise_dist}
+        \caption{Distributions of Applicant Project Topics and Reviewer Expertise. Data come from surveys completed by applicants. Data are pooled across all three application cohorts. Panel (\ref{subfig:app_proj_topics}) depicts the proportion of all applicant projects in each topic category. Panel (\ref{subfig:rev_expertise}) depicts the proportion of project reviewers with each category of expertise.} \label{fig:topic_expertise_dist}
         \begin{subfigure}[t]{\textwidth}
             \centering
                     \caption{Applicant Project Topics} \label{subfig:app_proj_topics}
-            \includegraphics[width=\linewidth]{results/figures/applicant_project_topics.png} 
+            \includegraphics[width=\linewidth]{spf/applicant_project_topics.png} 
         \end{subfigure}
         \hfill
         \vspace{1em}
         \begin{subfigure}[t]{\textwidth}
             \centering
                    \caption{Reviewer Areas of Expertise} \label{subfig:rev_expertise}
-            \includegraphics[width=\linewidth]{results/figures/reviewer_expertise.png} 
+            \includegraphics[width=\linewidth]{spf/reviewer_expertise.png} 
         \end{subfigure}
-        \begin{notes}
-        Data come from surveys completed by applicants. Data are pooled across all three application cohorts. Panel (\ref{subfig:app_proj_topics}) depicts the proportion of all applicant projects in each topic category. Panel (\ref{subfig:rev_expertise}) depicts the proportion of project reviewers with each category of expertise.
-        \end{notes}
     \end{figure}
     
     
     \begin{figure}[!htb]
         \centering
-        \caption{Distributions of Reviewer Industries and Organizations (Cycle 1)}
+        \caption{Distributions of Reviewer Industries and Organizations (Cycle 1). Data come from surveys completed by applicants. Data come from application cycle 1 only (industry and organization information were not collected for the in cycles 2 and 3). Panel (\ref{subfig:rev_industries}) depicts the proportion of all project reviewers by industries. Unfortunately, industries were not categorized using standard codes, but the categories are decipherable. Panel (\ref{subfig:rev_orgs}) depicts the proportion of project reviewers from each organization that referred them. The top two most common referring organizations make up 46\% of all expert reviewers, and the labels on them have been redacted to maintain the program's anonymity. }
         \begin{subfigure}[t]{\textwidth}
             \centering
                     \caption{Industries} \label{subfig:rev_industries}
-            \includegraphics[width=\linewidth]{\figurepath/project_reviewer_industries.png} 
+            \includegraphics[width=\linewidth]{spf/project_reviewer_industries.png} 
         \end{subfigure}
         \hfill
         \vspace{1em}
         \begin{subfigure}[t]{\textwidth}
             \centering
                    \caption{Organizations (Top 2 Labeled)} \label{subfig:rev_orgs}
-            \includegraphics[width=\linewidth]{results/figures/project_reviewer_affiliations.png} 
+            \includegraphics[width=\linewidth]{spf/project_reviewer_affiliations.png} 
         \end{subfigure}
-        \begin{notes}
-        Data come from surveys completed by applicants. Data come from application cycle 1 only (industry and organization information were not collected for the in cycles 2 and 3). Panel (\ref{subfig:rev_industries}) depicts the proportion of all project reviewers by industries. Unfortunately, industries were not categorized using standard codes, but the categories are decipherable. Panel (\ref{subfig:rev_orgs}) depicts the proportion of project reviewers from each organization that referred them. The top two most common referring organizations make up 46\% of all expert reviewers, and the labels on them have been redacted to maintain the program's anonymity. 
-        \end{notes}
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Quantifying Cycle 1 Inefficiencies with the SPF} \label{fig:spf_2021}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{\figurepath/yr1_spf_finalist.png} 
-        \begin{notes}
-        This figure displays the SPF we estimate for the cycle 1 finalist cohort. The y-axis represents the diversity score while the x-axis represents average cohort performance (i.e. project scores). The green curve is our estimate of the cycle 1 SPF, which represents the upper bound of diversity that is achievable at every level of cohort performance. The red dot depicts the actual level of diversity and performance of the finalists that were selected in cycle 1. The vertical and horizontal dashed red lines represent the maximum Pareto gain that was possible along the diversity and performance dimensions respectively. In particular, cohort diversity could have been improved by 15.2\% without any reduction in cohort performance. And, cohort performance could have been improved by 15.6\% without any cost to diversity. 
-        \end{notes}
+        \caption{This figure displays the SPF we estimate for the cycle 1 finalist cohort. The y-axis represents the diversity score while the x-axis represents average cohort performance (i.e. project scores). The green curve is our estimate of the cycle 1 SPF, which represents the upper bound of diversity that is achievable at every level of cohort performance. The red dot depicts the actual level of diversity and performance of the finalists that were selected in cycle 1. The vertical and horizontal dashed red lines represent the maximum Pareto gain that was possible along the diversity and performance dimensions respectively. In particular, cohort diversity could have been improved by 15.2\% without any reduction in cohort performance. And, cohort performance could have been improved by 15.6\% without any cost to diversity. } \label{fig:spf_2021}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/yr1_spf_finalist.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Quantifying Cycle 2 Inefficiencies with the SPF} \label{fig:spf_2022}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{\figurepath/yr2_spf_finalist.png} 
-        \begin{notes}
-        This figure displays the SPF we estimate for the cycle 2 finalist cohort. The y-axis represents the diversity score while the x-axis represents average cohort performance (i.e. project scores). The green curve is our estimate of the cycle SPF, which represents the upper bound of diversity that is achievable at every level of cohort performance. The red dot depicts the actual level of diversity and performance of the finalists that were selected in cycle 2. The vertical and horizontal dashed red lines represent the maximum Pareto gain that was possible along the diversity and performance dimensions respectively. In particular, cohort diversity could have been improved by 13\% without any reduction in cohort performance. And, cohort performance could have been improved by 19.6\% without any cost to diversity. 
-        \end{notes}
+        \caption{This figure displays the SPF we estimate for the cycle 2 finalist cohort. The y-axis represents the diversity score while the x-axis represents average cohort performance (i.e. project scores). The green curve is our estimate of the cycle SPF, which represents the upper bound of diversity that is achievable at every level of cohort performance. The red dot depicts the actual level of diversity and performance of the finalists that were selected in cycle 2. The vertical and horizontal dashed red lines represent the maximum Pareto gain that was possible along the diversity and performance dimensions respectively. In particular, cohort diversity could have been improved by 13\% without any reduction in cohort performance. And, cohort performance could have been improved by 19.6\% without any cost to diversity. } \label{fig:spf_2022}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/yr2_spf_finalist.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Quantifying Cycle 3 Efficiency Gains with the SPF} \label{fig:spf_2023}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{\figurepath/yr3_spf_finalist.png} 
-        \begin{notes}
-        This figure displays the SPF we estimate for the cycle 3 finalist cohort. The y-axis represents the diversity score while the x-axis represents average cohort performance (i.e. project scores). The green curve is our estimate of the cycle 3 SPF, which represents the upper bound of diversity that is achievable at every level of cohort performance.The red dots depict the actual level of diversity and performance of the finalists that were selected in cycles 1-3, respectively. The diagonal dashed red line represents the distance in diversity-performance space between the cycle 2 cohort and the cycle 3 cohort. In cycle 3, there are no significant Pareto improvements on either diversity or performance. 
-        \end{notes}
+        \caption{This figure displays the SPF we estimate for the cycle 3 finalist cohort. The y-axis represents the diversity score while the x-axis represents average cohort performance (i.e. project scores). The green curve is our estimate of the cycle 3 SPF, which represents the upper bound of diversity that is achievable at every level of cohort performance.The red dots depict the actual level of diversity and performance of the finalists that were selected in cycles 1-3, respectively. The diagonal dashed red line represents the distance in diversity-performance space between the cycle 2 cohort and the cycle 3 cohort. In cycle 3, there are no significant Pareto improvements on either diversity or performance. } \label{fig:spf_2023}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/yr3_spf_finalist.png} 
     \end{figure}
     
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Permutation Tests of Significance of Inefficiencies} \label{fig:permutation_tests}
-      \includegraphics[width=.9\textwidth,height=\textheight,keepaspectratio]{results/figures/permutation_tests.png} 
-        \begin{notes}
-        This figure displays the distributions of differences in project performance (panel a) and diversity (panel b) from 1000 randomly drawn pairs of potential cohorts from application cycle 1. The dashed black vertical line represents the 95 percentile of these differences. The solid vertical lines represent the max pareto gain on performance (panel a) and diversity (panel b) in each application year.
-        \end{notes}
+        \caption{This figure displays permutations tests of the distributions of differences in project performance (panel a) and diversity (panel b) from 1000 randomly drawn pairs of potential cohorts from application cycle 1. The dashed black vertical line represents the 95 percentile of these differences. The solid vertical lines represent the max pareto gain on performance (panel a) and diversity (panel b) in each application year.} \label{fig:permutation_tests}
+      \includegraphics[width=.9\textwidth,height=\textheight,keepaspectratio]{spf/permutation_tests.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Project Quality by Deciles of Alternative Screening Scores (Cycle 1)} \label{fig:alt_talent_dist}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{\figurepath/pq_by_scores_c1.png} 
-        \begin{notes}
-        This figure plots the percentile of average expert-judged project quality (i.e. performance) by deciles of cognitive, peer, and traditional scores for the cycle 1 cohort. The cognitive score is the percentile of the candidate's IQ, the peer score is the percentile of the average peer assessment of each applicant video, and the traditional score is the average percentile of a candidate's IQ and project essay rating.   
-        \end{notes}
+        \caption{This figure plots the percentile of average expert-judged project quality (i.e. performance) by deciles of cognitive, peer, and traditional scores for the Cycle 2021 cohort. The cognitive score is the percentile of the candidate's IQ, the peer score is the percentile of the average peer assessment of each applicant video, and the traditional score is the average percentile of a candidate's IQ and project essay rating.   } \label{fig:alt_talent_dist}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/pq_by_scores_c1.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Socioeconomic (Dis)Advantage by Deciles of Alternative Screening Scores (Cycle 1)} \label{fig:disadvantage_corr}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{results/figures/disadvantage_by_scores.png} 
-        \begin{notes}
-        This figure plots the average of various measures of applicant socioeconomic (dis)advantage by deciles of cognitive, peer, and traditional scores for the cycle 1 cohort. The measures of (dis)advantage from Panel A to D in order are predicted mean parent income (yearly), years of education of most educated parent, whether or not the applicant lives in a globally poor household (mean parent income less than \$1,000 a year), and whether or not the applicant lives in a poor country (less than \$12,000 GDP per capita). The cognitive score is the percentile of the candidate's IQ, the peer score is the percentile of the average peer assessment of each applicant video, and the traditional score is the average percentile of a candidate's IQ and project essay rating.   
-        \end{notes}
+        \caption{This figure plots the average of various measures of applicant socioeconomic (dis)advantage by deciles of cognitive, peer, and traditional scores for the cycle 1 cohort. The measures of (dis)advantage from Panel A to D in order are predicted mean parent income (yearly), years of education of most educated parent, whether or not the applicant lives in a globally poor household (mean parent income less than \$1,000 a year), and whether or not the applicant lives in a poor country (less than \$12,000 GDP per capita). The cognitive score is the percentile of the candidate's IQ, the peer score is the percentile of the average peer assessment of each applicant video, and the traditional score is the average percentile of a candidate's IQ and project essay rating.  } \label{fig:disadvantage_corr}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/disadvantage_by_scores.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Comparing Alternative Selection Strategies} \label{fig:alt_screen}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{results/figures/alt_screening_performance.png} 
-        \begin{notes}
-        This figure displays various SPF estimates for the  finalist cohort using the program's notion of diversity (Panel a), a disadvantage notion of diversity (Panel b), and a representativeness notion of diversity (Panel c). The y-axes represent diversity scores while the x-axes represent average cohort performance (i.e. project scores). The green curves are our estimates of three alternative cycle 1 SPFs, which are estimates the upper bound of diversity that is achievable at every level of cohort performance. Each dot represents the performance and diversity of cohorts had they been selected using those with the highest cognitive (blue), traditional (green), or peer (red) scores.  Each dot represents the performance and diversity of cohorts had they been selected using only cognitive ability (blue), a combination of written essay judgements and cognitive ability (aka a "traditional" score, which is green), and just peer review (red).
-        \end{notes}
+        \caption{This figure displays various SPF estimates for the  finalist cohort using the program's notion of diversity (Panel a), a disadvantage notion of diversity (Panel b), and a representativeness notion of diversity (Panel c). The y-axes represent diversity scores while the x-axes represent average cohort performance (i.e. project scores). The green curves are our estimates of three alternative cycle 1 SPFs, which are estimates the upper bound of diversity that is achievable at every level of cohort performance. Each dot represents the performance and diversity of cohorts had they been selected using those with the highest cognitive (blue), traditional (green), or peer (red) scores.  Each dot represents the performance and diversity of cohorts had they been selected using only cognitive ability (blue), a combination of written essay judgements and cognitive ability (aka a "traditional" score, which is green), and just peer review (red).} \label{fig:alt_screen}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/alt_screening_performance.png} 
     \end{figure}
     
     \newpage
     \begin{figure}[!htb]
     \centering
-        \caption{Comparing Diversity Tradeoffs for Different Performance Measures} \label{fig:compare_div_tradeoffs}
-      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{results/figures/alt_merit_spfs.png} 
-        \begin{notes}
-        This figure displays the SPF we estimated for the cycle 1 finalist cohort and an SPF based on a more traditional method of measuring performance (i.e. the average of cognitive ability and an essay assessment). The y-axis represents the diversity score while the x-axis represents average cohort performance on projects or the traditional score. The vertical distance between the SPFs represents the difference in maximal diversity conditional on a cohort performing at a particular percentile of both scores. 
-        \end{notes}
+        \caption{This figure displays the SPF we estimated for the cycle 1 finalist cohort and an SPF based on a more traditional method of measuring performance (i.e. the average of cognitive ability and an essay assessment). The y-axis represents the diversity score while the x-axis represents average cohort performance on projects or the traditional score. The vertical distance between the SPFs represents the difference in maximal diversity conditional on a cohort performing at a particular percentile of both scores. } \label{fig:compare_div_tradeoffs}
+      \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{spf/alt_merit_spfs.png} 
     \end{figure}
     
     \newpage

@@ -78,7 +78,7 @@ In much of the xAI literature, descriptors such as ``post-hoc'' or ``model-speci
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=.9\textwidth]{plots/taxonomy.png}
+    \includegraphics[width=.9\textwidth]{xai/taxonomy.png}
     \caption{Explainable AI methods are separated into types by this taxonomy. We focus primarily on kinds of post-hoc (model-agnostic) explanations, and highlight a number of explanations following different philosophies (SHAP and Anchor are of particular interest, as both recur in our analyses), but we also consider model confidence statistics, which follow none of these philosophies.}
     \label{fig:taxonomy}
 \end{figure}
@@ -151,37 +151,37 @@ We restrict our research question to tasks familiar to lay people with a well-de
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{plots/survey-shap.png}
+        \includegraphics[width=\textwidth]{xai/survey-shap.png}
         \caption{SHAP explanations for $salary$}
         \label{fig:shapsalary}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{plots/survey-shap-2.png}
+        \includegraphics[width=\textwidth]{xai/survey-shap-2.png}
         \caption{SHAP explanations for $credit$}
         \label{fig:shapcredit}
     \end{subfigure}
     \medskip
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{plots/survey-anchor.png}
+        \includegraphics[width=\textwidth]{xai/survey-anchor.png}
         \caption{Anchor explanations for $salary$}
         \label{fig:anchorsalary}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{plots/survey-anchor-2.png}
+        \includegraphics[width=\textwidth]{xai/survey-anchor-2.png}
         \caption{Anchor explanations for $credit$}
         \label{fig:anchorcredit}
     \end{subfigure}
     \medskip
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{plots/survey-confidence.png}
+        \includegraphics[width=\textwidth]{xai/survey-confidence.png}
         \caption{Confidence explanations for $salary$}
         \label{fig:confidencesalary}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{plots/survey-confidence-2.png}
+        \includegraphics[width=\textwidth]{xai/survey-confidence-2.png}
         \caption{Confidence explanations for $credit$}
         \label{fig:confidencecredit}
     \end{subfigure}
@@ -197,7 +197,7 @@ Both tasks rely on the same 3-between-by-2-within design using repeated measures
 
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{plots/online_flowchart.png}
+    \includegraphics[width=\textwidth]{xai/online_flowchart.png}
     \caption{Participants in the online study are sorted into six buckets, where each bucket is segregated by explanatory condition and task and shown a brief description of the task (i.e., each participant sees only one of the explanations in Figure \ref{fig:online_explanations}). Then, each participant is shown 6 cases. In each case, participants are shown an applicant profile and a AI output. Participants are asked to agree or disagree with the AI output. Then, participants are given explanations based on their explanatory condition scores. They are then asked again to agree or disagree with the AI output.}
     \label{fig:online_flowchart}
 \end{figure*}
@@ -332,11 +332,17 @@ This indicates that SHAP and Confidence appear to lead users to trust the AI sys
 Notably, Anchor does not follow this pattern, and instead shows no significant increase in either attitudinal or behavioural trust on these one-sided t-tests. (However, as we explore in Section \ref{sec:anchor-attitudinal}, they may show a significant decrease.)
 
 \subsubsection{Different Explanation Styles Have Different Effects on Unwarranted Trust}
-We have shown already that SHAP and Confidence induce unwarranted trust relative to no explanation; we now show that there is significant difference in the effect of some explanatory conditions relative to others. To do this, we examine the $\Delta trust_{behavioural}$ and $\Delta trust_{attitudinal}$ variables across explanatory conditions with an ANOVA test. For this test, we filter on $\neg correct_{AI}$. I.e.:
+We have shown already that SHAP and Confidence induce unwarranted trust relative to no explanation; we now show that there is significant difference in the effect of some explanatory conditions relative to others. To do this, we examine the $\Delta trust_{behavioural}$ and $\Delta trust_{attitudinal}$ variables across explanatory conditions with an ANOVA test. For this test, we filter on $\neg correct_{AI}$. I.e.:\
 
 \begin{equation}
-    \Delta any(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \and x2,x3 \in \{SHAP, Anchor, Confidence\}
+    \Delta \text{ any} ( trust_{x1,x2} \neq trust_{x1,x3} | \neg correct_{AI} )
 \end{equation}
+
+% To-do: improve this equation to include more detail
+
+% \begin{equation}
+%     \Delta any(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \and x2,x3 \in \{SHAP, Anchor, Confidence\}
+% \end{equation}
 
 \noindent This test was preregistered in both of our tasks [anonymous for review]. Table \ref{tab:delta-trust-anova} contains the results of these analyses.
 
@@ -551,7 +557,7 @@ Before this study, we obtained informed consent from all participants. As we run
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=.9\textwidth]{plots/case_flowchart.png}
+    \includegraphics[width=.9\textwidth]{xai/case_flowchart.png}
     \caption{Each workshop consists of a series of cases relating to a past application decision that was flagged by program reviewers. In each case, participants are shown slides like in Figure \ref{fig:sample_case} and are asked to analyse the algorithm itself and whether the case warrants changes to the algorithm in future years.}
     \label{fig:case_flowchart}
 \end{figure}
@@ -564,7 +570,7 @@ In analysing our data, we follow \textcite{braun_using_2006}'s methodology for r
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=.9\textwidth]{plots/sample_case.png}
+    \includegraphics[width=.9\textwidth]{xai/sample_case.png}
     \caption{Each case explores one applicant from past years chosen by past program reviewers after being flagged as having perplexing algorithm scores. Each case contains the applicant's profile (overall algorithm scores alongside demographic information; the profile is redacted to preserve applicant anonymity), the program reviewers' comments, and the SHAP-based explanation (the score names are replaced with generic labels to preserve program anonymity).}
     \label{fig:sample_case}
     
