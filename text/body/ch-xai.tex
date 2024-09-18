@@ -140,7 +140,7 @@ To do this, we compare three alternate conditions: \textcite{Lundberg-and-Lee}'s
 
 \subsection{Methodology}
 \subsubsection{Participants}
-Participants were recruited via Prolific Academic's standard sampling method restricted to the United States.\footnote{\url{www.prolific.co}} They were paid at a rate of \$15 per hour. Participants were first shown an information sheet detailing the study's methodology and what was being asked of them. They were then asked to give informed consent. After consenting to participate in the study, participants were routed to Formr, our chosen survey design and hosting platform, to complete the online study.\footnote{\url{www.formr.org}} All data collected was anonymous and was stored on secure servers. Ethics review was performed by [REDACTED FOR REVIEW].
+Participants were recruited via Prolific Academic's standard sampling method restricted to the United States.\footnote{\url{www.prolific.co}} They were paid at a rate of \$15 per hour. Participants were first shown an information sheet detailing the study's methodology and what was being asked of them. They were then asked to give informed consent. After consenting to participate in the study, participants were routed to Formr, our chosen survey design and hosting platform, to complete the online study.\footnote{\url{www.formr.org}} All data collected was anonymous and was stored on secure servers. Ethics review was performed by University of Oxford's Central University Research Ethics Committee.
 
 \subsubsection{Tasks}
 We restrict our research question to tasks familiar to lay people with a well-defined but difficult-to-ascertain ground truth. Our two tasks are: \emph{estimating a hypothetical person's salary} based on census information of that individual, and \emph{predicting whether someone will be severely delinquent in making a credit payment}. We use two datasets: the Adult dataset collected from the 1994 US Census for the former task and the Give Me Some Credit dataset for the latter task \cite{Kohavi, GiveMeSomeCredit}. In both tasks, the participant aims to accurately estimate the dependent variable with the help of the AI system and one of several possible explanations of the AI system's estimate (which is possibly just the confidence rating of the model). In our analyses, we index these tasks as \emph{Salary} and \emph{Credit}. Note that each participant only receives one task to complete throughout all 6 cases. 
@@ -167,7 +167,7 @@ We restrict our research question to tasks familiar to lay people with a well-de
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-anchor-2.png}
-        \caption{Anchor explanations for \emph{Credit}}
+        \caption{Anchor explanations for $credit$}
         \label{fig:anchorcredit}
     \end{subfigure}
     \medskip
@@ -282,7 +282,7 @@ Finally, in our Salary Estimation survey, we observed a strong positive correlat
 We run power analyses using \textcite{Caldwell-et-al}'s Superpower. Specifically, we desire sufficiently powerful results on our primary analysis. We select a moderate effect size of interest (Cohen’s $f$) of $0.15$ (yielding group means $-0.15$ and $0.15$ with unit variance), and target a power of at least $0.90$. We note that, using a one-way T-test at $p = 0.05$ and assuming a sample size of $200$, we get power far above $0.90$. We also test for the ANOVA assuming unit variance and group means of $-0.15$, $0.15$, and $0.15$. Under these conditions, we achieve a power of $0.90$ with $200$ samples per condition. We ask each participant a total of 6 questions, and the AI output is incorrect in slightly less than half of them. In order to achieve $200$ samples per condition, therefore, we aim to recruit a total of roughly $66$ participants per condition, or roughly $200$ participants in total.
 
 \paragraph{Preregistration}
-We have preregistered analyses for both of our tasks in the OSF registries [Anonymous for peer review]. 
+We have preregistered analyses for both of our tasks in the OSF registries \cite{natarajan_binns_2022}. 
 
 \subsection{Results}\label{ssec:os_results}
 In both tasks, though we originally set $200$ as our target participants, some participants did not complete our task following Prolific Academic's guidelines. Data from these participants was marked incomplete and removed from consideration. 
@@ -298,7 +298,7 @@ We first run the one-sided t-tests on the two trust variables ($attitudinal$ and
     \Delta trust_{x} > 0 | \neg correct_{AI} \text{ for } x \in \{behavioural, attitudinal\}
 \end{equation}
 
-\noindent for both \emph{Salary} and \emph{Credit} across SHAP, Anchor, and Confidence. A positive $F$ statistic here indicates $trust^{after} > trust^{before}$ and a negative $F$ statistic indicates $trust^{after} < trust^{before}$, but, as these are one-sided tests, $p$-values will only be meaningful when $F > 0$. This test was preregistered in both of our tasks [anonymous for review]. Table \ref{tab:delta-trust-t} contains the results of these analyses.  
+\noindent for both \emph{Salary} and \emph{Credit} across SHAP, Anchor, and Confidence. A positive $F$ statistic here indicates $trust^{after} > trust^{before}$ and a negative $F$ statistic indicates $trust^{after} < trust^{before}$, but, as these are one-sided tests, $p$-values will only be meaningful when $F > 0$. This test was preregistered in both of our tasks \cite{natarajan_binns_2022}. Table \ref{tab:delta-trust-t} contains the results of these analyses.  
 
 \begin{table}[htb]
     \caption{These one-sided t-tests test for $\Delta trust > 0 | \neg correct_{AI}$ for all explanatory conditions and both tasks. We find that SHAP and Confidence increase unwarranted trust in the AI system.}
@@ -332,10 +332,10 @@ Notably, Anchor does not follow this pattern, and instead shows no significant i
 We have shown already that SHAP and Confidence induce unwarranted trust relative to no explanation; we now show that there is significant difference in the effect of some explanatory conditions relative to others. To do this, we examine the $\Delta trust_{behavioural}$ and $\Delta trust_{attitudinal}$ variables across explanatory conditions with an ANOVA test. For this test, we filter on $\neg correct_{AI}$. I.e.:
 
 \begin{equation}
-    \Delta any(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \text{ and } x2,x3 \in \{SHAP, Anchor, Confidence\}
+    \Delta \text{ any}(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \text{ and } x2,x3 \in \{SHAP, Anchor, Confidence\}
 \end{equation}
 
-\noindent This test was preregistered in both of our tasks [anonymous for review]. Table \ref{tab:delta-trust-anova} contains the results of these analyses.
+\noindent This test was preregistered in both of our tasks \cite{natarajan_binns_2022}. Table \ref{tab:delta-trust-anova} contains the results of these analyses.
 
 \begin{table}[htb]
     \caption{These ANOVAs compare $\Delta trust$ between SHAP, Confidence, and Anchor to indicate where significant differences exist. We find two statistically significant differences, indicating that we should focus post-hoc analyses on these two.}
@@ -410,7 +410,7 @@ Note that this does not prove that Anchor reduces attitudinal trust relative to 
 \subsubsection{Behavioural and Attitudinal Trust are Highly Correlated}
 It should be noted that some patterns observed for $trust_{behavioural}$ do not hold for $trust_{attitudinal}$ and vice-versa. However, while they are mathematically distinct constructs, they are both intended to measure the same underlying phenomenon. We apply Pearson's correlation analysis across all explanatory conditions in both the before- and after- cases. We also perform this analysis on $\Delta trust_{attitudinal}$ and $\Delta trust_{behavioural}$. 
 
-For this analysis, we do not filter out positive cases. Rather, we consider all cases together. Results can be seen in table \ref{tab:trust-correlation}.\footnote{This analysis was only partially preregistered; we did not register this analysis in the Salary Estimation task, but we did in the Credit Delinquency Prediction task [anonymous for review].}
+For this analysis, we do not filter out positive cases. Rather, we consider all cases together. Results can be seen in table \ref{tab:trust-correlation}.\footnote{This analysis was only partially preregistered; we did not register this analysis in the Salary Estimation task, but we did in the Credit Delinquency Prediction task \cite{natarajan_binns_2022}.}
 
 \begin{table}[htb]
     \caption{Pearson's test shows a high correlation between $trust_{attitudinal}$ and $trust_{behavioural}$ in both tasks. This correlation extends to the relationship between $\Delta trust_{attitudinal}$ and $\Delta trust_{behavioural}$.}
@@ -544,7 +544,7 @@ This study aims to answer RQ2:
 \subsection{Methodology}\label{ssec:cs_methods}
 We test SHAP's usefulness in a human-centred context. To do so, we run a study with scholarship and talent investment selection practitioners (N=8) from a scholarship and talent investment organisation. Though the organisation already uses algorithmic scoring to support their decision-making, no practitioners posess experience with post-hoc xAI prior to the study. The study consists of two participatory design workshops with said practitioners – we term these `G1' and `G2'.\footnote{to preserve the anonymity of the participants, we do not number or identify participants. Rather, we attribute quotes based on workshop group.}
 
-Before this study, we obtained informed consent from all participants. As we run group workshops (and as we do not attribute comments to individual participants), participants were informed that they would not be able to recuse themselves after the study. Participants also gave consent to be recorded, and to have these recordings stored on a secure server. All recording, transcribing, and data analysis was conducted on secure servers. Ethics review was performed by [REDACTED FOR REVIEW].
+Before this study, we obtained informed consent from all participants. As we run group workshops (and as we do not attribute comments to individual participants), participants were informed that they would not be able to recuse themselves after the study. Participants also gave consent to be recorded, and to have these recordings stored on a secure server. All recording, transcribing, and data analysis was conducted on secure servers. Ethics review was performed by University of Oxford's Central University Research Ethics Committee.
 
 \begin{figure}[htbp]
     \centering
