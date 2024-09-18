@@ -9,48 +9,68 @@
 
 \minitoc
 
-% To-do: rewrite
+\section{The Global Talent Search}
+In a world flattened by the global proliferation of technology \cite{citation needed}, new global scholarship initiatives aim to bear the burden of selecting scholars from around the world. These programs' unprecedented reach offers applicants all around the world an opportunity to access educational resources that may have previously been out of reach. If these programs can select the ``best'' cohorts of applicants, they can deliver on their stated missions to improve the world through broadening access to elite higher education institutions and training scholars to solve the world's biggest problems
 
-Since early theorising about Artificial Intelligence (AI), experts have noted the transformative potential of such technology. Now, with the popular advent of Machine Learning (ML) models and transformer architecture in particular, we see rapid mass-market adoption of a variety of AI tools. In many fields which deal with sensitive decision-making, this adoption introduces new ethical challenges. In the fields of talent and Talent Identification (TI) in particular, many of these ethical challenges centre on decision tool interpretability; diversity, equity, and inclusion (DEI); and applicant usage of generative AI. In this section, we lay out the case for the application of AI systems (specifically interpretable AI decision assistants) to these issues in TI, paying special attention to the potential pitfalls and broader implications of our proposal.
+However, differing relative prioritisation of values leading to different interpretations of the ``best'' cohort, the challenges of designing systems to compare applicants from vastly different contexts, and the risks of applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the program) challenge to render impossible and already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities. While selection practitioners design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
 
-\section{Abstracts from Papers} %to-do: replace this with something more coherent.
+\section{The \emph{Selection} Problem}
+In real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{citation needed}. But how can selection practitioners make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process is twofold: 
 
-\subsection{GenAI}
-Applicants increasingly use generative AI (genAI) to write essays for universities, jobs, and scholarships. While genAI detectors serve as anti-plagiarism tools, these detectors don’t fully address the challenges faced by selection. Through Action Research (AR) with scholarship selection practitioners, we identified key decisions surrounding genAI, (e.g., whether and how to ban their use in application or broader revisions to application processes). We developed a framework for categorising these decisions and assessed two popular detectors, Originality.ai and GPTZero. Although neither detector fully meets the needs for reliably identifying and disqualifying AI-plagiarised essays, both can support ex-post process decisions. We applied GPTZero to evaluate genAI use across years and by channel partners (who source and support program applicants), finding an overall increase in genAI usage year-over-year but no evidence of widespread genAI use among channel partners. Our findings support the program’s channel partnership approach but suggest the need for new assessment methodologies.
+\begin{enumerate}
+    \item What criteria make on applicant (or cohort) more apt than another?
+    \item How can we apply these criteria to select the most apt cohort of applicants?
+\end{enumerate}
 
-\subsection{XAI}
-Post-hoc Explainable AI (xAI) methods build trust in AI-based Decision Support Tools (DSTs), but critics warn they may induce decision-maker over-reliance on AI. We differentiate between two decision stages for using xAI: \emph{in-process}, where xAI informs primary decisions (e.g., whether to select a candidate), and \emph{ex-post}, where xAI informs second-order decisions (e.g., whether to change the candidate selection process). In an online study, we evaluate three xAI methods (SHAP, Anchor, and Confidence) \emph{in-process} and find that SHAP and Confidence induce unwarranted trust. We then conduct participatory design sessions presenting SHAP explanations to scholarship selection practitioners in the \emph{ex-post} context. These explanations can inform and support \emph{ex-post} decisions, but effective presentation and contextualisation is key. We conclude that, while critics’ warnings of xAI-induced misplaced trust hold \emph{in-process}, this misplaced trust is not unique to post-hoc xAI. Furthermore, post-hoc xAI methods, even if misleading \emph{in-process}, can still be valuable \emph{ex-post}.
+We term this twofold problem \emph{Selection}.
 
-\subsection{Diversity}
-When selecting applicants for scholarships, universities, or jobs, practitioners often aim for a diverse cohort of qualified recipients. However, differing articulations, constructs, and notions of diversity prevents decision-makers from operationalising and progressing towards the diversity they all agree is needed . To understand this challenge of translation from values, to requirements, to decision support tools (DSTs), we conducted participatory design studies exploring professionals' varied perceptions of diversity and how to build for them. Our results suggest three definitions of diversity: bringing together \emph{different perspectives}; \emph{ensuring representativeness} of a base population; and \emph{contextualising applications}, which we use to create the \emph{Diversity Triangle}. We experience-prototyped DSTs reflecting each angle of the \emph{Diversity Triangle} to enhance decision-making around diversity. We find that notions of diversity are highly diverse; efforts to design DSTs for diversity should start by working with organisations to distil `diversity' into definitions and design requirements.
+\section{Selection-Oriented AI}
+We work with two global scholarship programs (h.f., programs A and B) and apply Human-Computer Interaction (HCI) methods to design Artificial Intelligence (AI) systems to act as data-driven Decision Support Tools (DSTs) that can assist practitioners in making fair and informed selection decisions. In doing this, we position the space of decisions these two programs make on the \emph{Decision Matrix} a framework we design for evaluating the suitability of AI systems in different decision-making contexts. We work with program A to find that many existing AI solutions, e.g. post-hoc xAI systems and generative AI detectors, are useful DSTs at the \emph{ex-post} stage of decision-making, but are limited in their application \emph{in-process}. In an attempt to design a tool selection practitioners could use in-process, we engage both programs in a participatory design process to produce six design prototypes of DSTs that could help practitioners incorporate diversity considerations into their selection decisions. While this process reveals practitioner satisfaction, we find a major critique of xAI methods (that, though they satisfy subjective desires, they may not improve objective outcomes) similarly concerning in this context. To test this, we implement one of these designs as a technology probe in program A and evaluate its impact on selection outcomes, where we find an increase in both average applicant performance and overall cohort diversity according the to the program's own metrics. Our findings suggest that AI-based DSTs can support fair selection processes and improve diversity outcomes in-process.
 
-\subsection{SPF}
-We hypothesize that the complexity of selecting personnel in a way that jointly optimizes for talent (performance on an ability measure) and diversity impedes organizations from meeting their diversity, equity, and inclusion goals. To formalize this, we prove that maximizing cohort diversity is computationally complex and incorporate this complexity into a selection model by adding computational costs. To test the model's predictions, we construct an algorithm to estimate the diversity-talent frontier, which we apply to data from a scholarship and talent investment program. We find that finalists could have been 13\% (15.6\%) more diverse (more talented) without reducing talent (diversity). We also show that the program selected a significantly more diverse and talented cohort after we provided them with a frontier estimate. We conclude by using program data to demonstrate how the frontier estimation procedure can be used to evaluate the efficacy of alternative screening approaches. This reveals that if the program had screened on IQ, they would have significantly reduced diversity and overlooked many of the most talented applicants.
+Our findings suggest the feasibility of supporting considerations across the decision matrix. We conclude with a call for the development of Selection-Oriented AI (SOAI), a family of methodologies for achieving the social values of properly selecting a global cohort of scholars. In contrast to Selector-Centred AI, which would centre the point of view of selection practitioners, the SOAI paradigm acknowledges that, while selection practitioners are motivated by achieving this social value, DSTs seeking to support the process of selection must go beyond centring them as users and must instead orient themselves around a specific theory of social value, then attempt to support achieving that value.
 
-\section{Motivation}
-(To-do) This is where I explain why I'm doing this research. I explain why care about talent identification and how IAIDSTs can solve problems here. I respond to the notion that we should simply not use AI here, and highlight problems in the field already. I explain why this is a problem for Computer Science as well as for Talent Science (tl;dr: additional reasons to care about things xai overlooks because of the application domain)
 
 \section{Contributions}
-In this thesis, we make a number of theoretical, technical and practical contributions. These are:
+The central contributions of this thesis are:
 
-\begin{itemize}
-    \item We articulate where talent identification experts should use IAIDSTs to assist in their decision-making, and which IAI systems are appropriate for which purposes
-    \item We apply research-through-design methods to talent identification to produce a novel approach to the creation of human-centric selection tooling
-    \item We develop a novel method for visualising and understanding cohort-level decisions surrounding diversity called the Selection Possibility Frontier
-    \item We further implement a novel algorithm for approximating the Selection Possibility Frontier
-    \item We produce several qualitative, quantitative, and mixed-modal datasets relating to talent identification
-    \item We demonstrate a yet-undemonstrated risk associated with naive application of post-hoc explainability to a range of problems
-    \item We demonstrate the utility and limitation of detection tools for generative-AI-written essays in a scholarship context, and explore implications for scholarship programs
-\end{itemize}
+\begin{enumerate}
+    \item The Decision Matrix framework for evaluating the suitability of AI systems as support tools for differing decision points.
+    \item The SOAI paradigm for designing AI systems that support one of the social benefits of good selection processes.
+    \item A set of design recommendations for designers seeking to apply SOAI to build a DST to support selection practitioners.
+\end{enumerate}
+
+However, this thesis is composed of a number of papers that make more specific contributions, incidental to the thesis itself. These are detailed in the relevant chapters.
+
+% If desired/needed
+
+%  These are:
+
+% \begin{itemize}
+%     \item A list of decision points facing scholarship programs. E.g., those addressable through explainable AI (xAI) (Chapter \ref{ch:xai}), regarding generative AI (genAI) (Chapter \ref{ch:genai}), or related to diversity (Chapter \ref{ch:diversity}).
+%     \item Quantitative findings indicating that the problem of explanation-induced unwarranted trust extends to generic post-hoc justifications, but that such criticism only applies \emph{in-process} and qualitative findings that post-hoc explanations, properly presented, can make useful \emph{ex-post} DSTs (Chapter \ref{ch:xai}).
+%     \item An evaluation of genAI detectors GPTZero and Originality.ai on program A's 2022 and 2023 application data (Chapter \ref{ch:genai}).
+%     \item A case study using GPTZero to support two decision points facing program A (Chapter \ref{ch:genai}).
+%     \item Three definitions of diversity that impact selectors' decisions uncovered through inductive thematic analysis (Chapter \ref{ch:diversity}).
+%     \item The Diversity Triangle, categorising diversity-related themes according to our definitions of diversity (Chapter \ref{ch:diversity}).
+%     \item Design recommendations grounded in participatory design for system implementers supporting the diversity needs of a given organisation (Chapter \ref{ch:diversity}).
+% \end{itemize}
 
 \section{Thesis Structure}
-In this chapter, we explore our motivation for focusing on the application of IAIDSTs to talent identification, enumerate our contributions, and provide an account of challenges talent identification. Among these challenges, we focus the remainder of this thesis on three: limited human understanding of the AI tools, limited ability to consider diversity, and the risks of applicant usage of generative AI.
+In Chapter \ref{ch:rw}, we explore other approaches to quantitative decision support for decisions affecting global scholarship programs; though many of these approaches do not focus on the global scholarship context, we identify gaps in the literature as it applies to this context. Chapter \ref{ch:methods} provides a brief general overview of the methods used in this thesis. Chapter \ref{ch:context} provides additional context on global scholarship selection and problems facing it; in this chapter, we also introduce the Decision Matrix and place relevant decisions on it. In chapter \ref{ch:xai} (adapted from a paper currently under review), we respond to common criticisms of post-hoc xAI and explore this approach as a scholarship selection DST via participatory design. In chapter \ref{ch:genai} (adapted from a paper currently under review), we engage selection practitioners from program A in an Action Research (AR) process and explore the role of generative AI in selection decisions. In Chapter \ref{ch:diversity} (adapted from a paper currently under review), we engage both programs in participatory design to explore practitioner notions of diversity and potential ways to support these considerations; we ultimately develop 6 design prototypes. In Chapter \ref{ch:spf}, we implement several of these prototypes, and apply one as a technology probe in program A's selection process; we find that, when using the probe, practitioners select a more diverse cohort composed of higher-performing applicants. In Chapter \ref{ch:discussion}, we discuss the Decision Matrix framework, suggest the SOAI paradigm, and present a coherent set of design recommendations that developers can use to follow SOAI; we also note limitations of our approach, and conclude.
 
-In Chapter \ref{ch:background}, we provide a background on the field of talent identification, the field of explainable AI, and the field of diversity, equity, and inclusion; we further explore intersections between these fields of research and identify gaps in the literature. Chapters \ref{ch:xailimitations} and \ref{ch:usingxai} explore our first challenge: limited human understanding of the AI tools. In Chapter \ref{ch:xailimitations}, we explore the limitations of popular xAI methods in the context of talent identification. In Chapter \ref{ch:usingxai}, we explore the use of SHAP explanations in the context of talent identification. Chapters \ref{ch:iaicasestudy} and \ref{ch:spf}  address challenges related to consideration of diversity in TI. In Chapter \ref{ch:iaicasestudy}, we present a participatory design study, which aims to use IAIDSTs to help TI professionals account for diversity. In Chapter \ref{ch:spf} we implement one of the designs from Chapter \ref{ch:iaicasestudy}. Chapter \ref{ch:studentuse} attempts to mitigate the risks of applicant usage of generative AI. It explores the use of generative AI detection tools as DSTs in the context of talent identification. Finally, in Chapter \ref{ch:discussion}, we discuss our design recommendations, note limitations of our approach, and conclude.
+\section{Papers}
+\subsection{Under Review}
+Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. % placeholder
 
-\section{Publications}
+Neil Natarajan, Sruthi Viswanathan, Reuben Binns, Nigel Shadbolt. 2024. “‘Diversity is Having the Diversity’: Unpacking and Designing for Diversity in Applicant Selection.” Under review at CHI 2025. % placeholder
 
-\begin{itemize}
-    \item \textcite{natarajan_trust_2023} Trust Explanations to do What They Say
-    \item \textcite{citation needed} `You Trust Me, But Should You?': Misleading Explanations of AI Outputs
-\end{itemize}
+Neil Natarajan, Reuben Binns, Ulrik Lyngs, Nigel Shadbolt. 2024. “XAI: Misleading In Process, but Useful Post Hoc.” Under review at CHI 2025. % placeholder
+
+Neil Natarajan, Elías Hanno, Logan Gittelson, Reuben Binns, Nigel Shadbolt. 2024. “What Are Generative AI Detectors Good For? Evaluating and Implementing with the Decision Matrix.” Under review at CHI 2025. % placeholder
+
+\subsection{Published}
+\fullcite{natarajan_detecting_2024}
+
+\fullcite{ijcai2023p819} 
+
+\fullcite{natarajan_trust_2023}
