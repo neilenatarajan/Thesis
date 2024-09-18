@@ -95,13 +95,13 @@ One way to see why this problem is complex is to consider the relationship betwe
 
 \subsubsection{The Complexity of Preference Functions}\label{subsubsec:proof_nphard}
 
-Without restrictions on the types of functions that organisations may select for $D$, $P$ the most we can say of $F$ is that its domain is $C$ and its range is $\mathcal{R}$. We prove here that optimising this class of functions is computationally complex.
+Without restrictions on the types of functions that organisations may select for $D$, $P$ the most we can say of $F$ is that its domain is $C$ and its range is $\mathbb{R}$. We prove here that optimising this class of functions is computationally complex.
 
 First, we introduce notions of computational complexity from computer science. The field of computer science considers a problem ``computationally simple'' if that problem is solvable in polynomial time (i.e., if there exists a program guaranteed to output the correct answer in a number of steps upper bounded by some polynomial function of the input). This class of problems is referred to as $\mathbf{P}$. A problem is ``computationally complex'' if it is not computationally simple, i.e., if it cannot be solved in polynomial-time. In this section, we prove outright that optimizing an arbitrary function on subsets with a fixed cardinality constraint significantly smaller than the universe size is computationally complex. I.e., Theorem \ref{thm:general-nphard} holds.
 
 \begin{theorem}\label{thm:general-nphard}
     This is a thm.
-    % Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (\mathbb{U}) \rightarrow \mathcal{R}\}$ be the set of functions with domain  $\mathcal{P} (\mathbb{U})$ and range $\mathcal{R}$. Then $Opt_{gen}(s_i, n) := argmax_{c \in U \and |c| = n}(s_i(c))$ is not $\mathbf{P}$ in $n$.
+    Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (U) \rightarrow \mathbb{R}\}$ be the set of functions with domain  $\mathcal{P} (U)$ and range $\mathbb{R}$. Then $Opt_{gen}(s_i, n) := argmax_{c \in U \land |c| = n}(s_i(c))$ is not $\mathbf{P}$ in $n$.
 \end{theorem}
 
 \begin{proof}
@@ -186,32 +186,32 @@ We now prove that, when $S$ is restricted to only equations of the form $F$ from
 
 \begin{theorem}\label{thm:specific-nphard}
     This is another theorem
-    % Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (\mathbb{U}) \rightarrow \mathcal{R}\}$ be the set of functions of type $F$ described in Equation \ref{eq:f_spec}. Then $Opt_{spec}(s_i, n) := argmax_{c \in U \and |c| = n}(s_i(c))$ is $\mathbf{NP}$-hard in $n$.
+    Let $U$ be a `universe' set of size at least $N \geq 2*n$ and $S = \{s: \mathcal{P} (U) \rightarrow \mathbb{R}\}$ be the set of functions of type $F$ described in Equation \ref{eq:f_spec}. Then $Opt_{spec}(s_i, n) := argmax_{c \in U \land |c| = n}(s_i(c))$ is $\mathbf{NP}$-hard in $n$.
 \end{theorem}
 
 In order to do this, and to justify the significance of this result, we bring in the computational complexity of the $VertexCover$ problem, which has been proven to be $\mathbf{NP}$-hard \cite{COPPERSMITH198527}. $VertexCover$ can be seen in Theorem \ref{thm:vertexcover}.
 
 \begin{theorem}\label{thm:vertexcover}
     This is another theorem
-    % Let $G = (V, E)$ be a graph. Let $VC(G, \kappa) := Cov | Cov \subseteq V \and |Cov| = \kappa \and \forall e \in E . \exists v \in Cov . v \in e$ be a function of $G$ that returns a set $Cov$ such that every edge in $G$ is incident on at least one vertex in $Cov$. Then $VC$ in $\mathbf{NP}$-hard in the number of vertices.
+    Let $G = (V, E)$ be a graph. Let $VC(G, \kappa) := Cov | Cov \subseteq V \land |Cov| = \kappa \land \forall e \in E . \exists v \in Cov . v \in e$ be a function of $G$ that returns a set $Cov$ such that every edge in $G$ is incident on at least one vertex in $Cov$. Then $VC$ in $\mathbf{NP}$-hard in the number of vertices.
 \end{theorem}
 
 We now prove Theorem \ref{thm:specific-nphard} by reduction to Theorem \ref{thm:vertexcover}.
 
-% \begin{proof}
-% Suppose for a contradiction that Theorem \ref{thm:specific-nphard} admits some polynomial-time solution $Alg_{spec}$. I.e., $Alg_{spec}(s_i, k )= argmax_{c \in U \and |c| = n}(s_i(c))$.
+\begin{proof}
+Suppose for a contradiction that Theorem \ref{thm:specific-nphard} admits some polynomial-time solution $Alg_{spec}$. I.e., $Alg_{spec}(s_i, k )= argmax_{c \in U \land |c| = n}(s_i(c))$.
 
-% \begin{algorithm}
-%     \caption{An Algorithm for $VC(G = (V,E), \kappa)$}\label{alg:vc_spec}
-%     \begin{algorithmic}
-%         \State \textbf{Consider} $U := E$
-%         \State \textbf{Define} $\vec{\mathbf{g}} := \{g_i = v_i \in e . e \in E | i \in |V|\}$ such that each $g_i$ has length $E$ and corresponds to whether an edge is incident on vertex $v_i$.
-%         \State \textbf{Return} $Opt_{spec}(1*D(c, \vec{\mathbf{1}}, \vec{\mathbf{0}}, \vec{\mathbf{0}}, \vec{\mathbf{g}}, \vec{\mathbf{0}})+ 0*P(c)) \geq k$
-%     \end{algorithmic}
-% \end{algorithm}
+\begin{algorithm}
+    \caption{An Algorithm for $VC(G = (V,E), \kappa)$}\label{alg:vc_spec}
+    \begin{algorithmic}
+        \State \textbf{Consider} $U := E$
+        \State \textbf{Define} $\vec{\mathbf{g}} := \{g_i = v_i \in e . e \in E | i \in |V|\}$ such that each $g_i$ has length $E$ and corresponds to whether an edge is incident on vertex $v_i$.
+        \State \textbf{Return} $Opt_{spec}(1*D(c, \vec{\mathbf{1}}, \vec{\mathbf{0}}, \vec{\mathbf{0}}, \vec{\mathbf{g}}, \vec{\mathbf{0}})+ 0*P(c)) \geq k$
+    \end{algorithmic}
+\end{algorithm}
 
-% Then consider the algorithm $Alg_{VC}$ that is defined in Algorithm \ref{alg:vc_spec}. But this algorithm solves $VertexCover$ in polynomial time relative to $Opt_{spec}$, and thus is a polynomial time solution to $VertexCover$. Assuming $\mathbf{P} \neq \mathbf{NP}$, contradiction!
-% \end{proof}
+Then consider the algorithm $Alg_{VC}$ that is defined in Algorithm \ref{alg:vc_spec}. But this algorithm solves $VertexCover$ in polynomial time relative to $Opt_{spec}$, and thus is a polynomial time solution to $VertexCover$. Assuming $\mathbf{P} \neq \mathbf{NP}$, contradiction!
+\end{proof}
 
 \subsection{Embedding Complexity into the Model}\label{subsec:dts_w_complexity}
 
@@ -252,9 +252,9 @@ O_{ee}  \equiv &\;  G^2F_{dd} - \alpha p_{ee} < 0, \nonumber \\
 
 \noindent where $O_{e\alpha} = -p_e$ and, essential for signing the comparative static, $O_{p\alpha} = 0$. We can then solve for $\frac{\partial e^*}{\partial \alpha}$ algebraically (or using Cramer's rule), which gives the following:
 
-% \begin{equation}
-% \frac{\partial e^*}{\partial \alpha} = \frac{-O_{e\alpha}O_{pp}}{O_{ee}O_{pp} - O_{ep}^2} + \cancelto{0}{\frac{O_{ep}O_{p\alpha}}{O_{ee}O_{pp} - O_{ep}^2}} = \frac{p_eO_{pp}}{O_{ee}O_{pp} - O_{ep}^2} < 0, \label{eq:comp_stat}
-% \end{equation}
+\begin{equation}
+\frac{\partial e^*}{\partial \alpha} = \frac{-O_{e\alpha}O_{pp}}{O_{ee}O_{pp} - O_{ep}^2} + \cancelto{0}{\frac{O_{ep}O_{p\alpha}}{O_{ee}O_{pp} - O_{ep}^2}} = \frac{p_eO_{pp}}{O_{ee}O_{pp} - O_{ep}^2} < 0, \label{eq:comp_stat}
+\end{equation}
 
 \noindent where the the final inequality holds because of the signs assumed in the first and third second order conditions.  Thus, as complexity costs rise, optimal search effort decreases. Equivalently, a reduction in complexity costs should increase search effort (which we test in Section \ref{sec:case}). This increase in search effort, in turn, reduces the distance of the selected cohort from the SPF since this distance is inversely related to the amount of search exerted. Thus, we have the second prediction from this model. \\
 
@@ -305,25 +305,25 @@ It is well-known that the greedy algorithm yields a $\bigl( 1-\frac{1}{e} \bigr)
 \subsection{Proof of Greedy Approximation}
 Here, we prove that the greedy approximation method introduced in Algorithm \ref{alg:frontier} for SPF is a $(1-\frac{1}{e})$-approximation for our standard class of diversity functions subject to a cardinality constraint.
 
-% Recall that an organisation's preference function $f: 2^X -> \mathbb{R}^+$  maps a cohort (a set of applicants) to the weighted sum of a ``diversity score'' and a ``performance score'' (both non-negative, real numbers). Here, our applicant pool $X$ is represented as a set with applicants as its members, and possible cohorts $C \subseteq X$ are subsets of $X$. We prove in the \hyperref[sec:math_appendix]{mathematical appendix} that $f$ is monotonic ($A \subseteq B -> f(A) \leq f(B)$) and submodular ($A \subseteq B \and x \notin B -> f_A(x) \geq f_B(x)$ (here, $f_S(e) = f(S \cup \{e\}) - f(S)$ denote the marginal gain of adding element $e$ to set $S$). We demonstrate elsewhere that many common understandings of diversity are represented by standard diversity functions.
+Recall that an organisation's preference function $f: 2^X -> \mathbb{R}^+$  maps a cohort (a set of applicants) to the weighted sum of a ``diversity score'' and a ``performance score'' (both non-negative, real numbers). Here, our applicant pool $X$ is represented as a set with applicants as its members, and possible cohorts $C \subseteq X$ are subsets of $X$. We prove in the \hyperref[sec:math_appendix]{mathematical appendix} that $f$ is monotonic ($A \subseteq B -> f(A) \leq f(B)$) and submodular ($A \subseteq B \land x \notin B -> f_A(x) \geq f_B(x)$ (here, $f_S(e) = f(S \cup \{e\}) - f(S)$ denote the marginal gain of adding element $e$ to set $S$). We demonstrate elsewhere that many common understandings of diversity are represented by standard diversity functions.
 
 We now recreate a proof of Theorem \ref{thm:greedy-approximation} first demonstrated in \cite{nemhauser1978analysis}.
 
-% \begin{theorem}\label{thm:greedy-approximation}
-%     Let $(S_0...S_k)$ be a sequence of sets where $S_0$ is the empty set and $S_{i>0}$ is defined by following Algorithm \ref{alg:frontier} with any $\iota$, $d$, and $p$. Further, let $O := argmax_S(f(S) : |S| = k)$ be the set of size $k$ that maximizes $f: = \iota*d+(1-\iota)*p$. Then $f(S_k) \geq (1 - \frac{1}{e})f(O)$.
-% \end{theorem}
+\begin{theorem}\label{thm:greedy-approximation}
+    Let $(S_0...S_k)$ be a sequence of sets where $S_0$ is the empty set and $S_{i>0}$ is defined by following Algorithm \ref{alg:frontier} with any $\iota$, $d$, and $p$. Further, let $O := argmax_S(f(S) : |S| = k)$ be the set of size $k$ that maximizes $f: = \iota*d+(1-\iota)*p$. Then $f(S_k) \geq (1 - \frac{1}{e})f(O)$.
+\end{theorem}
 
-% \begin{proof}
-% By induction. Let ${o_1...o_k} = O$ be any ordering of the elements of $O$. Let ${s_i} := S_i - S_{i-1}$ be the element added to $S_{i-1}$ to form $S_i$.
+\begin{proof}
+By induction. Let ${o_1...o_k} = O$ be any ordering of the elements of $O$. Let ${s_i} := S_i - S_{i-1}$ be the element added to $S_{i-1}$ to form $S_i$.
 
-% By monotonicity, we have $\forall i . f(O) \leq f(O \cup S_i)$.  We can then write $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} (f(S_i \cup {o_1...o_j}) - f(S_i \cup {o_1...o_{j-1}}))$. I.e., $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} f_{S_i \cup {o_1...o_{j-1}}}(o_j)$.
+By monotonicity, we have $\forall i . f(O) \leq f(O \cup S_i)$.  We can then write $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} (f(S_i \cup {o_1...o_j}) - f(S_i \cup {o_1...o_{j-1}}))$. I.e., $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} f_{S_i \cup {o_1...o_{j-1}}}(o_j)$.
 
-% By submodularity, $\forall j \in [1...k] . f_{S_i \cup {o_1...o_{j-1}}}(o_j) \leq f_{s_i}(o_j)$. Thus, $f(O) \leq f(S_i) + k*f_{S_i}(s_{i+1})$. 
+By submodularity, $\forall j \in [1...k] . f_{S_i \cup {o_1...o_{j-1}}}(o_j) \leq f_{s_i}(o_j)$. Thus, $f(O) \leq f(S_i) + k*f_{S_i}(s_{i+1})$. 
 
-% Since Algorithm \ref{alg:frontier} guarantees that $\forall e \in X - S_i . f_{S_i}(e) \geq f_{S_i}(e)$, it follows that, at every stage, $f(S_{i+1}) - f(S_i) \geq \frac{1}{k} (f(O) - f(S_i))$.
+Since Algorithm \ref{alg:frontier} guarantees that $\forall e \in X - S_i . f_{S_i}(e) \geq f_{S_i}(e)$, it follows that, at every stage, $f(S_{i+1}) - f(S_i) \geq \frac{1}{k} (f(O) - f(S_i))$.
 
-% Then induction yields $f(O) - f(S_k) \leq (1 - \frac{1}{k})^k f(O) \leq \frac{1}{e} f(O)$.
-% \end{proof}
+Then induction yields $f(O) - f(S_k) \leq (1 - \frac{1}{k})^k f(O) \leq \frac{1}{e} f(O)$.
+\end{proof}
 
 \section{Applying the SPF to a Talent-Investment Program}\label{sec:case}
 

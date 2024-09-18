@@ -50,7 +50,7 @@
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
 % The science-type option: numerical in-text citation with references in order of appearance.
-\usepackage[style=numeric-comp, sorting=nyt, backend=biber, doi=false, isbn=false]{biblatex}
+\usepackage[style=numeric-comp, sorting=nyt, backend=biber, maxcitenames=2, doi=false, isbn=false]{biblatex}
 
 
 % \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
@@ -102,6 +102,12 @@
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
 
+% For the cancelto command
+\usepackage[makeroom]{cancel}
+
+% For correct real number formatting
+\usepackage{amssymb}
+
 % For theorems in body
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -112,7 +118,6 @@
 % \usepackage{etoolbox}
 % \usepackage{tikz}
 % \usepackage[makeroom]{cancel}
-% \usepackage{amssymb}
 % \usepackage{adjustbox}
 % \usepackage{comment}
 % \usepackage{longtable}
@@ -137,7 +142,8 @@
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{Selection-Centred AI: The Role of HCI in Supporting Novel Solutions to Modern Problems in Global Scholarship Selection}
+\title{Selection-Oriented AI: The Role of HCI in Supporting Solutions to Explai
+nability, Diversity, and Plagiarism in Global Scholarship Selection}
 \author{Neil Natarajan}
 \college{New College}
 
@@ -266,9 +272,11 @@
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 \flushbottom
 \include{text/body/ch-intro}
-\include{text/body/ch-background}
-\include{text/body/ch-genai}
+\include{text/body/ch-rw}
+\include{text/body/ch-methods}
+\include{text/body/ch-context}
 \include{text/body/ch-xai}
+\include{text/body/ch-genai}
 \include{text/body/ch-diversity}
 \include{text/body/ch-spf}
 \include{text/body/ch-discussion}
