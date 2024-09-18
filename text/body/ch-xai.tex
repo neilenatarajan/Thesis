@@ -143,43 +143,43 @@ To do this, we compare three alternate conditions: \textcite{Lundberg-and-Lee}'s
 Participants were recruited via Prolific Academic's standard sampling method restricted to the United States.\footnote{\url{www.prolific.co}} They were paid at a rate of \$15 per hour. Participants were first shown an information sheet detailing the study's methodology and what was being asked of them. They were then asked to give informed consent. After consenting to participate in the study, participants were routed to Formr, our chosen survey design and hosting platform, to complete the online study.\footnote{\url{www.formr.org}} All data collected was anonymous and was stored on secure servers. Ethics review was performed by [REDACTED FOR REVIEW].
 
 \subsubsection{Tasks}
-We restrict our research question to tasks familiar to lay people with a well-defined but difficult-to-ascertain ground truth. Our two tasks are: \emph{estimating a hypothetical person's salary} based on census information of that individual, and \emph{predicting whether someone will be severely delinquent in making a credit payment}. We use two datasets: the Adult dataset collected from the 1994 US Census for the former task and the Give Me Some Credit dataset for the latter task \cite{Kohavi, GiveMeSomeCredit}. In both tasks, the participant aims to accurately estimate the dependent variable with the help of the AI system and one of several possible explanations of the AI system's estimate (which is possibly just the confidence rating of the model). In our analyses, we index these tasks as $salary$ and $credit$. Note that each participant only receives one task to complete throughout all 6 cases. 
+We restrict our research question to tasks familiar to lay people with a well-defined but difficult-to-ascertain ground truth. Our two tasks are: \emph{estimating a hypothetical person's salary} based on census information of that individual, and \emph{predicting whether someone will be severely delinquent in making a credit payment}. We use two datasets: the Adult dataset collected from the 1994 US Census for the former task and the Give Me Some Credit dataset for the latter task \cite{Kohavi, GiveMeSomeCredit}. In both tasks, the participant aims to accurately estimate the dependent variable with the help of the AI system and one of several possible explanations of the AI system's estimate (which is possibly just the confidence rating of the model). In our analyses, we index these tasks as \emph{Salary} and \emph{Credit}. Note that each participant only receives one task to complete throughout all 6 cases. 
 
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-shap.png}
-        \caption{SHAP explanations for $salary$}
+        \caption{SHAP explanations for \emph{Salary}}
         \label{fig:shapsalary}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-shap-2.png}
-        \caption{SHAP explanations for $credit$}
+        \caption{SHAP explanations for \emph{Credit}}
         \label{fig:shapcredit}
     \end{subfigure}
     \medskip
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-anchor.png}
-        \caption{Anchor explanations for $salary$}
+        \caption{Anchor explanations for \emph{Salary}}
         \label{fig:anchorsalary}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-anchor-2.png}
-        \caption{Anchor explanations for $credit$}
+        \caption{Anchor explanations for \emph{Credit}}
         \label{fig:anchorcredit}
     \end{subfigure}
     \medskip
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-confidence.png}
-        \caption{Confidence explanations for $salary$}
+        \caption{Confidence explanations for \emph{Salary}}
         \label{fig:confidencesalary}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{xai/survey-confidence-2.png}
-        \caption{Confidence explanations for $credit$}
+        \caption{Confidence explanations for \emph{Credit}}
         \label{fig:confidencecredit}
     \end{subfigure}
     \caption{This figure shows sample explanations for all cases. Larger images and more detailed descriptions of explanations can be seen in Appendix \ref{app:figures}.}
@@ -298,7 +298,7 @@ We first run the one-sided t-tests on the two trust variables ($attitudinal$ and
     \Delta trust_{x} > 0 | \neg correct_{AI} \text{ for } x \in \{behavioural, attitudinal\}
 \end{equation}
 
-\noindent for both $salary$ and $credit$ across SHAP, Anchor, and Confidence. A positive $F$ statistic here indicates $trust^{after} > trust^{before}$ and a negative $F$ statistic indicates $trust^{after} < trust^{before}$, but, as these are one-sided tests, $p$-values will only be meaningful when $F > 0$. This test was preregistered in both of our tasks [anonymous for review]. Table \ref{tab:delta-trust-t} contains the results of these analyses.  
+\noindent for both \emph{Salary} and \emph{Credit} across SHAP, Anchor, and Confidence. A positive $F$ statistic here indicates $trust^{after} > trust^{before}$ and a negative $F$ statistic indicates $trust^{after} < trust^{before}$, but, as these are one-sided tests, $p$-values will only be meaningful when $F > 0$. This test was preregistered in both of our tasks [anonymous for review]. Table \ref{tab:delta-trust-t} contains the results of these analyses.  
 
 \begin{table}[htb]
     \caption{These one-sided t-tests test for $\Delta trust > 0 | \neg correct_{AI}$ for all explanatory conditions and both tasks. We find that SHAP and Confidence increase unwarranted trust in the AI system.}
@@ -329,17 +329,11 @@ This indicates that SHAP and Confidence appear to lead users to trust the AI sys
 Notably, Anchor does not follow this pattern, and instead shows no significant increase in either attitudinal or behavioural trust on these one-sided t-tests. (However, as we explore in Section \ref{sec:anchor-attitudinal}, they may show a significant decrease.)
 
 \subsubsection{Different Explanation Styles Have Different Effects on Unwarranted Trust}
-We have shown already that SHAP and Confidence induce unwarranted trust relative to no explanation; we now show that there is significant difference in the effect of some explanatory conditions relative to others. To do this, we examine the $\Delta trust_{behavioural}$ and $\Delta trust_{attitudinal}$ variables across explanatory conditions with an ANOVA test. For this test, we filter on $\neg correct_{AI}$. I.e.:\
+We have shown already that SHAP and Confidence induce unwarranted trust relative to no explanation; we now show that there is significant difference in the effect of some explanatory conditions relative to others. To do this, we examine the $\Delta trust_{behavioural}$ and $\Delta trust_{attitudinal}$ variables across explanatory conditions with an ANOVA test. For this test, we filter on $\neg correct_{AI}$. I.e.:
 
 \begin{equation}
-    \Delta \text{ any} ( trust_{x1,x2} \neq trust_{x1,x3} | \neg correct_{AI} )
+    \Delta any(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \text{ and } x2,x3 \in \{SHAP, Anchor, Confidence\}
 \end{equation}
-
-% To-do: improve this equation to include more detail
-
-% \begin{equation}
-%     \Delta any(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \and x2,x3 \in \{SHAP, Anchor, Confidence\}
-% \end{equation}
 
 \noindent This test was preregistered in both of our tasks [anonymous for review]. Table \ref{tab:delta-trust-anova} contains the results of these analyses.
 
@@ -371,7 +365,7 @@ We now show that:
 \noindent Note that, while the result of the ANOVA test in table \ref{tab:delta-trust-anova} supports that there is indeed a statistically significant difference in the three group means of the $\Delta trust_{behavioural}$ variable, it does not specify which means are greater and which are less. For an indication of which means are greater, following our preregistered protocol for significant ANOVA results, we turn to Tukey's Honestly Significant Difference (HSD) test as a post-hoc test in table \ref{tab:delta-trust-hsd}. As we found significant results in the ANOVA test of $\Delta trust_{behavioural}$ filtered on $\neg correct_{AI}$, we restrict our post-hoc analysis to this variable.
 
 \begin{table}[htb]
-    \caption{Tukey's HSD test compares $\Delta trust_{behavioural,x}$ in $salary$ with $\neg correct_{AI}$. We find that SHAP increases behavioural trust in incorrect AI outputs more than Anchor.}
+    \caption{Tukey's HSD test compares $\Delta trust_{behavioural,x}$ in \emph{Salary} with $\neg correct_{AI}$. We find that SHAP increases behavioural trust in incorrect AI outputs more than Anchor.}
     \label{tab:delta-trust-hsd}
     \begin{tabular}{lllrr}
         \toprule
@@ -396,7 +390,7 @@ For an indication of which means are greater, following our preregistered protoc
 \end{equation}
 
 \begin{table}[htb]
-    \caption{Tukey's HSD test compares $\Delta trust_{attitudinal}$ across explanations in $credit$ with $\neg correct_{AI}$. We find that Anchor decreases unwarranted trust relative to SHAP and Confidence.}
+    \caption{Tukey's HSD test compares $\Delta trust_{attitudinal}$ across explanations in \emph{Credit} with $\neg correct_{AI}$. We find that Anchor decreases unwarranted trust relative to SHAP and Confidence.}
     \label{tab:delta-trust-hsd-2}
     \begin{tabular}{lllrrc}
         \toprule
@@ -442,7 +436,7 @@ Having found no significant result indicating the presence of the hypothesised e
 We noted already that SHAP and Confidence appear to increase trust in cases where the AI output is incorrect. However, we noticed no such result for Anchor. However, we did observe an apparent negative effect on $\Delta trust_{attitudinal}$ in the t-tests for the Credit Delinquency Prediction task, though, as the tests were one-sided, we could not confirm significance. Thus, we repeat this test as a two-sided test, as shown in table \ref{tab:delta-trust-t-2}. We also repeat other t-tests on Anchor as two-sided, though, as they all have positive F-values, note that none can yield significant results.
 
 \begin{table}[htb]
-    \caption{Two-sided t-tests compare $\Delta trust_{x,Anchor} \neq 0 for x \in \{attitudinal, behavioural\}$ in both tasks. We find that Anchor explanations decrease attitudinal trust in incorrect AI outputs in $credit$, but all other results are inconclusive.}
+    \caption{Two-sided t-tests compare $\Delta trust_{x,Anchor} \neq 0 for x \in \{attitudinal, behavioural\}$ in both tasks. We find that Anchor explanations decrease attitudinal trust in incorrect AI outputs in \emph{Credit}, but all other results are inconclusive.}
     \label{tab:delta-trust-t-2}
     \begin{tabular}{lllrr}
         \toprule
@@ -519,13 +513,13 @@ Note that ideally calibrated trust would involve both distrusting the AI output 
 Note that, for both trust variables and both tasks, the Confidence condition boasts a significant positive $\Delta trust$. In other words, when the AI output is correct, providing its confidence in its own prediction increases both behavioural and attitudinal trust towards the AI.
 
 \paragraph{Anchor Explanations Decrease Warranted Attitudinal Trust but Increase Warranted Behavioural Trust}
-In the Anchor case, it is clear that providing Anchor explanations yields a large decrease in $trust_{attitudinal}$. This, along with the finding that Anchor explanations decrease $trust_{attitudinal}$ when $\neg correct_{AI}$, would indicate that Anchor explanations have an overall negative impact on $trust_{attitudinal}$, regardless of case. Despite this, providing Anchor explanations yields an increase in $trust_{behavioural}$ (though this is only significant in the $credit$ case). This suggests that, though participants report lower trust in AI outputs when shown an Anchor explanation, they behave as though their trust in the outputs is appropriately calibrated.\footnote{Though $trust_{attitudinal}$ and $trust_{behavioural}$ are closely correlated overall, this represents one instance in which they appear to reveal differences in participant behaviour.}
+In the Anchor case, it is clear that providing Anchor explanations yields a large decrease in $trust_{attitudinal}$. This, along with the finding that Anchor explanations decrease $trust_{attitudinal}$ when $\neg correct_{AI}$, would indicate that Anchor explanations have an overall negative impact on $trust_{attitudinal}$, regardless of case. Despite this, providing Anchor explanations yields an increase in $trust_{behavioural}$ (though this is only significant in the \emph{Credit} case). This suggests that, though participants report lower trust in AI outputs when shown an Anchor explanation, they behave as though their trust in the outputs is appropriately calibrated.\footnote{Though $trust_{attitudinal}$ and $trust_{behavioural}$ are closely correlated overall, this represents one instance in which they appear to reveal differences in participant behaviour.}
 
 \paragraph{SHAP Explanations Increase Warranted Attitudinal Trust in the Credit Delinquency Prediction Task}
 In the SHAP case, we find a large significant positive $F$ for $trust_{attitudinal}$ when $correct_{AI}$ in the credit delinquency prediction task. However, not only is the effect not mirrored in either tests of $trust_{behavioural}$, but the same test on the salary estimation task actually has a negative $F$ value.
 
 \subsection{Study Findings}\label{ssec:os_discussion}
-Our results indicate that both SHAP and Confidence induce unwarranted trust in the explainee. I.e., on the $salary$ and $credit$ tasks, neither SHAP nor Confidence serve to correctly calibrate trust in AI outputs. Rather, they blindly increase trust in these outputs, encouraging users to incorrectly agree with the AI outputs. While this confirms the cautionary critique of \textcite{Lipton} as applied to SHAP in our domain, our results relating to Confidence suggest this critique is too narrow. Namely, issues of unwarranted trust do not seem confined to post-hoc xAI, but are rather a function of providing post-hoc justification of the model's output. This suggests that even un-optimised notions of interpretability, when provided post-hoc as justifications of model outputs, induce unwarranted trust.
+Our results indicate that both SHAP and Confidence induce unwarranted trust in the explainee. I.e., on the \emph{Salary} and \emph{Credit} tasks, neither SHAP nor Confidence serve to correctly calibrate trust in AI outputs. Rather, they blindly increase trust in these outputs, encouraging users to incorrectly agree with the AI outputs. While this confirms the cautionary critique of \textcite{Lipton} as applied to SHAP in our domain, our results relating to Confidence suggest this critique is too narrow. Namely, issues of unwarranted trust do not seem confined to post-hoc xAI, but are rather a function of providing post-hoc justification of the model's output. This suggests that even un-optimised notions of interpretability, when provided post-hoc as justifications of model outputs, induce unwarranted trust.
 
 Challenging this interpretation, we find no similar effect for Anchor. Instead, we find a significant decrease in participants' stated confidence in AI and a simultaneous increase in participant self-confidence in their own decisions. \textcite{Miller} identifies a number of features that social sciences would suggest make a good explanation; we conclude, following Section \ref{ssec:history}, that Anchor explanations serve to highlight strange model behaviour that correctly undermines explainee confidence in model outputs. In short, the problem is not the use of explanations as justification tools, but rather the use of ``bad'' explanations as justification tools.
 
@@ -533,11 +527,11 @@ This raises another question: if SHAP and Confidence are ``bad'' explanations as
 
 \section{Participatory Design: \emph{Ex-Post} Decision Support}\label{sec:case}
 \subsection{Motivation}
-In Section \ref{sec:online}'s investigation of post-hoc explainable AI, we found that SHAP-based explanations, in particular, can lead to unwarranted trust when used to justify decisions. It is clear, at least, that we should not use SHAP-based explanations as a DST in this context. However, we do not suggest that SHAP should be discarded entirely. In fact, though $salary$ and $credit$ both prove unsuitable tasks for applications of SHAP-based explanations as DSTs, we suggest that we might still make use of the explanations. In particular, in use cases where explainee trust in the underlying model is not at issue, SHAP's induction of unwarranted trust need not undermine its utility.
+In Section \ref{sec:online}'s investigation of post-hoc explainable AI, we found that SHAP-based explanations, in particular, can lead to unwarranted trust when used to justify decisions. It is clear, at least, that we should not use SHAP-based explanations as a DST in this context. However, we do not suggest that SHAP should be discarded entirely. In fact, though \emph{Salary} and \emph{Credit} both prove unsuitable tasks for applications of SHAP-based explanations as DSTs, we suggest that we might still make use of the explanations. In particular, in use cases where explainee trust in the underlying model is not at issue, SHAP's induction of unwarranted trust need not undermine its utility.
 
-It is clear that when making a `primary' decision (i.e., the same decision the model output seeks to make), human reviewers working from AI outputs are preeminently concerned with whether to agree with or overrule the model's output. However, after making this decision, they are no longer necessarily concerned with whether to agree or disagree with the model's output. Consider the task of \emph{refining a scholarship selection algorithm}, the $selection$ task. Scholarship and talent investment programs ordinarily select cohorts in a series of application cycles \cite{li2020hiring}. Between application cycles, they seek to examine their previous selection decisions, and possibly modify their processes to improve these decisions in the future \cite{li2020hiring}; if AI algorithms are used to support these decisions, the review will naturally include refinements to the AI algorithms. In this case, though, we are no longer concerned with whether the AI was correct; rather, we are concerned with whether the way the AI informs decision-making is conducive to ideal selection pipelines.
+It is clear that when making a `primary' decision (i.e., the same decision the model output seeks to make), human reviewers working from AI outputs are preeminently concerned with whether to agree with or overrule the model's output. However, after making this decision, they are no longer necessarily concerned with whether to agree or disagree with the model's output. Consider the task of \emph{refining a scholarship selection algorithm}, the \emph{Refinement} task. Scholarship and talent investment programs ordinarily select cohorts in a series of application cycles \cite{li2020hiring}. Between application cycles, they seek to examine their previous selection decisions, and possibly modify their processes to improve these decisions in the future \cite{li2020hiring}; if AI algorithms are used to support these decisions, the review will naturally include refinements to the AI algorithms. In this case, though, we are no longer concerned with whether the AI was correct; rather, we are concerned with whether the way the AI informs decision-making is conducive to ideal selection pipelines.
 
-We conducted a human-centric study using SHAP explanations as an \emph{ex-post} explanation tool to help selection practitioners from a scholarship and talent investment program with the $selection$ task. Through this participatory design study, we assess SHAP's usefulness based on the insights these explanations provide.
+We conducted a human-centric study using SHAP explanations as an \emph{ex-post} explanation tool to help selection practitioners from a scholarship and talent investment program with the \emph{Refinement} task. Through this participatory design study, we assess SHAP's usefulness based on the insights these explanations provide.
 
 This study aims to answer RQ2:
 
@@ -610,7 +604,7 @@ Suppose a farmer sees what they believe to be a sheep on a hill, and states ``th
 In Section \ref{ssec:os_discussion}, we present what we believe is the most likely explanation for why Anchor explanations do not induce unwarranted trust: unlike SHAP and Confidence, these explanations might reveal concerns in the underlying model's local behaviour. However, other explanations exist. \textcite{Miller} describes desiderata that make explanations well-suited to most explainees: explanations should be contrastive, counterfactual, selective, and social. While Anchor explanations are not social, they are contrastive, counterfactual, and social. However, it may be that these explanations' beneficial effects on trust stem not from an ability to reveal concerns in the underlying model, but rather from subjective desiderata. In this case, Anchor might still mislead \cite{Lipton}.
 
 \subsection{Limitations and Future Work}
-One core limitation of our work relates to the choice of tasks. While $salary$, $credit$, and $selection$ are closely related tasks, the distinction between \emph{in-process} and \emph{ex-post} decisions may be complicated by other distinctions between the three tasks. Future work should investigate the this distinction in other contexts.
+One core limitation of our work relates to the choice of tasks. While \emph{Salary}, \emph{Credit}, and \emph{Refinement} are closely related tasks, the distinction between \emph{in-process} and \emph{ex-post} decisions may be complicated by other distinctions between the three tasks. Future work should investigate the this distinction in other contexts.
 
 Another major limitation of our work stems from Section \ref{ssec:anchor_problem}'s Anchor problem. We recognise here that, though Sections \ref{ssec:history} and \ref{ssec:os_discussion} give a compelling theory for the surprising results surrounding Anchor explanations, we do not investigate here why Anchor explanations do not induce unwarranted trust. We expect future work will examine this.
 
