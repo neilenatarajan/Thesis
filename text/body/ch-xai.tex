@@ -105,24 +105,23 @@ There is a large body of studies that empirically evaluate xAI methods. In some 
 
 However, while these evaluations are instructive in that they provide interesting new perspectives on technologies, they do not help us evaluate whether utilising these explanations as DSTs is problematic in practice. To determine this, we turn to evaluations that involve humans using an AI system to perform some task \cite{Ribeiro-et-al-lime,Ribeiro-et-al-anchors, rader-et-al, Jacobs-et-al, Bansal-et-al}. These critiques, either explicitly or implicitly, tend to evaluate the impact of explanations on (attitudinal or behavioural) trust in AI systems. We enumerate some in Table \ref{tab:studies}.
 
-\begin{table*}[tbp]
+\begin{table}[htbp]
+    \centering
     \caption{This table documents human-centric evaluations of the effects of different explanations types on trust and warrentedness of trust. Many studies find evidence that all Feature-Based explanations increase trust in AI outputs, while results are mixed for other explanation types, but warrantedness of trust is rarely explored.}
-    \begin{center}
-    \begin{tabular}{p{1.5cm}p{1.5cm}p{1.5cm}p{2cm}p{3cm}p{3cm}}
+    \begin{tabular}{p{0.2\linewidth} p{0.15\linewidth} p{0.2\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
         \toprule
-        Study & Domain & Target Group & Explanation Philosophy & Explanation Effect on Trust & Explanation Effect on Warrantedness of Trust \\
+        Study & Domain & Explanation Philosophy & Explanation Effect on Trust & Explanation Effect on Warrantedness of Trust \\
         \midrule
-        \textcite{Lai-and-Tan} & Deception Detection & General & Feature-Based, Example-Based, Model Confidence & Feature- and Example-Based explanations increase explainee trust & No increase in detected user trust when the model's outputs are incorrect \\
-        \textcite{Binns-et-al} & Multiple Domains & General & Feature-Based, Rule-Based (Recourse), Example-Based & Example-Based explanations decrease participant trust in the fairness of AI outputs & Warrentedness not investigated \\
-        \textcite{Ford-et-al} & Image Recognition & General & Example-Based & Explanation presence or style has no main effect on end-user trust & Warrentedness not investigated \\
-        \textcite{Jacobs-et-al} & Clinical Treatment & Clinicians & Feature-Based, Others & Participants demonstrate behavioural trust in models in all cases & Feature-based explanations of incorrect recommenations induce unwarranted behavioural trust. \\
-        \textcite{Bansal-et-al} & Sentiment Classification & General & Feature-Based (LIME) & No observed effect of explanations relative to baseline (with AI) condition & Warrentedness not investigated \\
-        \textcite{Mohseni-et-al} & Fake News Detection & General & Feature-Based and Others & End-user trust clustered into profiles that evolve, either increasing or decreasing over time & Warrentedness not investigated \\
+        \textcite{Lai-and-Tan} & Deception Detection & Feature-Based, Example-Based, Model Confidence & Feature- and Example-Based explanations increase explainee trust & No increase in detected user trust when the model's outputs are incorrect \\
+        \textcite{Binns-et-al} & Multiple Domains & Feature-Based, Rule-Based (Recourse), Example-Based & Example-Based explanations decrease participant trust in the fairness of AI outputs & Warrentedness not investigated \\
+        \textcite{Ford-et-al} & Image Recognition & Example-Based & Explanation presence or style has no main effect on end-user trust & Warrentedness not investigated \\
+        \textcite{Jacobs-et-al} & Clinical Treatment & Feature-Based, Others & Participants demonstrate behavioural trust in models in all cases & Feature-based explanations of incorrect recommenations induce unwarranted behavioural trust. \\
+        \textcite{Bansal-et-al} & Sentiment Classification & Feature-Based (LIME) & No observed effect of explanations relative to baseline (with AI) condition & Warrentedness not investigated \\
+        \textcite{Mohseni-et-al} & Fake News Detection & Feature-Based and Others & End-user trust clustered into profiles that evolve, either increasing or decreasing over time & Warrentedness not investigated \\
         \bottomrule
     \end{tabular}
     \label{tab:studies}
-    \end{center}
-\end{table*}
+\end{table}
 
 Despite \textcite{Lipton}'s ``misleading but plausible'' critique, the verdict of these human-centric evaluations is mixed. \textcite{Lai-and-Tan,Jacobs-et-al} both find that their Feature- and Example-Based explanations increase explainee trust in AI outputs, but \textcite{Binns-et-al} find that Example-Based explanations actually decrease explainee trust in AI outputs. The answer, we must conclude, depends on the explanation, the target group, or even the domain \cite{Mohseni-et-al}. 
 
@@ -206,8 +205,8 @@ We code the participant's estimate as a binary $y_{human}$ variable:
 
 \begin{equation}
     y_{human} := \begin{cases}
-        \text{How much money do you estimate this person makes?} & (Salary) \\
-        \text{Do you predict that this person will experience severe credit delinquency?} & (Credit)
+        \text{How much money does this person make?} & (Salary) \\
+        \text{Will this person experience severe credit delinquency?} & (Credit)
     \end{cases}
 \end{equation}
 
@@ -301,20 +300,21 @@ We first run the one-sided t-tests on the two trust variables ($attitudinal$ and
 \noindent for both \emph{Salary} and \emph{Credit} across SHAP, Anchor, and Confidence. A positive $F$ statistic here indicates $trust^{after} > trust^{before}$ and a negative $F$ statistic indicates $trust^{after} < trust^{before}$, but, as these are one-sided tests, $p$-values will only be meaningful when $F > 0$. This test was preregistered in both of our tasks \cite{natarajan_binns_2022}. Table \ref{tab:delta-trust-t} contains the results of these analyses.  
 
 \begin{table}[htb]
+    \centering
     \caption{These one-sided t-tests test for $\Delta trust > 0 | \neg correct_{AI}$ for all explanatory conditions and both tasks. We find that SHAP and Confidence increase unwarranted trust in the AI system.}
     \label{tab:delta-trust-t}
-    \begin{tabular}{ccccc}
+    \begin{tabular}{lllrr}
         \toprule
-        Task & Explanatory Condition & Variable & F Statistic & p Value \\ 
+        Task & Explanation & Variable & F Statistic & p Value \\ 
         \midrule
-        Salary Estimation & Anchor & $\Delta trust_{behavioural}$ & $0.509$ & $0.306$ \\
+        \emph{Salary} & Anchor & $\Delta trust_{behavioural}$ & $0.509$ & $0.306$ \\
         & & $\Delta trust_{attitudinal}$ & $0.165$ & $0.434$ \\
         & SHAP & $\Delta trust_{behavioural}$ & $\mathbf{3.811}$ & $\mathbf{<0.001}$ \\
         & & $\Delta trust_{attitudinal}$ & $-0.886$ & $0.812$ \\
         & Confidence & $\Delta trust_{behavioural}$ & $\mathbf{2.196}$ & $\mathbf{0.015}$ \\
         & & $\Delta trust_{attitudinal}$ & $0.945$ & $0.173$ \\
         \midrule
-        Credit Delinquency Prediction & Anchor & $\Delta trust_{behavioural}$ & $1.396$ & $0.082$ \\
+        \emph{Credit} & Anchor & $\Delta trust_{behavioural}$ & $1.396$ & $0.082$ \\
         & & $\Delta trust_{attitudinal}$ & $-2.364$ & $0.990$ \\
         & SHAP & $\Delta trust_{behavioural}$ & $1.516$ & $0.066$ \\
         & & $\Delta trust_{attitudinal}$ & $\mathbf{2.475}$ & $\mathbf{0.007}$ \\
@@ -332,22 +332,26 @@ Notably, Anchor does not follow this pattern, and instead shows no significant i
 We have shown already that SHAP and Confidence induce unwarranted trust relative to no explanation; we now show that there is significant difference in the effect of some explanatory conditions relative to others. To do this, we examine the $\Delta trust_{behavioural}$ and $\Delta trust_{attitudinal}$ variables across explanatory conditions with an ANOVA test. For this test, we filter on $\neg correct_{AI}$. I.e.:
 
 \begin{equation}
-    \Delta \text{ any}(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} \text{ for } x1 \in \{behavioural, attitudinal\} \text{ and } x2,x3 \in \{SHAP, Anchor, Confidence\}
+    \begin{split}
+        \Delta \text{ any}(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} & \text{ for } x1 \in \{behavioural, attitudinal\} \\
+        & \text{ and } x2,x3 \in \{SHAP, Anchor, Confidence\}
+    \end{split}
 \end{equation}
 
 \noindent This test was preregistered in both of our tasks \cite{natarajan_binns_2022}. Table \ref{tab:delta-trust-anova} contains the results of these analyses.
 
 \begin{table}[htb]
+    \centering
     \caption{These ANOVAs compare $\Delta trust$ between SHAP, Confidence, and Anchor to indicate where significant differences exist. We find two statistically significant differences, indicating that we should focus post-hoc analyses on these two.}
     \label{tab:delta-trust-anova}
     \begin{tabular}{lrrr}
         \toprule
         Task & Variable & F Statistic & p Value \\
         \midrule
-        Salary Estimation & $\Delta trust_{behavioural}$ & $\mathbf{3.671}$ & $\mathbf{0.026}$ \\
+        \emph{Salary} & $\Delta trust_{behavioural}$ & $\mathbf{3.671}$ & $\mathbf{0.026}$ \\
         & $\Delta trust_{attitudinal}$ & $0.925$ & $0.397$ \\
         \midrule
-        Credit Delinquency Prediction & $\Delta trust_{behavioural}$ & $0.066$ & $0.936$ \\
+        \emph{Credit} & $\Delta trust_{behavioural}$ & $0.066$ & $0.936$ \\
         & $\Delta trust_{attitudinal}$ & $\mathbf{6.213}$ & $\mathbf{0.002}$ \\
         \bottomrule
     \end{tabular}
@@ -365,11 +369,12 @@ We now show that:
 \noindent Note that, while the result of the ANOVA test in table \ref{tab:delta-trust-anova} supports that there is indeed a statistically significant difference in the three group means of the $\Delta trust_{behavioural}$ variable, it does not specify which means are greater and which are less. For an indication of which means are greater, following our preregistered protocol for significant ANOVA results, we turn to Tukey's Honestly Significant Difference (HSD) test as a post-hoc test in table \ref{tab:delta-trust-hsd}. As we found significant results in the ANOVA test of $\Delta trust_{behavioural}$ filtered on $\neg correct_{AI}$, we restrict our post-hoc analysis to this variable.
 
 \begin{table}[htb]
+    \centering
     \caption{Tukey's HSD test compares $\Delta trust_{behavioural,x}$ in \emph{Salary} with $\neg correct_{AI}$. We find that SHAP increases behavioural trust in incorrect AI outputs more than Anchor.}
     \label{tab:delta-trust-hsd}
     \begin{tabular}{lllrr}
         \toprule
-        Explanatory Condition A & Explanatory Condition B & Variable & Test Statistic & p Value \\
+        Explanation A & Explanation B & Variable & Test Statistic & p Value \\
         \midrule
         SHAP & Anchor & $\Delta trust_{behavioural}$ & $\mathbf{2.310}$ & $\mathbf{0.022}$ \\
         Confidence & Anchor & $\Delta trust_{behavioural}$ & $0.855$ & $0.599$ \\
@@ -386,15 +391,26 @@ Note that we found a large negative F for $\Delta trust_{attitudinal}$ in the An
 For an indication of which means are greater, following our preregistered protocol for significant ANOVA results, we turn again to a Tukey's HSD test as a post-hoc test in table \ref{tab:delta-trust-hsd-2}. As we found significant results in the ANOVA test of $\Delta trust_{attitudinal}$ filtered on $\neg correct_{AI}$, we restrict our post-hoc analysis to this variable. We test:
 
 \begin{equation}
-    \Delta trust_{behavioural,x1,credit} > \Delta trust_{behavioural,x2,credit} | \neg correct_{AI} for x1,x2 \in \{SHAP, Anchor, Confidence\}
+    \begin{split}
+        & \Delta trust_{behavioural,x1,credit} > \Delta trust_{behavioural,x2,credit} | \neg correct_{AI} \\
+        & \qquad \text{ for } x1,x2 \in \{SHAP, Anchor, Confidence\}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \Delta \text{ any}(trust_{x1,x2} \neq trust_{x1,x3}) | \neg correct_{AI} & \text{ for } x1 \in \{behavioural, attitudinal\} \\
+        & \text{ and } x2,x3 \in \{SHAP, Anchor, Confidence\}
+    \end{split}
 \end{equation}
 
 \begin{table}[htb]
+    \centering
     \caption{Tukey's HSD test compares $\Delta trust_{attitudinal}$ across explanations in \emph{Credit} with $\neg correct_{AI}$. We find that Anchor decreases unwarranted trust relative to SHAP and Confidence.}
     \label{tab:delta-trust-hsd-2}
-    \begin{tabular}{lllrrc}
+    \begin{tabular}{lllrr}
         \toprule
-        Explanatory Condition A & Explanatory Condition B & Variable & Test Statistic & p Value \\
+        Explanation A & Explanation B & Variable & Test Statistic & p Value \\
         \midrule
         SHAP & Anchor & $\Delta trust_{attitudinal}$ & $\mathbf{1.213}$ & $\mathbf{<0.001}$ \\
         Confidence & Anchor & $\Delta trust_{attitudinal}$ & $\mathbf{1.030}$ & $\mathbf{<0.001}$ \\
@@ -413,16 +429,17 @@ It should be noted that some patterns observed for $trust_{behavioural}$ do not 
 For this analysis, we do not filter out positive cases. Rather, we consider all cases together. Results can be seen in table \ref{tab:trust-correlation}.\footnote{This analysis was only partially preregistered; we did not register this analysis in the Salary Estimation task, but we did in the Credit Delinquency Prediction task \cite{natarajan_binns_2022}.}
 
 \begin{table}[htb]
+    \centering
     \caption{Pearson's test shows a high correlation between $trust_{attitudinal}$ and $trust_{behavioural}$ in both tasks. This correlation extends to the relationship between $\Delta trust_{attitudinal}$ and $\Delta trust_{behavioural}$.}
     \label{tab:trust-correlation}
     \begin{tabular}{lllrr}
         \toprule
         Task & Variable A & Variable B & Rho & p \\
         \midrule
-        Salary Estimation & $trust_{attitudinal}$ & $trust_{behavioural}$ & $\mathbf{0.630}$ & $\mathbf{<0.001}$ \\
+        \emph{Salary} & $trust_{attitudinal}$ & $trust_{behavioural}$ & $\mathbf{0.630}$ & $\mathbf{<0.001}$ \\
         & $\Delta trust_{attitudinal}$ & $\Delta trust_{behavioural}$ & $\mathbf{0.265}$ & $\mathbf{<0.001}$ \\
         \midrule
-        Credit Delinquency Prediction & $trust_{attitudinal}$ & $trust_{behavioural}$ & $\mathbf{0.612}$ & $\mathbf{<0.001}$ \\
+        \emph{Credit} & $trust_{attitudinal}$ & $trust_{behavioural}$ & $\mathbf{0.612}$ & $\mathbf{<0.001}$ \\
         & $\Delta trust_{attitudinal}$ & $\Delta trust_{behavioural}$ & $\mathbf{0.179}$ & $\mathbf{<0.001}$ \\
         \bottomrule
     \end{tabular}
@@ -436,16 +453,17 @@ Having found no significant result indicating the presence of the hypothesised e
 We noted already that SHAP and Confidence appear to increase trust in cases where the AI output is incorrect. However, we noticed no such result for Anchor. However, we did observe an apparent negative effect on $\Delta trust_{attitudinal}$ in the t-tests for the Credit Delinquency Prediction task, though, as the tests were one-sided, we could not confirm significance. Thus, we repeat this test as a two-sided test, as shown in table \ref{tab:delta-trust-t-2}. We also repeat other t-tests on Anchor as two-sided, though, as they all have positive F-values, note that none can yield significant results.
 
 \begin{table}[htb]
+    \centering
     \caption{Two-sided t-tests compare $\Delta trust_{x,Anchor} \neq 0 for x \in \{attitudinal, behavioural\}$ in both tasks. We find that Anchor explanations decrease attitudinal trust in incorrect AI outputs in \emph{Credit}, but all other results are inconclusive.}
     \label{tab:delta-trust-t-2}
     \begin{tabular}{lllrr}
         \toprule
-        Task & Explanatory Condition & Variable & t Statistic & p Value \\ 
+        Task & Explanation & Variable & t Statistic & p Value \\ 
         \midrule
-        Salary Estimation & Anchor & $trust_{behavioural}$ & $0.509$ & $0.611$ \\
+        \emph{Salary} & Anchor & $trust_{behavioural}$ & $0.509$ & $0.611$ \\
         & & $trust_{attitudinal}$ & $0.165$ & $0.869$ \\
         \midrule
-        Credit Delinquency Prediction & Anchor & $trust_{behavioural}$ & $1.396$ & $0.164$ \\
+        \emph{Credit} & Anchor & $trust_{behavioural}$ & $1.396$ & $0.164$ \\
         & & $trust_{attitudinal}$ & $\mathbf{-2.364}$ & $\mathbf{0.019}$ \\
         \bottomrule
     \end{tabular}
@@ -463,17 +481,18 @@ Noting that behavioural trust is an index variable constructed from $selfconfide
 Analysis can be seen in table \ref{tab:delta-confidence-t}.\footnote{This analysis was not preregistered.} Note for clarity that $selfconfidence$ is the variable indicating participant confidence in their own decisions, and Confidence is the condition in which the explanation consists of the AI's own confidence in its suggestion.
 
 \begin{table}[htb]
+    \centering
     \caption{One-sided t-tests determine whether $\Delta selfconfidence > 0$ where $\neg correct_{AI}$ for all explanatory conditions and both tasks. We find that Anchor and SHAP increase participant self-confidence in their determinations, while Confidence yields inconclusive results.}
     \label{tab:delta-confidence-t}
     \begin{tabular}{lllrr}
         \toprule
-        Task & Explanatory Condition & Variable & t Statistic & p \\
+        Task & Explanation & Variable & t Statistic & p \\
         \midrule
-        Salary Estimation & Anchor & $selfconfidence$ & $\mathbf{2.171}$ & $\mathbf{0.016}$ \\
+        \emph{Salary} & Anchor & $selfconfidence$ & $\mathbf{2.171}$ & $\mathbf{0.016}$ \\
         & SHAP & $selfconfidence$ & $\mathbf{1.694}$ & $\mathbf{0.046}$ \\
         & Confidence & $selfconfidence$ & $1.047$ & $0.296$ \\
         \midrule
-        Credit Prediction & Anchor & $selfconfidence$ & $\mathbf{1.742}$ & $\mathbf{0.042}$ \\
+        \emph{Credit} & Anchor & $selfconfidence$ & $\mathbf{1.742}$ & $\mathbf{0.042}$ \\
         & SHAP & $selfconfidence$ & $\mathbf{3.473}$ & $\mathbf{<0.001}$ \\
         & Confidence & $selfconfidence$ & $0.752$ & $0.226$ \\
         \bottomrule
@@ -486,20 +505,21 @@ We note that, while Confidence shows no significant effects on either task, part
 Note that ideally calibrated trust would involve both distrusting the AI output when it is wrong and trusting it when it is right. To assess the latter, we now turn to an evaluation of what happens in the cases where the AI is correct, i.e. $correct_{AI}$. Namely, we conduct two-sided t-tests on both trust variables in all three cases. Table \ref{tab:delta-trust-t-positives} contains the results of these analyses.\footnote{These analyses were not preregistered.}
 
 \begin{table}[htb]
+    \centering
     \caption{These two-sided t-tests compare $\Delta trust$ when $correct_{AI}$. We find that Confidence and SHAP increase trust in the AI system when it is correct, while Anchor decreases attitudinal trust in the AI system, but increases behavioural trust.}
     \label{tab:delta-trust-t-positives}
     \begin{tabular}{lllrr}
         \toprule
-        Task & Explanatory Condition & Variable & t Statistic & p Value \\ 
+        Task & Explanation & Variable & t Statistic & p Value \\ 
         \midrule
-        Salary Estimation & Anchor & $trust_{behavioural}$ & $0.502$ & $0.616$ \\
+        \emph{Salary} & Anchor & $trust_{behavioural}$ & $0.502$ & $0.616$ \\
         & & $trust_{attitudinal}$ & $\mathbf{-2.337}$ & $\mathbf{0.020}$ \\
         & SHAP & $trust_{behavioural}$ & $0.295$ & $0.768$ \\
         & & $trust_{attitudinal}$ & $-1.385$ & $0.168$ \\
         & Confidence & $trust_{behavioural}$ & $\mathbf{2.410}$ & $\mathbf{0.017}$ \\
         & & $trust_{attitudinal}$ & $\mathbf{3.254}$ & $\mathbf{0.001}$ \\
         \midrule
-        Credit Delinquency Prediction & Anchor & $trust_{behavioural}$ & $\mathbf{3.013}$ & $\mathbf{0.003}$ \\
+        \emph{Credit} & Anchor & $trust_{behavioural}$ & $\mathbf{3.013}$ & $\mathbf{0.003}$ \\
         & & $trust_{attitudinal}$ & $\mathbf{-2.487}$ & $\mathbf{0.014}$ \\
         & SHAP & $trust_{behavioural}$ & $0.207$ & $0.836$ \\
         & & $trust_{attitudinal}$ & $\mathbf{3.538}$ & $\mathbf{0.001}$ \\
