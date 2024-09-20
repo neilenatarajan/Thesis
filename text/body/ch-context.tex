@@ -16,13 +16,6 @@ Society desires place other demands on selection less related to specific theori
 \section{The Decision Matrix: A Framework for Understanding Selection Decisions and Evaluating DSTs}
 In Chapter \ref{ch:genai}, we uncover through a process of Action Research (AR) a framework we term the \emph{Decision Matrix}. This framework sees us identifying ``decision points'' that selection teams are faced with categorising them on two axes: \emph{stage} and \emph{stakes}. The \emph{stage} axis captures the important distinctions between decisions made in the process of selection (\emph{in-process}) and decisions made \emph{ex-post}, after the primary \emph{selection} decision of ``What cohort of people do we select?'' has been made. The \emph{stakes} axis, in contrast, captures the sensitivity (or severity) of the decisions. E.g., choosing to disqualify or select and applicant is a \emph{high-stakes} decision, while choosing to assign extra staff to evaluate the truthfulness of an applicant's claims is a comparatively \emph{low-stakes} decision.
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth]{context/full_decision_matrix.png}
-  \caption{This figure enumerates relevant decision points facing selection teams.}
-  \label{tab:full_decision_list}
-\end{figure}
-
 \begin{table}[htbp]
   \centering
   \caption{This figure enumerates relevant decision points facing selection teams..}
@@ -33,15 +26,14 @@ In Chapter \ref{ch:genai}, we uncover through a process of Action Research (AR) 
       \midrule
       \emph{Salary} & \ref{ch:xai} & A program may desire to deferentially treat a person based on an estimate of their salary.\footnote{\label{fn:decision_points}Note that in the case of both \emph{Salary} and \emph{Credit}, the decision point listed here differs slightly from the prompt as posed to study participants from Chapter \ref{ch:xai}. The framing in Chapter \ref{ch:xai} was presented to study participants, while the framing here is most interesting from our perspective.} & AI-calculated estimations of salary range based on census information of that individual. \\ 
       \emph{Credit} & \ref{ch:xai} & A program may desire to accept or deny a hypothetical person's loan application based on their creditworthiness.\footnote{See footnote \ref{fn:decision_points}} & An AI-generated prediction of whether someone will be severely delinquent in making a credit payment. \\ 
-      \emph{Refinement} & \ref{ch:xai} & Program A refines its application process each year to better select applicants. & Explanations of perplexing AI-generated scores. \\ 
+      \emph{Refinement} & \ref{ch:xai} & Program A refines its scoring algorithm each year to better score applicants. & Explanations of perplexing AI-generated scores. \\ 
       \emph{Diligence} & \ref{ch:genai} & Program A makes holistic decisions about when and how to consider applicants. & Information about which essays (and which parts of essays) were written by genAI; information about whether the genAI-written passages are hallucinations. \\ 
       \emph{Partners} & \ref{ch:genai} & Program A must determine whether to continue channel partnerships, which encourage and support applicants. & Whether any channel partners' affiliated applicants use genAI disproportionately. \\
       \emph{Pipeline} & \ref{ch:genai} & Program A decides whether to modify their application material or process. & Information about usage of genAI throughout the application pipeline. \\
       \emph{Gameability} & \ref{ch:genai} & Program A decides how to modify their application material or process. & Information about the how AI-generated essays are scored under the current application process. \\
       \emph{Disqualification} & \ref{ch:genai} & A program may decide to disqualify an applicant that violates their application guidelines. & Information about whether essays violate application guidelines around genAI usage. \\
-      \emph{Representativeness} & \ref{ch:diversity} and \ref{ch:spf} & Programs A and B make cohort-level decisions to ensure specific levels of representativeness. & Information about the impact of representativeness on other relevant metrics and about each applicant's impact on that representativeness. \\
-      \emph{Perspectives} & \ref{ch:diversity} and \ref{ch:spf} & Programs A and B make cohort-level decisions to ensure cohorts contain a variety of perspective. & Information about the impact of including diverse perspectives on other relevant metrics. \\
-      \emph{Contextualisation} & \ref{ch:diversity} and \ref{ch:spf} & Programs A and B make holistic decisions about whether applicants' disadvantages merit special consideration or support. & Information about relative applicant disadvantage, including possibly a `disadvantage score'. \\
+      \emph{Diversity} & \ref{ch:diversity} and \ref{ch:spf} & Programs A and B make cohort-level decisions regarding the diversity of their cohort. & Information about the diversity of possible cohorts. \\
+      \emph{Contribution} & \ref{ch:diversity} and \ref{ch:spf} & Programs A and B make applicant-level decisions about which applicants to move forward based on their contribution to cohort diversity. & Information about the impact of including different applicants on cohort diversity. \\
       \bottomrule
   \end{tabular}
 \end{table}
