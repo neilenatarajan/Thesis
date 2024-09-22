@@ -108,6 +108,7 @@ However, while these evaluations are instructive in that they provide interestin
 \begin{table}[htbp]
     \centering
     \caption{This table documents human-centric evaluations of the effects of different explanations types on trust and warrentedness of trust. Many studies find evidence that all Feature-Based explanations increase trust in AI outputs, while results are mixed for other explanation types, but warrantedness of trust is rarely explored.}
+    \adjustbox{max width=\textwidth}{
     \begin{tabular}{p{0.2\linewidth} p{0.15\linewidth} p{0.2\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
         \toprule
         Study & Domain & Explanation Philosophy & Explanation Effect on Trust & Explanation Effect on Warrantedness of Trust \\
@@ -120,6 +121,7 @@ However, while these evaluations are instructive in that they provide interestin
         \textcite{mohseni_trust_nodate} & Fake News Detection & Feature-Based and Others & End-user trust clustered into profiles that evolve, either increasing or decreasing over time & Warrentedness not investigated \\
         \bottomrule
     \end{tabular}
+    }
     \label{tab:studies}
 \end{table}
 
@@ -303,7 +305,7 @@ We first run the one-sided t-tests on the two trust variables ($attitudinal$ and
     \centering
     \caption{These one-sided t-tests test for $\Delta trust > 0 | \neg correct_{AI}$ for all explanatory conditions and both tasks. We find that SHAP and Confidence increase unwarranted trust in the AI system.}
     \label{tab:delta-trust-t}
-    \begin{tabular}{lllrr}
+    \begin{tabular}{l l l r r}
         \toprule
         Task & Explanation & Variable & F Statistic & p Value \\ 
         \midrule

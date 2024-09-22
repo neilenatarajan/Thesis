@@ -105,7 +105,7 @@ First, we introduce notions of computational complexity from computer science. T
 \end{theorem}
 
 \begin{proof}
-Suppose for a contradiction that $\forall s_i \in S . Opt_{gen}(s_i, n)$ can be solved by some algorithm $Alg_{gen}(s_i, n)$ which makes fewer than $n^m$ calls of $s_i$ for some fixed $m$. Let $n$ be sufficiently large that that $\choose{2n}{n} > n^m$. Then let $s_j$ be defined as follows:
+Suppose for a contradiction that $\forall s_i \in S . Opt_{gen}(s_i, n)$ can be solved by some algorithm $Alg_{gen}(s_i, n)$ which makes fewer than $n^m$ calls of $s_i$ for some fixed $m$. Let $n$ be sufficiently large that that $\binom{2n}{n} > n^m$. Then let $s_j$ be defined as follows:
 
 \begin{equation}
 s_j(c) = 
@@ -118,7 +118,7 @@ s_j(c) =
 
 \noindent As $s_i$ and $s_j$ are identical where $Alg_{gen}(s_i, n)$ calls $s_i$, they must also be identical where $Alg_{gen}(s_j, n)$ calls $s_i$. Thus, $Alg_{gen}(s_j, n) = Alg_{gen}(s_i, n)$.
 
-By assumption, $Alg_{gen}(s_j, n) = Opt_{gen}(s_i, n)$, but as $\choose{2n}{n} > n^m$, $\exists c \subset U . s_j(c) = Opt_{gen}(s_i, n) + 1$. Thus, $Alg_{gen}$ is does not satisfy Theorem \ref{thm:general-nphard}, a contradiction!
+By assumption, $Alg_{gen}(s_j, n) = Opt_{gen}(s_i, n)$, but as $\binom{2n}{n} > n^m$, $\exists c \subset U . s_j(c) = Opt_{gen}(s_i, n) + 1$. Thus, $Alg_{gen}$ is does not satisfy Theorem \ref{thm:general-nphard}, a contradiction!
 \end{proof}
 
 \subsubsection{Defining of Diversity and Talent}\label{subsubsec:div_talent_def}
@@ -176,7 +176,7 @@ We represent an organisation's preference function $F$ as a weighted sum of perf
 F(D, P, c, \iota) := \iota*D(c)+(1-\iota)*P(c)
 \end{equation}
 
-\subsubsection{The Complexity of Our Preference Functions $F$}
+\subsubsection{The Complexity of Our Preference Functions}
 
 Much like the class of $\mathbf{P}$ problems, there is a second class of problems, $\mathbf{NP}$ that are \textit{verifiable} in polynomial time. It is often assumed in Computer Science (though unproved) that $\mathbf{P} \neq \mathbf{NP}$, i.e., that there exist problems in $\mathbf{NP}$ that are not in $\mathbf{P}$; we make this assumption here \cite{COPPERSMITH198527}. Yet a third class, the class of ``$\mathbf{NP}$-hard'' problems, are the problems whose solutions can be used to emulate (with a polynomial-time emulator) solutions to all $\mathbf{NP}$ problems. If $\mathbf{P} \neq \mathbf{NP}$, then all $\mathbf{NP}$-hard problems are not polynomially solvable.
 
