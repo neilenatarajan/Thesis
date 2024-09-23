@@ -9,12 +9,31 @@
 
 \minitoc
 
+\section{Motivation}
+Consider a group of children gathering play a game of pick-up football. Before they can play, the children must first divide themselves into two teams. Two children may first be selected as captains, and these captains will then select, in order, the remainder of their team. Who these captains select and in what order will depend on their goals. Captains may select the best football player present, one of their friends, or someone who would otherwise not be selected at all.
+
+This ``selection problem'' of choosing who to include echoes all through society. Universities must select who they admit. Employers must select who they hire. Creditors must select who they lend to. 
+
+In each case, the selection process is a complex decision-making process that must balance competing values and priorities. In the case of universities, these values may include academic performance, extracurricular activities, and diversity. In the case of employers, these values may include job performance, cultural fit, and diversity. In the case of scholarship programs, these values may include academic performance, potential for impact, and diversity.
+
+
+% - selection is an unfortunate necessity
+% - people do it from when they are kids on the playground to when they are in big buildings recruiting for jobs
+% - the tools we use for selection work well at a small scale (though they are not perfect), but they struggle at scales like universities/jobs
+% - it seems like algorithms exacerbate this problem, but they are also revealing a pre-existing problem
+% - the tools might also pose a solutions, though, if built well
+% - something about scholarships here
+
+
 \section{The Global Talent Search}
 In a world flattened by the global proliferation of technology \cite{Friedman_2005}, new global scholarship initiatives aim to bear the burden of selecting scholars from around the world. These programs' unprecedented reach offers applicants all around the world an opportunity to access educational resources that may have previously been out of reach. If these programs can select the ``best'' cohorts of applicants, they can deliver on their stated missions to improve the world through broadening access to elite higher education institutions and training scholars to solve the world's biggest problems
 
 However, differing relative prioritisation of values leading to different interpretations of the ``best'' cohort, the challenges of designing systems to compare applicants from vastly different contexts, and the risks of applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the program) challenge to render impossible and already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities. While selection practitioners design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
 
-\section{The \emph{Selection} Problem}
+\section{Terms and Scope}
+
+% \section{The \emph{Selection} Problem}
+% This is really the scope of the thesis
 In real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{zimmerman_research_2014}. But how can selection practitioners make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process is twofold: 
 
 \begin{enumerate}
@@ -24,7 +43,7 @@ In real selection pipelines, competing values and interpretations of these value
 
 We term this twofold problem \emph{Selection}.
 
-\section{Selection-Oriented AI}
+\section{Selection-Oriented AI} % This is also possibly scope?
 We work with two global scholarship programs (h.f., programs A and B) and apply Human-Computer Interaction (HCI) methods to design Artificial Intelligence (AI) systems to act as data-driven Decision Support Tools (DSTs) that can assist practitioners in making fair and informed selection decisions. In doing this, we position the space of decisions these two programs make on the \emph{Decision Matrix} a framework we design for evaluating the suitability of AI systems in different decision-making contexts. We work with program A to find that many existing AI solutions, e.g. post-hoc xAI systems and generative AI detectors, are useful DSTs at the \emph{ex-post} stage of decision-making, but are limited in their application \emph{in-process}. In an attempt to design a tool selection practitioners could use in-process, we engage both programs in a participatory design process to produce six design prototypes of DSTs that could help practitioners incorporate diversity considerations into their selection decisions. While this process reveals practitioner satisfaction, we find a major critique of xAI methods (that, though they satisfy subjective desires, they may not improve objective outcomes) similarly concerning in this context. To test this, we implement one of these designs as a technology probe in program A and evaluate its impact on selection outcomes, where we find an increase in both average applicant performance and overall cohort diversity according the to the program's own metrics. Our findings suggest that AI-based DSTs can support fair selection processes and improve diversity outcomes in-process.
 
 Our findings suggest the feasibility of supporting considerations across the decision matrix. We conclude with a call for the development of Selection-Oriented AI (SOAI), a family of methodologies for achieving the social values of properly selecting a global cohort of scholars. In contrast to Selector-Centred AI, which would centre the point of view of selection practitioners, the SOAI paradigm acknowledges that, while selection practitioners are motivated by achieving this social value, DSTs seeking to support the process of selection must go beyond centring them as users and must instead orient themselves around a specific theory of social value, then attempt to support achieving that value.
