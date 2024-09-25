@@ -1,11 +1,7 @@
-% \begin{savequote}[8cm]
-% Alles Gescheite ist schon gedacht worden.\\
-% Man muss nur versuchen, es noch einmal zu denken.
-
-% All intelligent thoughts have already been thought;\\
-% what is necessary is only to try to think them again.
-%   \qauthor{--- Johann Wolfgang von Goethe \cite{von_goethe_wilhelm_1829}}
-% \end{savequote}
+\begin{savequote}[8cm]
+    We caution against blindly embracing post-hoc notions of interpretability, especially when optimized to placate subjective demands. In such cases, one might - deliberately or not - optimize an algorithm to present misleading but plausible explanations.
+  \qauthor{\textcite{Lipton}}
+\end{savequote}
 
 \chapter{\label{ch:xai}Using Post-Hoc Explainable AI to Identify Talent: Explaining an Applicant Scoring Algorithm with Shapley Values}
 
@@ -120,6 +116,7 @@ However, while these evaluations are instructive in that they provide interestin
         \textcite{bansal_does_2021} & Sentiment Classification & Feature-Based (LIME) & No observed effect of explanations relative to baseline (with AI) condition & Warrentedness not investigated \\
         \textcite{mohseni_trust_nodate} & Fake News Detection & Feature-Based and Others & End-user trust clustered into profiles that evolve, either increasing or decreasing over time & Warrentedness not investigated \\
         \bottomrule
+        \textcite{Spitzer_Holstein_Morrison_Holstein_Satzger_Kühl} & Architecture Style Classification & Free Text (LLM) & LLM explanations increase end-user trust & LLM explanations increase unwarranted trust \\
     \end{tabular}
     }
     \label{tab:studies}
