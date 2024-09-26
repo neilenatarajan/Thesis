@@ -7,9 +7,53 @@
 %   \qauthor{--- Johann Wolfgang von Goethe \cite{von_goethe_wilhelm_1829}}
 % \end{savequote}
 
-\chapter{\label{ch:spf}A Possibility Frontier Approach to Diverse Talent Selection}\blfootnote{This chapter is based on two papers showcasing research done in concert with Kadeem Noray. Both contributed equally to the research. One paper is currently under review as: Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. The other is being prepared for submission as: Neil Natarajan and Kadeem Noray. 2024. “SPF: A Technology Probe Examining Diversity in Selection Processes.”.}
+\chapter{\label{ch:spf}A Possibility Frontier Approach to Diverse Talent Selection}\blfootnote{This chapter is based on two papers showcasing research done in concert with Kadeem Noray. Both contributed equally to the research. One paper is currently under review as: Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. The other is being prepared for submission as: Neil Natarajan and Kadeem Noray. 2024. “SPF: A Technology Probe Examining Diversity in Selection Processes.”. This version of the work is intended for publication to an economics audience; thus, this Chatper's writing style strays from the norms governing Chapters \ref{ch:xai}, \ref{ch:genai}, and \ref{ch:diversity}.}
 
 \minitoc
+
+% \section{Motivation}
+% % this ties the rest of the chapter to the rest of the thesis.
+
+% \section{Introduction}\label{sec:spfintro}
+% % This is an implementation of the technology probe that is more than just a probe. We've implemented and deployed a system. It's not a probe anymore. This is a real-world deployment. "Field deployment" or "field study" maybe?
+
+% % to-do: say this research has actually been implemented and deployed in the field; it affected the selection of a cohort of scholars in a high-profile scholarship program. DST affected the applications of 5000 people in the cohort. It's an important real-world impact and justifies why these tools are necessary.
+
+% % to-do: mention maybe that we've avoided implementing individual-level stuff because of the potential for automation bias.
+
+% \section{Related Work}\label{sec:spfrelwork}
+
+% \section{Methodology}\label{sec:spfmethod}
+% \subsection{Evaluating Organisational Decision-Making}
+
+% % - We desire to evaluate Prototype \ref{fig:diversity} on real results, rather than satisfaction
+% % - But there is no ground truth of decision-making here
+% % - So we rely on a model of talent selection that we call the SPF
+% % - This model is \dots
+
+% \subsection{Implementing Prototype \ref{fig:diversity} in the Field}
+% % - In order to implement Prototype \ref{fig:diversity} in the field, we similarly rely on the SPF model
+% % - However, calculating optima under this model in NP-hard
+% % - So we use a greedy algorithm to approximate the SPF
+
+% \section{Selection Decisions With and Without Prototype \ref{fig:diversity}}
+% % - Without the prototype, the scholarship program selects suboptimal cohorts
+% % - With the prototype, they improve on the model
+% % - We also see improvements on other measures \dots
+
+% \section{A Theory of Why}
+
+% % - this organisation has already demonstrated a commitment to diversity
+% % - so why does our prototype help?
+% % - augmenting the SPF with a computational cost term helps explain this inefficiency
+% % - it also explains why the organisation finds themselves at a similar diagonal
+
+% \section{Discussion}
+
+% % discuss or something lol
+
+\section{Motivation}
+Chapter \ref{ch:diversity} designs six prototypes in cooperation with Rise and Ellison Scholarship selection practitioners. We ultimately find practitioner interest in all of these design prototypes. However, we warn as early as Chapter \ref{ch:context} of the dangers of placating subjective practitioner feedback in place of evaluating impact on decision-making. (This, in fact, is the very same issue with explainable AI we find in Chapter \ref{ch:xai}.) Thus, this chapter implements Prototype \ref{fig:diversity} in a field deployment with the Rise program to gaina more objective evaluation of its impact on decision-making.
 
 \section{Introduction}\label{sec:spfintro}
 The rise of diversity, equity, and inclusion initiatives suggests that various organizations (e.g. schools, firms, social impact programs, etc.) are genuinely interested in selecting for diverse talent. This is driven, at least in part, by recent declines in discrimination \cite{hsieh2019allocation}, increases in the perceived return to diversity \cite{deming2017growing, page_diversity_2017, noray2023systemic}, and increased social pressure for demographic representation \cite{minkin2023diversity}. In this chapter, we hypothesize that the complexity of simultaneously optimizing for talent and diversity leads organizations (even well-intentioned ones) to select within their feasible talent-diversity frontier \cite{nemhauser1978analysis, huppenkothen2020entrofy}. This chapter tests this hypothesis by demonstrating and incorporating this complexity into a simple model of cohort selection and testing the empirical predictions of the model using data from a high-profile scholarship and talent investment program. 
@@ -496,7 +540,7 @@ One hypothesis about how peer scores vs. traditional metrics differ is the \emph
 
 In this chapter we have introduced the notion of a selection possibilities frontier via a simple model of diverse talent selection with complexity costs, micro-founded the complexity costs by showing that the diverse talent selection problem is $\mathbf{NP}$-hard, developed an algorithm to estimate the SPF, and used this estimate to both test the predictions of our model and demonstrate a wide range of applications of our framework. Substantively, we showed that a high-profile scholarship and talent selection program could improve the efficiency of selection by using the SPF estimate to select both higher performing and more diverse cohorts. 
 
-In an age of rapidly expanding interest in selecting from diverse talent pools (signaled by the growth of DEI), this chapter has wide-ranging policy implications. First, the chapter suggests that organizations will face extreme difficulty executing on their diversity goals unless they are willing to adopt more sophisticated selection technology. Second, this chapter contributes methods that are particularly useful for assessing the diversity impacts of alternative merit-based selection strategies. This is particularly relevant in contexts like hiring, where not appropriately considering the diversity implications of selection strategies can result in lawsuits, and U.S. university admissions non-merit-based selection has become a legal gray area despite university commitments to diversity. 
+In an age of rapidly expanding interest in selecting from diverse talent pools (signaled by the growth of DEI), this chapter has wide-ranging policy implications. First, the chapter suggests that organizations will face extreme difficulty executing on their diversity goals unless they are willing to adopt more sophisticated selection technology. Second, this chapter contributes methods that are particularly useful for assessing the diversity impacts of alternative merit-based selection strategies. This extends beyond selection to related contexts like hiring, where not appropriately considering the diversity implications of selection strategies can result in lawsuits, and U.S. university admissions non-merit-based selection has become a legal gray area despite university commitments to diversity. 
 
 
 
