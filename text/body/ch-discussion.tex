@@ -11,6 +11,20 @@
 
 \minitoc
 
+% To-do: this isn't really a discussion. A discussion would say "here's what I learned, here's what I'm not sure about, here's limitations, this is what makes this domain hard or complicated, this is how it relates back to debates and paradigms in HCI..."
+
+% to-do: relate this to other HCI discussions. If someone else is doing AR in a different area, is there anything I've done that shows strengths or weaknesses of those areas. What relates to HCAI research / value centred design / policy stuff?
+
+% to-do: discuss how this all relates to fairml. This won't be in the overall literature review chapter, so it should be mentioned here. Find the work at facct on recruitment and relate it here.
+
+% to-do: there's a huge focus on automation bias in the context of AI for decision support, but a real strength here is that AI can be used outside of decisions for individuals. Also, mention maybe that we've avoided implementing individual-level stuff because of the potential for automation bias.
+
+%  - critical attention on algorithms Kitchin_2017
+
+%  - for a discussion about algorithmic bias: what is bias? And do algorithms challenge or enforce morals? There is a strong deference to the precedent; Barocas_Hood_Ziewitz_2013. But also, algorithms could be designed to defer to any moral code. The key is that there would have to be a moral code there.
+
+%  - individual and distributive notions of fairness. fairness across subgroups. fairness gerrymandering. pmlr-v80-kearns18a
+
 \section{The Role of AI Systems in Selection: From Decision Support to Selection-Oriented AI}
 % Old version:
 
@@ -59,10 +73,12 @@ Human decision-makers often desire both a qualitative understanding of applicant
 \subsection{Evaluate Real Change in Addition to Subjective Satisfaction}
 \textcite{Lipton} critiques explainable AI (xAI) systems on the grounds that they risk satisfying the subjective desires of the users while failing to improve objective outcomes. In Chapter \ref{ch:xai}, we confirm that this critique applies to some post-hoc justifications of model recommendations, as the justifications were found to yield an unwarranted increase in trust in the human decision-makers. Thus, it is important to define and evaluate measures of the social values that DSTs intend to support; when evaluating these DSTs, they should not be evaluated human-centrically (i.e., according to their users' satisfaction), but should instead be evaluated on whether their employment improves social outcomes.
 
-\section{An Inherent Limitations of SOAI}: The Exclusion of Applicants in the Design Process
+\section{An Inherent Limitations of SOAI: The Exclusion of Applicants in the Design Process}
 In scenarios outside the selection context, human-computer interaction (HCI) research has generally sought to harmonize the conflicting needs of different user groups through participatory design. Yet, in the case of talent identification, the very nature of the selection process introduces a conflict of incentives between applicants and the selection organization. Applicants are primarily motivated by the desire to be chosen, while selection organizations, guided by practitioners, seek to optimize the selected cohort according to (biased) measurements of (sometimes idiosyncratic) organisational preferences. This inherent misalignment of objectives raises significant concerns about how to balance the needs of both groups without compromising the overarching social values that SOAI seeks to uphold. Our solution in this thesis has been to centre the organisations, and use data from past selections to evaluate their selection decisions based on stated and elicited preferences. % to-do: cite the harmonizing conflicts thing
 
-Central to this solution is the notion that the broader social aims of the selection process (e.g., ensuring fairness, diversity, social benefit) both align more closely with practitioners than with applicants and ultimately supersede the immediate interests of both practitioners and applicants. However, we note that some overlap exists between the broader social goals of the selection process and the scholarship applicants' goals. Future work on SOAI should seek to capture this overlap without losing sight of the ultimate goals of selection 
+Central to this solution is the notion that the broader social aims of the selection process (e.g., ensuring fairness, diversity, social benefit) both align more closely with practitioners than with applicants and ultimately supersede the immediate interests of both practitioners and applicants. However, we note that some overlap exists between the broader social goals of the selection process and the scholarship applicants' goals. We note that work already exists exploring this from a decision-subject standpoint; \textcite{10.1145/3351095.3372867} find that applicants prefer algorithmic decision-making to human decision-making according to both procedural and distributive notions of fairness. Future work on SOAI should seek to capture this overlap without losing sight of the ultimate goals of selection.
 
 \section{Conclusion}
 In this thesis, we pioneer a new paradigm of AI design for selection processes, Selection-Oriented AI (SOAI). Chapters \ref{ch:xai} and \ref{ch:genai} find that existing AI systems often fail to meet the needs of selection practitioners, particularly for in-process decision-making. In response, we propose a new paradigm, SOAI, which seeks to centre the design of AI DSTs not around the selection practitioners but around the social aims of selection they seek to practice. Chapters \ref{ch:diversity} and \ref{ch:spf} apply SOAI principles to design DSTs to support considerations of diversity in selection; we implement a prototype designed to satisfy selection practitioner desires and find that it improves both diversity and performance outcomes in selection. We then provide a set of design recommendations for SOAI designers, including focusing on specific social values, identifying decision points with the Decision Matrix, balancing quantitative and qualitative information, and evaluating real change in addition to subjective satisfaction. We conclude with a call for more selection-oriented work, applying data-driven support to this difficult and sensitive problem.
+
+% to-do: say "if you can make this process work better, there's reason to believe you can make other related decision-making processes work better as well". This applies to every selection context and maybe even non-selection decision-making contexts.
