@@ -19,9 +19,9 @@ However, though there is a wealth of research exploring when and how algorithms 
 \subsection{Scope}
 In a world flattened by the global proliferation of technology \cite{Friedman_2005}, new global scholarship initiatives aim to bear the burden of selecting scholars from around the world. These programs' unprecedented reach offers applicants all around the world an opportunity to access educational resources that may have previously been out of reach. If these programs can select the ``best'' cohorts of applicants, they can deliver on their stated missions to improve the world through broadening access to elite higher education institutions and training scholars to solve the world's biggest problems
 
-However, differing relative prioritisation of values leading to different interpretations of the ``best'' cohort, the challenges of designing systems to compare applicants from vastly different contexts, and the risks of applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the program) challenge to render impossible and already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities \cite{Latzer_Hollnbuchner_Just_Saurwein_2014}. While selection practitioners design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
+However, differing relative prioritisation of values leading to different interpretations of the ``best'' cohort, the challenges of designing systems to compare applicants from vastly different contexts, and the risks of applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the program) challenge to render impossible and already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities \cite{Latzer_Hollnbuchner_Just_Saurwein_2014}. While selection practitioners (selectors) design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
 
-In real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{zimmerman_research_2014}. But how can selection practitioners make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process is twofold: 
+In real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{zimmerman_research_2014}. But how can selectors make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process is twofold: 
 
 \begin{enumerate}
     \item What criteria make on applicant (or cohort) more apt than another?
@@ -30,10 +30,9 @@ In real selection pipelines, competing values and interpretations of these value
 
 We term this twofold decision point: \emph{Selection}. But the twofold nature of \emph{Selection} is itself deceptive, as each subordinate decision is itself supported by a number of other decisions. For example, the decisions about selection criteria are supported by decisions about program purpose and scope (e.g., is the program needs-based?). Decisions about how to apply these criteria are supported by decisions about which metrics to use and how much to rely on each metric. Thus, the central decision of \emph{Selection} is supported by multitudes of subordinate decisions. 
 
-This thesis' scope is building and evaluating DSTs to support \emph{Selection}; in order to achieve this, we research with two scholarship organisations, the Rise program and the Ellison Scholarship program, to build DSTs to support three groups of subordinate decisions: decisions supported by explainable AI algorithms, decisions about applicant usage of genAI, and decisions about the diversity of selected cohorts.
+This thesis' scope is building and evaluating DSTs to support \emph{Selection}; in order to achieve this, we research with two scholarship organisations, \rise and \eit, to build DSTs to support three groups of subordinate decisions: decisions supported by explainable AI algorithms, decisions about applicant usage of genAI, and decisions about the diversity of selected cohorts.
 
 \subsection{Terms}
-
 \subsubsection{Human-Computer Interaction (HCI)}
 HCI is the a subfield of Computer Science that deals primarily with how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings.
 
@@ -58,8 +57,14 @@ GenAI is a subfield of AI that develops and assesses AI systems, usually large m
 \subsubsection{Human-Centred Artificial Intelligence (HCAI)}
 HCAI is a subfield of HCC that concerns itself with AI systems, rather than all computer systems.
 
+\subsubsection{Selection}
+Selection occurs in a variety of forms throughout society, from recruitment to matchmaking. In this thesis, we are exclusively interested in selection for scholarships and other academic or talent investment opportunities. When we speak of selection in this thesis, we are speaking only of this kind of selection.
+
+\subsubsection{Selector}
+Selection teams and organisations are composed of teams of practitioners responsible for making selection decisions, both direct and supporting. We refer to these practitioners as selectors.
+
 \subsubsection{Selection-Oriented AI (SOAI)} 
-We define SOAI here as a family of methodologies designed to achieve the social values of properly selecting scholars. In contrast to HCAI (or even Selection-Practitioner-Centred-AI), which would centre the point of view of selection practitioners, SOAI orients itself around the social benefits of selection, deviating rom the point of view of the selection practitioner when their values differ.
+We define SOAI here as a family of methodologies designed to achieve the social values of properly selecting scholars. In contrast to HCAI (or even Selector-Centred-AI), which would centre the point of view of selectors, SOAI orients itself around the social benefits of selection, deviating from the point of view of the selectors when their values differ.
 
 \section{Contributions} 
 The contributions of this thesis are twofold. There are meta-level conceptual distinctions introduced, and also some substantive contributions associated with body chapters.
@@ -69,28 +74,28 @@ The meta-level contributions of this thesis are:
 \begin{enumerate}
     \item The Decision Matrix framework for evaluating the suitability of AI systems as support tools for differing decision points.
     \item The SOAI paradigm for designing AI systems that support one of the social benefits of good selection processes.
-    \item A set of design recommendations for designers seeking to apply SOAI to build a DST to support selection practitioners.
+    \item A set of design recommendations for designers seeking to apply SOAI to build a DST to support selectors.
 \end{enumerate}
 
 However, this thesis is composed of a number of papers that make more specific, core contributions. These are detailed in the relevant chapters, but are also described here:
 
 \begin{itemize}
-    \item A list of decision points facing scholarship programs uncovered through longitudinal HCI research with the Rise program and the Ellison Scholarship (Chapter \ref{ch:context}).
+    \item A list of decision points facing scholarship programs uncovered through longitudinal HCI research with \rise and \eit (Chapter \ref{ch:context}).
     \item Quantitative findings indicating that the problem of explanation-induced unwarranted trust extends to generic post-hoc justifications, but that such criticism only applies \emph{in-process} and qualitative findings that post-hoc explanations, properly presented, can make useful \emph{ex-post} DSTs (Chapter \ref{ch:xai}).
     \item An evaluation of genAI detectors GPTZero and Originality.ai on program A's 2022 and 2023 application data (Chapter \ref{ch:genai}).
     \item A case study using GPTZero to support two decision points facing program A (Chapter \ref{ch:genai}).
     \item The Diversity Triangle, categorising diversity-related themes according to our three definitions of diversity uncovered through inductive thematic analysis (Chapter \ref{ch:diversity}).
     \item Six design prototypes developed through PD for supporting the diversity needs of a given organisation (Chapter \ref{ch:diversity}).
     \item Design recommendations grounded in PD for system implementers supporting the diversity needs of a given organisation (Chapter \ref{ch:diversity}).
-    \item A field deployment of Prototype \ref{fig:diversity} to the Rise selection process selecting $500$ finalists from a pool of $2000$ demonstrating the efficacy of this prototype in practice (Chapter \ref{ch:spf}).
+    \item A field deployment of Prototype \ref{fig:diversity} to the \rise selection process selecting $500$ finalists from a pool of $2000$ demonstrating the efficacy of this prototype in practice (Chapter \ref{ch:spf}).
 \end{itemize}
 
 \section{Thesis Structure}
-In break from tradition, this thesis does not contain a labelled ``background'' or ``related works'' chapter; while some related work exists, most work is related only to one subordinate decision point, and thus appears in the relevant chapter. What little work relates to the entirety of our thesis, as well as some background information on the global scholarship context, appears in Chapter \ref{ch:context}. Following this, Chapter \ref{ch:methods} explores the paradigms that guide research design throughout this thesis, lists methods used throughout the thesis, and ties these methods to specific chapters. (The research designs of specific chapters or studies appear in the relevant chapter.)
+In break from tradition, this thesis does not contain a labelled ``background'' or ``related works'' chapter; while some related work exists, most work is related only to one subordinate decision point, and thus appears in the relevant chapter. Instead, \Chapter \ref{context} serves as an extended introduction, including situating this thesis in what little work relates to the entirety of the work. Following this, Chapter \ref{ch:methods} explores the paradigms that guide research design throughout this thesis, lists methods used throughout the thesis, and ties these methods to specific chapters. (The research designs of specific chapters or studies appear in the relevant chapter.)
 
-Chapter \ref{ch:xai} responds to common criticisms of post-hoc xAI and explores this approach as a scholarship selection DST via PD workshops with practitioners from the Rise program. Chapter \ref{ch:genai} engages selection practitioners from the Rise program in an AR process and explore the role of generative AI in selection decisions. Chapter \ref{ch:diversity} engages practitioners from both the Rise program and the Ellison Scholarship in participatory design to explore practitioner notions of diversity and potential ways to support these considerations; this chapter ultimately develops 6 design prototypes. Chapter \ref{ch:spf} implements one of these prototypes in a field deployment with the Rise program; we find that, when using the probe, practitioners select a more diverse cohort composed of higher-performing applicants. 
+Chapter \ref{ch:xai} responds to common criticisms of post-hoc xAI and explores this approach as a scholarship selection DST via PD workshops with selectors from \rise. Chapter \ref{ch:genai} engages selectors from \rise in an AR process and explore the role of generative AI in selection decisions. Chapter \ref{ch:diversity} engages selectors from both \rise and \eit in participatory design to explore selector notions of diversity and potential ways to support these considerations; this chapter ultimately develops 6 design prototypes. Chapter \ref{ch:spf} implements one of these prototypes in a field deployment with \rise; we find that, when using the probe, selectors select a more diverse cohort composed of higher-performing applicants. 
 
-In Chapter \ref{ch:discussion}, we discuss the Decision Matrix framework, suggest the SOAI paradigm, and present a coherent set of design recommendations that developers can use to follow SOAI; we also note limitations of our approach, and conclude. 
+Chapter \ref{ch:discussion} discusses: the scope of the thesis, including references to critical theory work falling outside the scope; the SOAI paradigm; design recommendations that developers can use to follow SOAI; methodological and technical limitations of the work herein; and this thesis's broader significance in a quickly changing landscape. 
 
 \section{Papers}
 \subsection{Archival and Under Review}
