@@ -1,12 +1,3 @@
-% \begin{savequote}[8cm]
-% Alles Gescheite ist schon gedacht worden.\\
-% Man muss nur versuchen, es noch einmal zu denken.
-
-% All intelligent thoughts have already been thought;\\
-% what is necessary is only to try to think them again.
-%   \qauthor{--- Johann Wolfgang von Goethe \cite{von_goethe_wilhelm_1829}}
-% \end{savequote}
-
 \chapter{\label{ch:spf}A Possibility Frontier Approach to Diverse Talent Selection}\blfootnote{This chapter is based on two papers showcasing research done in concert with Kadeem Noray. Both contributed equally to the research. One paper is currently under review as: Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. The other is being prepared for submission as: Neil Natarajan and Kadeem Noray. 2024. “SPF: A Technology Probe Examining Diversity in Selection Processes.”. This version of the work is intended for publication to an economics audience; thus, this Chatper's writing style strays from the norms governing Chapters \ref{ch:xai}, \ref{ch:genai}, and \ref{ch:diversity}.}
 
 \minitoc
@@ -16,7 +7,7 @@
 % Make clear throughout that this chapter is a dialogue between researchers and program
 
 \section{Motivation}
-Chapter \ref{ch:diversity} designs six prototypes in cooperation with Rise and Ellison Scholars selectors. We ultimately find practitioner interest in all of these design prototypes. However, we warn as early as Chapter \ref{ch:context} of the dangers of placating subjective practitioner feedback in place of evaluating impact on decision-making. (This, in fact, is the very same issue with explainable AI we find in Chapter \ref{ch:xai}.) Thus, this chapter implements Prototype \ref{fig:diversity} in a field deployment with the Rise program to gain a more objective evaluation of its impact on decision-making.
+Chapter \ref{ch:diversity} designs six prototypes in cooperation with Rise and Ellison Scholars selectors. We ultimately find selector interest in all of these design prototypes. However, we warn as early as Chapter \ref{ch:context} of the dangers of placating subjective selector feedback in place of evaluating impact on decision-making. (This, in fact, is the very same issue with explainable AI we find in Chapter \ref{ch:xai}.) Thus, this chapter implements Prototype \ref{fig:diversity} in a field deployment with the Rise program to gain a more objective evaluation of its impact on decision-making.
 
 \section{Introduction}\label{sec:spfintro}
 % to-do: mention maybe that we've avoided implementing individual-level stuff because of the potential for automation bias.
@@ -289,7 +280,7 @@ Then consider the algorithm $Alg_{VC}$ that is defined in Algorithm \ref{alg:vc_
 \subsection{Embedding Complexity into the Model}\label{subsec:dts_w_complexity}
 Knowing the $\mathbf{NP}$-hardness of calculating the SPF outright, we can more comfortably assume that there exists a search cost in approaching the frontier; knowing that this $\mathbf{NP}$-hardness is driven by diversity targets, we can further suppose that this search cost is driven by diversity preferences. This leads us to a new model that incorporates complexity costs into the selection problem.
 
-Consider a variation of the simple cohort selection problem (see Section \ref{subsec:simple_model}) where the organisation can search for increasingly diverse cohorts at a cost. Let the amount of search effort be $e\in[0,1]$ and define the cost of search effort be $\alpha p(e)$ where the cost is convex (i.e. $p_e>0$ and $p_{ee}>0$) and $\alpha$ is a constant that is inversely related to the quality of search technology available. Furthermore, we let the amount of search deterministically increase the maximum achievable diversity at each talent level, which is now given by $D^{SPF}*e$. The optimisation problem can then be rewritten as:
+Consider a variation of the simple cohort selection problem (see Section \ref{ssec:measurement}) where the organisation can search for increasingly diverse cohorts at a cost. Let the amount of search effort be $e\in[0,1]$ and define the cost of search effort be $\alpha p(e)$ where the cost is convex (i.e. $p_e>0$ and $p_{ee}>0$) and $\alpha$ is a constant that is inversely related to the quality of search technology available. Furthermore, we let the amount of search deterministically increase the maximum achievable diversity at each talent level, which is now given by $D^{SPF}*e$. The optimisation problem can then be rewritten as:
 
 \begin{align}
 &\max_{d,p,e} F\Big(d,p\Big) - \alpha p(e) \text{ \bf{ s.t. } } d = G(p)*e, \nonumber \\ 
