@@ -75,11 +75,10 @@ There is a large body of studies that empirically evaluate xAI methods. In some 
 
 However, while these evaluations are instructive in that they provide interesting new perspectives on technologies, they do not help us evaluate whether utilising these explanations as DSTs is problematic in practice. To determine this, we turn to evaluations that involve humans using an AI system to perform some task \cite{ribeiro_why_2016,ribeiro_anchors_2018, rader_explanations_2018, jacobs_how_2021, bansal_does_2021}. These critiques, either explicitly or implicitly, tend to evaluate the impact of explanations on (attitudinal or behavioural) trust in AI systems. We enumerate some in Table \ref{tab:studies}.
 
-\begin{table}[htbp]
-    \centering
-    \caption{This table documents human-centric evaluations of the effects of different explanations types on trust and warrentedness of trust. Many studies find evidence that all Feature-Based explanations increase trust in AI outputs, while results are mixed for other explanation types, but warrantedness of trust is rarely explored.}
-    \adjustbox{max width=\textwidth}{
-    \begin{tabular}{p{0.2\linewidth} p{0.15\linewidth} p{0.2\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
+\begin{center}
+    \begin{longtable}[c]{p{0.15\linewidth} p{0.15\linewidth} p{0.2\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
+        \caption{This table documents human-centric evaluations of the effects of different explanations types on trust and warrentedness of trust. Many studies find evidence that all Feature-Based explanations increase trust in AI outputs, while results are mixed for other explanation types, but warrantedness of trust is rarely explored.}
+        \label{tab:studies}
         \toprule
         Study & Domain & Explanation Philosophy & Explanation Effect on Trust & Explanation Effect on Warrantedness of Trust \\
         \midrule
@@ -89,12 +88,10 @@ However, while these evaluations are instructive in that they provide interestin
         \textcite{jacobs_how_2021} & Clinical Treatment & Feature-Based, Others & Participants demonstrate behavioural trust in models in all cases & Feature-based explanations of incorrect recommenations induce unwarranted behavioural trust. \\
         \textcite{bansal_does_2021} & Sentiment Classification & Feature-Based (LIME) & No observed effect of explanations relative to baseline (with AI) condition & Warrentedness not investigated \\
         \textcite{mohseni_trust_nodate} & Fake News Detection & Feature-Based and Others & End-user trust clustered into profiles that evolve, either increasing or decreasing over time & Warrentedness not investigated \\
-        \bottomrule
         \textcite{Spitzer_Holstein_Morrison_Holstein_Satzger_Kühl} & Architecture Style Classification & Free Text (LLM) & LLM explanations increase end-user trust & LLM explanations increase unwarranted trust \\
-    \end{tabular}
-    }
-    \label{tab:studies}
-\end{table}
+        \bottomrule
+    \end{longtable}
+\end{center}
 
 Despite \textcite{Lipton}'s ``misleading but plausible'' critique, the verdict of these human-centric evaluations is mixed. \textcite{lai_human_2019,jacobs_how_2021} both find that their Feature- and Example-Based explanations increase explainee trust in AI outputs, but \textcite{binns_its_2018} find that Example-Based explanations actually decrease explainee trust in AI outputs. The answer, we must conclude, depends on the explanation, the target group, or even the domain \cite{mohseni_trust_nodate}. 
 
