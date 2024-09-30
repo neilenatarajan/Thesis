@@ -1,4 +1,4 @@
-\chapter{\label{ch:xai}XAI: Misleading In-Process, but Useful Post-Hoc}\blfootnote{This chapter is based a paper written in concert with Reuben Binns, Ulrik Lyngs, and Nigel Shadbolt. The paper is currently under review as: Neil Natarajan, Reuben Binns, Ulrik Lyngs, Nigel Shadbolt. 2024. “XAI: Misleading In Process, but Useful Post Hoc.” Under review at CHI 2025.}
+\chapter[XAI]{\label{ch:xai}XAI: Misleading In-Process, but Useful Post-Hoc\blfootnote{This chapter is based a paper written in concert with Reuben Binns, Ulrik Lyngs, and Nigel Shadbolt. The paper is currently under review as: Neil Natarajan, Reuben Binns, Ulrik Lyngs, Nigel Shadbolt. 2024. “XAI: Misleading In Process, but Useful Post Hoc.” Under review at CHI 2025.}}
 
 \minitoc
 
@@ -75,29 +75,30 @@ There is a large body of studies that empirically evaluate xAI methods. In some 
 
 However, while these evaluations are instructive in that they provide interesting new perspectives on technologies, they do not help us evaluate whether utilising these explanations as DSTs is problematic in practice. To determine this, we turn to evaluations that involve humans using an AI system to perform some task \cite{ribeiro_why_2016,ribeiro_anchors_2018, rader_explanations_2018, jacobs_how_2021, bansal_does_2021}. These critiques, either explicitly or implicitly, tend to evaluate the impact of explanations on (attitudinal or behavioural) trust in AI systems. We enumerate some in Table \ref{tab:studies}.
 
-\begin{center}
-    \begin{longtable}[c]{p{0.15\linewidth} p{0.15\linewidth} p{0.2\linewidth} p{0.2\linewidth} p{0.2\linewidth}}
-        \caption{This table documents human-centric evaluations of the effects of different explanations types on trust and warrentedness of trust. Many studies find evidence that all Feature-Based explanations increase trust in AI outputs, while results are mixed for other explanation types, but warrantedness of trust is rarely explored.}
-        \label{tab:studies}
+\begin{table}
+    \centering
+    \caption{This table documents human-centric evaluations of the effects of different explanations types on trust and warrentedness of trust. Many studies find evidence that all Feature-Based explanations increase trust in AI outputs, while results are mixed for other explanation types, but warrantedness of trust is rarely explored.}
+    \label{tab:studies}
+    \begin{tabular}{p{0.15\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth} p{0.2\textwidth}}
         \toprule
-        Study & Domain & Explanation Philosophy & Explanation Effect on Trust & Explanation Effect on Warrantedness of Trust \\
+        Study & Domain & Explanation Philosophy & Explanation Effect on Trust & Incorrect Explanation Effect on Warrantedness \\
         \midrule
-        \textcite{lai_human_2019} & Deception Detection & Feature-Based, Example-Based, Model Confidence & Feature- and Example-Based explanations increase explainee trust & No increase in detected user trust when the model's outputs are incorrect \\
-        \textcite{binns_its_2018} & Multiple Domains & Feature-Based, Rule-Based (Recourse), Example-Based & Example-Based explanations decrease participant trust in the fairness of AI outputs & Warrentedness not investigated \\
-        \textcite{ford_play_2020} & Image Recognition & Example-Based & Explanation presence or style has no main effect on end-user trust & Warrentedness not investigated \\
-        \textcite{jacobs_how_2021} & Clinical Treatment & Feature-Based, Others & Participants demonstrate behavioural trust in models in all cases & Feature-based explanations of incorrect recommenations induce unwarranted behavioural trust. \\
-        \textcite{bansal_does_2021} & Sentiment Classification & Feature-Based (LIME) & No observed effect of explanations relative to baseline (with AI) condition & Warrentedness not investigated \\
-        \textcite{mohseni_trust_nodate} & Fake News Detection & Feature-Based and Others & End-user trust clustered into profiles that evolve, either increasing or decreasing over time & Warrentedness not investigated \\
-        \textcite{Spitzer_Holstein_Morrison_Holstein_Satzger_Kühl} & Architecture Style Classification & Free Text (LLM) & LLM explanations increase end-user trust & LLM explanations increase unwarranted trust \\
+        \textcite{lai_human_2019} & Deception Detection & Feature-Based, Example-Based, Model Confidence & Conditional increase & No observed effect \\
+        \textcite{binns_its_2018} & Multiple Domains & Feature-Based, Rule-Based (Recourse), Example-Based & Conditional decrease & Not investigated \\
+        \textcite{ford_play_2020} & Image Recognition & Example-Based & Explanation presence or style has no main effect on end-user trust & Not investigated \\
+        \textcite{jacobs_how_2021} & Clinical Treatment & Feature-Based, Others & Increase & Conditional increase. \\
+        \textcite{bansal_does_2021} & Sentiment Classification & Feature-Based (LIME) & No observed effect & Not investigated \\
+        \textcite{mohseni_trust_nodate} & Fake News Detection & Feature-Based and Others & Increase and decrease & Not investigated \\
+        \textcite{Spitzer_Holstein_Morrison_Holstein_Satzger_Kühl} & Architecture Style Classification & Free Text (LLM) & Increase & Increase \\
         \bottomrule
-    \end{longtable}
-\end{center}
+    \end{tabular}
+\end{table}
 
 Despite \textcite{Lipton}'s ``misleading but plausible'' critique, the verdict of these human-centric evaluations is mixed. \textcite{lai_human_2019,jacobs_how_2021} both find that their Feature- and Example-Based explanations increase explainee trust in AI outputs, but \textcite{binns_its_2018} find that Example-Based explanations actually decrease explainee trust in AI outputs. The answer, we must conclude, depends on the explanation, the target group, or even the domain \cite{mohseni_trust_nodate}. 
 
 Among those studies that do find an explanation-induced trust, few consider whether this trust is warranted. Among those that do, evidence is mixed; while some find unwarranted trust in some cases, others find such no effect \cite{lai_human_2019,jacobs_how_2021}. Thus, we must ask: are we too hasty in moving away from these explanations? 
 
-\section{Experimental Study: \emph{In-Process} Decision Support}\label{sec:online}
+\section[Experimental Study]{Experimental Study: \emph{In-Process} Decision Support}\label{sec:online}
 \subsection{Research Questions}
 Our online study seeks to answer RQ1:
 
@@ -515,7 +516,7 @@ Challenging this interpretation, we find no similar effect for Anchor. Instead, 
 
 This raises another question: if SHAP and Confidence are ``bad'' explanations as \emph{in-process} justification tools, are they ``good'' explanations for something else?
 
-\section{Participatory Design: \emph{Ex-Post} Decision Support}\label{sec:xaicase}
+\section[Participatory Design]{Participatory Design: \emph{Ex-Post} Decision Support}\label{sec:xaicase}
 \subsection{Motivation}
 In Section \ref{sec:online}'s investigation of post-hoc explainable AI, we found that SHAP-based explanations, in particular, can lead to unwarranted trust when used to justify decisions. It is clear, at least, that we should not use SHAP-based explanations as a DST in this context. However, we do not suggest that SHAP should be discarded entirely. In fact, though \emph{Salary} and \emph{Credit} both prove unsuitable tasks for applications of SHAP-based explanations as DSTs, we suggest that we might still make use of the explanations. In particular, in use cases where explainee trust in the underlying model is not at issue, SHAP's induction of unwarranted trust need not undermine its utility.
 
