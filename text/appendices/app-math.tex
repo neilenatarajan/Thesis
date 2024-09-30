@@ -55,3 +55,24 @@
     By construction, $F$ is the weighted sum of $P$ and $D$. But $D$ is the weighted sum of functions $\delta_g^{prop}$ and $\delta_G^{count}$.
     It is trivial to see that $P$ is submodular and monotone. We have already demonstrated that $\delta_g^{prop}$ and $\delta_G^{count}$ are submodular and monotone. Thus, by Theorems \ref{thm:submodularity_additive} and \ref{thm:monotonicity_additive}, $F$ is submodular and additive.
     \end{proof}
+
+\section{Proof that Algorithm \ref{alg:frontier} Approximates the SPF}\label{app:greedy-proof}
+Here, we prove that the greedy approximation method introduced in Algorithm \ref{alg:frontier} for SPF is a $(1-\frac{1}{e})$-approximation for our standard class of diversity functions subject to a cardinality constraint \cite{nemhauser1978analysis}.
+
+Recall that an organisation's preference function $f: 2^X -> \mathbb{R}^+$  maps a cohort (a set of applicants) to the weighted sum of a ``diversity score'' and a ``performance score'' (both non-negative, real numbers). Here, our applicant pool $X$ is represented as a set with applicants as its members, and possible cohorts $C \subseteq X$ are subsets of $X$. We prove Appendix \ref{app:spfmath} that $f$ is monotonic ($A \subseteq B -> f(A) \leq f(B)$) and submodular ($A \subseteq B \land x \notin B -> f_A(x) \geq f_B(x)$ (here, $f_S(e) = f(S \cup \{e\}) - f(S)$ denote the marginal gain of adding element $e$ to set $S$). We demonstrate elsewhere that many common understandings of diversity are represented by standard diversity functions.
+
+\begin{theorem}\label{thm:greedy-approximation}
+    Let $(S_0...S_k)$ be a sequence of sets where $S_0$ is the empty set and $S_{i>0}$ is defined by following Algorithm \ref{alg:frontier} with any $\iota$, $d$, and $p$. Further, let $O := argmax_S(f(S) : |S| = k)$ be the set of size $k$ that maximizes $f: = \iota*d+(1-\iota)*p$. Then $f(S_k) \geq (1 - \frac{1}{e})f(O)$.
+\end{theorem}
+
+\begin{proof}
+By induction. Let ${o_1...o_k} = O$ be any ordering of the elements of $O$. Let ${s_i} := S_i - S_{i-1}$ be the element added to $S_{i-1}$ to form $S_i$.
+
+By monotonicity, we have $\forall i . f(O) \leq f(O \cup S_i)$.  We can then write $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} (f(S_i \cup {o_1...o_j}) - f(S_i \cup {o_1...o_{j-1}}))$. I.e., $f(O \cup S_i) = f(O \cup S_i) - f(S_i) + f(S_i) = \sum_{j=1}^{k} f_{S_i \cup {o_1...o_{j-1}}}(o_j)$.
+
+By submodularity, $\forall j \in [1...k] . f_{S_i \cup {o_1...o_{j-1}}}(o_j) \leq f_{s_i}(o_j)$. Thus, $f(O) \leq f(S_i) + k*f_{S_i}(s_{i+1})$. 
+
+Since Algorithm \ref{alg:frontier} guarantees that $\forall e \in X - S_i . f_{S_i}(e) \geq f_{S_i}(e)$, it follows that, at every stage, $f(S_{i+1}) - f(S_i) \geq \frac{1}{k} (f(O) - f(S_i))$.
+
+Then induction yields $f(O) - f(S_k) \leq (1 - \frac{1}{k})^k f(O) \leq \frac{1}{e} f(O)$.
+\end{proof}
