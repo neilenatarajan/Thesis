@@ -7,7 +7,7 @@
 %   \qauthor{--- Johann Wolfgang von Goethe \cite{von_goethe_wilhelm_1829}}
 % \end{savequote}
 
-\chapter{\label{ch:spf}A Possibility Frontier Approach to Diverse Talent Selection}\blfootnote{This chapter is based on two papers showcasing research done in concert with Kadeem Noray. Both contributed equally to the research. One paper is currently under review as: Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. The other is being prepared for submission as: Neil Natarajan and Kadeem Noray. 2024. “SPF: A Technology Probe Examining Diversity in Selection Processes.”. This version of the work is intended for publication to an economics audience; thus, this Chatper's writing style strays from the norms governing Chapters \ref{ch:xai}, \ref{ch:genai}, and \ref{ch:diversity}.}
+\chapter{\label{ch:spf}A Possibility Frontier Approach to Diverse Talent Selection}\blfootnote{This chapter is based on two papers showcasing research done in concert with Kadeem Noray. Both contributed equally to the research. One paper is currently under review as: Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. The other is being prepared for submission as: Neil Natarajan and Kadeem Noray. 2024. “SPF: A Technology Probe Examining Diversity in Selection Processes.”. This version draws from both, focusing primarily on the contributions relating to this thesis. However, this Chapter's content and style stray from the HCI norms governing Chapters \ref{ch:xai}, \ref{ch:genai}, and \ref{ch:diversity}.}
 
 \minitoc
 % To-do:
@@ -115,9 +115,9 @@ The solution to this simple version of the model is depicted in Figure \ref{fig:
 
 \begin{figure}[htbp]
     \centering
+    \includegraphics[width=\textwidth]{spf/model_spf.png} 
     \caption{This figure depicts an example solution to an iteration of the selection problem, which is described in Equation \ref{eq:selection_simple}. The solid blue curve represents the Selection Possibilities Frontier (SPF), the dotted blue curve represents the organisations indifference curve corresponding to the highest achievable utility, and the blue dot represents the diversity and performance of the optimal choice (i.e. the first-best solution). }
     \label{fig:model_spf}
-    \includegraphics[width=\textwidth]{spf/model_spf.png} 
 \end{figure}
 
 \subsection{Defining the Classes of Diversity and Performance Functions}\label{subsubsec:div_talent_def}
@@ -222,13 +222,13 @@ This analysis requires two steps: (1) applying Algorithm \ref{alg:frontier} to b
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{spf/yr1_spf_finalist.png}
         \caption{The SPF for the 2021 finalist selection process. In Cycle 2021, cohort diversity could have been improved by $15.2\%$ without any reduction in cohort performance, and cohort performance could have been improved by $15.6\%$ without any cost to diversity.}
         \label{fig:spf_2021}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=\textwidth]{spf/yr2_spf_finalist.png}
         \caption{The SPF for the 2022 finalist selection process. In Cycle 2022, cohort diversity could have been improved by $13\%$ without any reduction in cohort performance, and cohort performance could have been improved by $19.6\%$ without any cost to diversity.}
         \label{fig:spf_2022}
@@ -246,27 +246,27 @@ Now we turn to analyzing what happened to selection in the talent investment pro
 
 \begin{figure}[htbp]
     \centering
+    \includegraphics[width=.9\textwidth]{spf/spf_dst.png} 
     \caption{This figure displays the SPF-based DST provided to Rise selectors in Cycle 2023. In addition to the SPF itself, selectors were given access to a myriad of supporting information. While this information cannot all be presented here, much of it describes the candidate optima (i.e., the cohorts represented by the coloured dots). In particular, selectors were interested in the spread of performance scores in each cohort, as well as the extent to which each cohort satisfied program diversity targets.}
     \label{fig:spf_dst}
-    \includegraphics[width=.9\textwidth]{spf/spf_dst.png} 
 \end{figure}
 
-and then compare the finalist cohort's diversity and talent to the SPF estimate. The results from this analysis is depicted in Figure \ref{fig:spf_2023}. Here we see notable differences in the selection patterns relative to cycles 1 and 2. In particular, the cycle 3 finalist cohort is nearly on the SPF, making the possible Pareto improvements in both directions no more than $2\%$. This suggests two things. First, it provides further evidence that selection decisions in Cycle 2021 and Cycle 2022 were, in fact, inefficient; had Rise known about the possibility of making Pareto improvements with respect to their stated preferences, they likely would have changed their behaviour. Second, it provides evidence that the DST presented here actually influences the decisions of selectors. 
+and then compare the finalist cohort's diversity and talent to the SPF estimate. The results from this analysis is depicted in Figure \ref{fig:spf_2023}.\footnote{Note that the frontiers in Figures \ref{fig:spf_dst} and \ref{fig:spf_2023} differ. This is because the SPF was estimated twice; once in the process of building the DST, and once more post-selection.} Here we see notable differences in the selection patterns relative to cycles 1 and 2. In particular, the cycle 3 finalist cohort is nearly on the SPF, making the possible Pareto improvements in both directions no more than $2\%$. This suggests two things. First, it provides further evidence that selection decisions in Cycle 2021 and Cycle 2022 were, in fact, inefficient; had Rise known about the possibility of making Pareto improvements with respect to their stated preferences, they likely would have changed their behaviour. Second, it provides evidence that the DST presented here actually influences the decisions of selectors. 
 
 \begin{figure}[!htb]
     \centering
+    \includegraphics[width=.9\textwidth]{spf/yr3_spf_finalist.png}
     \caption{This figure displays the SPF for the Cycle 2023 finalist cohort. Again, the y-axis represents the diversity score while the x-axis represents average cohort performance, the green curve is our estimate of the SPF, and the red dots depict the actual level of diversity and performance of the finalists that were selected. In this case, we overlay the finalist cohorts from 2021 and 2022 to provide a point of comparison. The diagonal dashed red line represents the distance in diversity-performance space between the Cycle 2022 cohort and the Cycle 2023 cohort. In Cycle 2023, there are no significant Pareto improvements on either diversity or performance.} 
     \label{fig:spf_2023}
-    \includegraphics[width=.9\textwidth]{spf/yr3_spf_finalist.png}
 \end{figure}
 
 To determine whether the improvements are statistically significant, we leverage a permutation test depicted in Figure \ref{fig:permutation_tests}. The key comparison is between Cycle 2023 max Pareto improvements in talent and diversity (the solid blue vertical lines in both panels) and the corresponding 95 percentile of the random difference distributions (the dashed black vertical line). For both dimensions, the possible improvements are statistically insignificant. In contrast, Cycle 2021 and Cycle 2022 both display statistically significant max Pareto improvements. Ultimately, though this confounds the predictions about selector behaviour implied by the model in Section \ref{ssec:measurement}, it does suggest that the DST is effective in improving selection decisions.
 
 \begin{figure}[htbp]
     \centering
+    \includegraphics[width=.9\textwidth]{spf/permutation_tests.png} 
     \caption{This figure displays permutations tests comparing the potential Pareto improvements along the diversity and talent dimensions to the distribution of differences on both dimensions from 1000 randomly drawn pairs of cohorts. The dashed black vertical line represents the 95 percentile of these differences. The solid vertical lines represent the max pareto gain on performance and diversity in each application year. We interpret inefficiencies at or larger than the 95 percentile of the distribution as significant, thereby sticking to the conventional $\alpha$ value. While Cycles 2021 and 2022 both appear to have significant inefficiencies, Cycle 2023 does not.}
     \label{fig:permutation_tests}
-    \includegraphics[width=.9\textwidth]{spf/permutation_tests.png} 
 \end{figure}
 
 \section{A Plausible Explanation for Selection Inefficiencies}\label{sec:spfexplanation}
@@ -334,7 +334,7 @@ Then consider the algorithm $Alg_{VC}$ that is defined in Algorithm \ref{alg:vc_
 \subsection{Embedding Complexity into the Model}\label{subsec:dts_w_complexity}
 Knowing the $\mathbf{NP}$-hardness of calculating the SPF outright, we can more comfortably assume that there exists a search cost in approaching the frontier; knowing that this $\mathbf{NP}$-hardness is driven by diversity targets, we can further suppose that this search cost is driven by diversity preferences. This leads us to a new model that incorporates complexity costs into the selection problem.
 
-Consider a variation of the simple cohort selection problem (see Section \ref{subsec:simple_model}) where the organisation can search for increasingly diverse cohorts at a cost. Let the amount of search effort be $e\in[0,1]$ and define the cost of search effort be $\alpha p(e)$ where the cost is convex (i.e. $p_e>0$ and $p_{ee}>0$) and $\alpha$ is a constant that is inversely related to the quality of search technology available. Furthermore, we let the amount of search deterministically increase the maximum achievable diversity at each talent level, which is now given by $D^{SPF}*e$. The optimisation problem can then be rewritten as:
+Consider a variation of the simple cohort selection problem (see Section \ref{ssec:measurement}) where the organisation can search for increasingly diverse cohorts at a cost. Let the amount of search effort be $e\in[0,1]$ and define the cost of search effort be $\alpha p(e)$ where the cost is convex (i.e. $p_e>0$ and $p_{ee}>0$) and $\alpha$ is a constant that is inversely related to the quality of search technology available. Furthermore, we let the amount of search deterministically increase the maximum achievable diversity at each talent level, which is now given by $D^{SPF}*e$. The optimisation problem can then be rewritten as:
 
 \begin{align}
 &\max_{d,p,e} F\Big(d,p\Big) - \alpha p(e) \text{ \bf{ s.t. } } d = G(p)*e, \nonumber \\ 
@@ -345,9 +345,9 @@ It is clear from the form of the organisation's new objective function in Equati
 
 \begin{figure}[!htb]
     \centering
+    \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{spf/model_complex.png} 
     \caption{This figure depicts an example solution to an iteration of the selection problem with complexity induced search costs, which is described in Equation \ref{eq:objective}. As in Figure \ref{fig:model_spf}, the solid blue curve represents the SPF, the dotted blue curve represents the organisation's indifference curve corresponding to the highest achievable utility without search costs, and the blue dot represents the diversity and performance of the first-best solution. Additionally, the solid red curve represents the accessible frontier with optimal search, the dotted red curve that represents the highest achievable utility with search costs, and the red dot that represents the diversity and performance of the optimal cohort with search costs (i.e. the second-best solution).}
     \label{fig:model_complex}
-    \includegraphics[width=1\textwidth,height=\textheight,keepaspectratio]{spf/model_complex.png} 
 \end{figure}
 
 Additionally, the extent of the inefficiency will tend to reduce as complexity costs reduce. We can see this by examining the comparative statics of the model. To simplify our derivation of the relevant comparative static, we refer to the organisation's objective function as $O(p,e)\equiv F\Big(G(p)*e ,p\Big) - \alpha p(e)$. Furthermore, we use subscripts on functions refer to partial derivatives and we drop the arguments of functions where this causes no confusion. The (necessary) first order conditions from this model are, therefore, the following:
@@ -413,7 +413,6 @@ This model, thus, implies two predictions about organisational behaviour: (1) wh
 
 
 \section{Conclusion} \label{sec:conclusion}
-
 In this chapter we have introduced the notion of a selection possibilities frontier via a simple model of diverse talent selection with complexity costs, micro-founded the complexity costs by showing that the diverse talent selection problem is $\mathbf{NP}$-hard, developed an algorithm to estimate the SPF, and used this estimate to both test the predictions of our model and demonstrate a wide range of applications of our framework. Substantively, we showed that a high-profile scholarship and talent selection program could improve the efficiency of selection by using the SPF estimate to select both higher performing and more diverse cohorts. 
 
 In an age of rapidly expanding interest in selecting from diverse talent pools (signaled by the growth of DEI), this chapter has wide-ranging policy implications. First, the chapter suggests that organisations will face extreme difficulty executing on their diversity goals unless they are willing to adopt more sophisticated selection technology. Second, this chapter contributes methods that are particularly useful for assessing the diversity impacts of alternative merit-based selection strategies. This extends beyond selection to related contexts like hiring, where not appropriately considering the diversity implications of selection strategies can result in lawsuits, and U.S. university admissions non-merit-based selection has become a legal gray area despite university commitments to diversity. 
