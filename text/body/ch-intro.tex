@@ -4,61 +4,66 @@
 
 \section{Motivation}
 
-Consider a group of children gathering play a game of pick-up football. Before they can play, the children must first divide themselves into two teams. Two children may first be selected as captains, and these captains will then select, in order, the remainder of their team. Who these captains select and in what order will depend on their goals. Captains may select the best football player present, one of their friends, or someone who would otherwise not be selected at all.
+Consider a group of children gathering to play a game of pick-up football. Before they can play, the children must first divide themselves into two teams. Two children may first be selected as captains, and these captains will then select, in order, the remainder of their team. Who these captains select and in what order will depend on their goals. Captains may select the best football player present, one of their friends, or someone who would otherwise not be selected at all.
 
-This ``selection problem'' of choosing who to include echoes all through society. Employers must select who they hire. Creditors must select who they lend to. Universities must select who they admit. Scholarship programs must select who they award. And, as in the case of the children playing football, these organisations' goals and values will determine who they select. The employer may look for the best employee for a specific task, and the creditor seeks debtors who are sufficiently likely to repay loans. However, the university and scholarship program differ. Their selection is not for organisational benefit, but rather for social one \cite{Warikoo_2019}. Thus, instead of selecting only the applicants who yield the best returns to the organisation, they select those who are most deserving, those who will learn most, those who have the greatest need, those whose presence in the program will benefit others, or even those who will use their newfound education to most improve society.\footnote{Hirers and lenders are often bound either by law to select the most deserving, and even occasionally select those who will benefit others; however, in general, these institutions are motivated to select so as to maximise profits within the bounds of the law \cite{schmidt1998validity}.}
+This ``selection problem'' of choosing who to include echoes all through society. Employers select who they hire. Creditors select who they lend to. Universities select who they admit. Scholarship programmes select who they award. And, as in the case of the children playing football, these organisations' goals and values will determine who they select. The employer may look for the best employee for a specific task, and the creditor seeks debtors who are sufficiently likely to repay loans. However, the universities and scholarship programmes differ. Their selection is not for organisational benefit, but rather for social one \cite{Warikoo_2019}. Thus, instead of selecting only the applicants who yield the best returns to the organisation, they seek to select those who are most deserving, those who will learn the most, those who have the greatest need, those whose presence in the programme will benefit others, or even those who will use their newfound education to most improve society.\footnote{Hirers and lenders are often bound either by law to select the most deserving, and even occasionally select those who will benefit others; however, in general, these institutions are motivated to select so as to maximise profits within the bounds of the law \cite{schmidt1998validity}.}
 
-However, though there is a wealth of research exploring when and how algorithms can make hiring or lending decisions (and whether they should) \cite{schmidt1998validity,schumann2017diverse,raghavan2020mitigating,horodyski_applicants_2023,Leung_Zhang_Jibuti_Zhao_Klein_Pierce_Robert_Zhu_2020}, there is a dearth of research exploring how algorithms can make selection decisions in the scholarship context, and what research exists in the university context often likens this problem more to hiring than to scholarship \cite{schumann2017diverse}. Furthermore, while research on hiring and lending finds flaws in many applications of algorithms \cite{raghavan2020mitigating,horodyski_applicants_2023}, what research exists on human-led scholarship and university selection finds similar problems \cite{Peng_Nushi_Kıcıman_Inkpen_Suri_Kamar_2019}. This thesis seeks to determine whether algorithmic decision support tools can provide solutions.
+Although there is a wealth of research exploring when and how algorithms can make hiring or lending decisions (and whether they should) \cite{schmidt1998validity,schumann2017diverse,raghavan2020mitigating,horodyski_applicants_2023,Leung_Zhang_Jibuti_Zhao_Klein_Pierce_Robert_Zhu_2020}, there is a dearth of research exploring how algorithms can make selection decisions in the scholarship context, and what research exists in the university context often likens this problem more to hiring than to scholarship \cite{schumann2017diverse,steel_multiple_2018,ijcai2023p819}. Furthermore, just as research on hiring and lending finds flaws in many applications of algorithms \cite{raghavan2020mitigating,horodyski_applicants_2023,Peng_Nushi_Kıcıman_Inkpen_Suri_Kamar_2019}, the scant research that exists on human-led scholarship and university selection finds similar problems \cite{schumann2017diverse}.
+
+In a world flattened by the global proliferation of technology \cite{Friedman_2005}, new global scholarship initiatives aim to select scholars from around the world. These programmes' unprecedented reach offers applicants all around the world an opportunity to access educational resources that may have previously been inaccessible, but exacerbates the problems found in related works. If these programmes can select the ``best'' cohorts of applicants, they can deliver on their stated missions to improve the world through broadening access to elite higher education institutions and training scholars to solve the world's biggest problems. This thesis seeks enable that mission by supporting these selection processes with algorithmic decision support tools.
 
 \section{Scope and Terms}
 \subsection{Scope}
-In a world flattened by the global proliferation of technology \cite{Friedman_2005}, new global scholarship initiatives aim to bear the burden of selecting scholars from around the world. These programs' unprecedented reach offers applicants all around the world an opportunity to access educational resources that may have previously been out of reach. If these programs can select the ``best'' cohorts of applicants, they can deliver on their stated missions to improve the world through broadening access to elite higher education institutions and training scholars to solve the world's biggest problems
+These global scholarship programs face a number of daunting challenges. Differing relative prioritisation of values lead to different interpretations of the ``best'' cohort. Systems rarely fairly compare applicants from vastly different contexts. And programmes risk applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the programme). Taken together, these problems render impossible an already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities \cite{Latzer_Hollnbuchner_Just_Saurwein_2014}. While selection practitioners (selectors) design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
 
-However, differing relative prioritisation of values leading to different interpretations of the ``best'' cohort, the challenges of designing systems to compare applicants from vastly different contexts, and the risks of applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the program) challenge to render impossible and already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities \cite{Latzer_Hollnbuchner_Just_Saurwein_2014}. While selection practitioners (selectors) design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
-
-In real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{zimmerman_research_2014}. But how can selectors make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process is twofold: 
+We term this the primary decision point: \emph{Selection}. But in real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{zimmerman_research_2014}. But how can selectors make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process, selecting the most apt cohort of applicant, is supported by a number of other decisions. Two of these decisions are: 
 
 \begin{enumerate}
     \item What criteria make on applicant (or cohort) more apt than another?
     \item How can we apply these criteria to select the most apt cohort of applicants?
 \end{enumerate}
 
-We term this twofold decision point: \emph{Selection}. But the twofold nature of \emph{Selection} is itself deceptive, as each subordinate decision is itself supported by a number of other decisions. For example, the decisions about selection criteria are supported by decisions about program purpose and scope (e.g., is the program needs-based?). Decisions about how to apply these criteria are supported by decisions about which metrics to use and how much to rely on each metric. Thus, the central decision of \emph{Selection} is supported by multitudes of subordinate decisions. 
+ But the each subordinate decision is itself supported by a number of other decisions. For example, the decisions about selection criteria are supported by decisions about programme purpose and scope (e.g., is the programme needs-based?). Decisions about how to apply these criteria are supported by decisions about which metrics to use and how much to rely on each metric. Thus, the central decision of \emph{Selection} is supported by multitudes of subordinate decisions. 
 
 This thesis' scope is building and evaluating DSTs to support \emph{Selection}; in order to achieve this, we research with two scholarship organisations, Rise and Ellison Scholars, to build DSTs to support three groups of subordinate decisions: decisions supported by explainable AI algorithms, decisions about applicant usage of genAI, and decisions about the diversity of selected cohorts.
 
 \subsection{Terms}
-\subsubsection{Human-Computer Interaction (HCI)}
+We introduce a number of key domain-specific terms; they appear throughout the thesis (though they are sometimes again spelled out for clarity). We define them here – note that our definitions may differ from those in other works.
+
+\paragraph{Human-Computer Interaction (HCI)}
 HCI is the a subfield of Computer Science that deals primarily with how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings.
 
-\subsubsection{Participatory Design (PD)}
+\paragraph{Participatory Design (PD)}
 PD is a family of methods within HCI that engages participants as co-designers in an iterative design process, recognising the user as ideally positioned to understand user needs and preferences. Research outputs are standardly designs and design recommendations driven by careful analysis of user feedback.
 
-\subsubsection{Action Research (AR)}
+\paragraph{Action Research (AR)}
 AR is a related family of methods within HCI that engages a group of practitioners as co-researchers and co-participants in the research process; in this case, preparation is only one part of the research process, while action and reflection are equally valuable. Research outputs are standardly learnings that arise from the action.
 
-\subsubsection{Human-Centred Computing (HCC)}
+\paragraph{Value-Sensitive Design (VSD)}
+VSD is yet a third family of methods within HCI engaging participants. In this case, though, particular values of participants are elicited, and used as a guide for design. Research outputs are standardly designs and design recommendations driven by careful analysis of user values.
+
+\paragraph{Human-Centred Computing (HCC)}
 HCC is a related subfield of Computer Science that designs and develops computer systems around the needs and desires of a group of humans.
 
-\subsubsection{Artificial Intelligence (AI)}
-AI is variously defined as the study of intelligent behaviour in computers \cite{wang2008you}, computational requirements for tasks like perception or reasoning \cite{Leake2001ArtiicialI}, or even large models such as ChatGPT or DALL-E \cite{du2020ai}; AI is even often construed as definitionally aspirational, i.e., it is taken as given that current computer systems are not AI \cite{wang2008you}. In this thesis, we take a wide view, and include any computer system that can be said to exhibit behaviour similar to human intelligence.
+\paragraph{Artificial Intelligence (AI)}
+AI is variously defined as the study of intelligent behaviour in computers \cite{wang2008you}, computational requirements for tasks like perception or reasoning \cite{Leake2001ArtiicialI}, or even large models such as ChatGPT or DALL-E \cite{du2020ai}; AI is even often construed as definitionally aspirational, i.e., it is taken as a given that current computer systems are not AI \cite{wang2008you}. In this thesis, we take a wide view, and include any computer system that can be said to exhibit behaviour similar to human intelligence.
 
-\subsubsection{Explainable Artificial Intelligence (XAI)}
+\paragraph{Explainable Artificial Intelligence (XAI)}
 XAI is a subfield of AI that develops and assesses explanations that make AI systems more legible to a group of humans.
 
-\subsubsection{Generative Artificial Intelligence (GenAI)}
+\paragraph{Generative Artificial Intelligence (GenAI)}
 GenAI is a subfield of AI that develops and assesses AI systems, usually large machine learning models, that generate new data, such as text, images, or audio.
 
-\subsubsection{Human-Centred Artificial Intelligence (HCAI)}
+\paragraph{Human-Centred Artificial Intelligence (HCAI)}
 HCAI is a subfield of HCC that concerns itself with AI systems, rather than all computer systems.
 
-\subsubsection{Selection}
+\paragraph{Selection}
 Selection occurs in a variety of forms throughout society, from recruitment to matchmaking. In this thesis, we are exclusively interested in selection for scholarships and other academic or talent investment opportunities. When we speak of selection in this thesis, we are speaking only of this kind of selection.
 
-\subsubsection{Selector}
+\paragraph{Selector}
 Selection teams and organisations are composed of teams of practitioners responsible for making selection decisions, both direct and supporting. We refer to these practitioners as selectors.
 
-\subsubsection{Selection-Oriented AI (SOAI)} 
+\paragraph{Selection-Oriented AI (SOAI)} 
 We define SOAI here as a family of methodologies designed to achieve the social values of properly selecting scholars. In contrast to HCAI (or even Selector-Centred-AI), which would centre the point of view of selectors, SOAI orients itself around the social benefits of selection, deviating from the point of view of the selectors when their values differ.
 
 \section{Contributions} 
@@ -75,20 +80,21 @@ The meta-level contributions of this thesis are:
 However, this thesis is composed of a number of papers that make more specific, core contributions. These are detailed in the relevant chapters, but are also described here:
 
 \begin{itemize}
-    \item A list of decision points facing scholarship programs uncovered through longitudinal HCI research with Rise and Ellison Scholars (Chapter \ref{ch:context}).
-    \item Quantitative findings indicating that the problem of explanation-induced unwarranted trust extends to generic post-hoc justifications, but that such criticism only applies \emph{in-process} and qualitative findings that post-hoc explanations, properly presented, can make useful \emph{ex-post} DSTs (Chapter \ref{ch:xai}).
-    \item An evaluation of genAI detectors GPTZero and Originality.ai on program A's 2022 and 2023 application data (Chapter \ref{ch:genai}).
-    \item A case study using GPTZero to support two decision points facing program A (Chapter \ref{ch:genai}).
+    \item A list of decision points facing scholarship programmes uncovered through longitudinal HCI research with Rise and Ellison Scholars (Chapter \ref{ch:context}).
+    \item Quantitative findings indicating that the problem of explanation-induced unwarranted trust extends to generic post-hoc justifications, but that such criticism only applies in-process and qualitative findings that post-hoc explanations, properly presented, can make useful ex-post DSTs (Chapter \ref{ch:xai}).
+    \item An evaluation of genAI detectors GPTZero and Originality.ai on Rise's 2022 and 2023 application data (Chapter \ref{ch:genai}).
+    \item A case study using GPTZero to support two decision points facing Rise (Chapter \ref{ch:genai}).
     \item The Diversity Triangle, categorising diversity-related themes according to our three definitions of diversity uncovered through inductive thematic analysis (Chapter \ref{ch:diversity}).
     \item Six design prototypes developed through PD for supporting the diversity needs of a given organisation (Chapter \ref{ch:diversity}).
     \item Design recommendations grounded in PD for system implementers supporting the diversity needs of a given organisation (Chapter \ref{ch:diversity}).
     \item A field deployment of Prototype \ref{fig:diversity} to the Rise selection process selecting $500$ finalists from a pool of $2000$ demonstrating the efficacy of this prototype in practice (Chapter \ref{ch:spf}).
+    \item A demonstration of a hypothetical application of Prototype \ref{fig:diversity} as an ex-post DST (Chapter \ref{ch:spf}).
 \end{itemize}
 
 \section{Thesis Structure}
-In break from tradition, this thesis does not contain a labelled ``background'' or ``related works'' chapter; while some related work exists, most work is related only to one subordinate decision point, and thus appears in the relevant chapter. Instead, Chapter \ref{ch:context} serves as an extended introduction, including situating this thesis in what little work relates to the entirety of the work. Following this, Chapter \ref{ch:methods} explores the paradigms that guide research design throughout this thesis, lists methods used throughout the thesis, and ties these methods to specific chapters. (The research designs of specific chapters or studies appear in the relevant chapter.)
+In a break from tradition, this thesis does not contain a labelled ``background'' or ``related works'' chapter; while some related work exists, most work is related only to one subordinate decision point, and thus appears in the relevant chapter. Instead, Chapter \ref{ch:context} serves as an extended introduction, including situating this thesis in what little work relates to the entirety of the work. Following this, Chapter \ref{ch:methods} explores the paradigms that guide research design throughout this thesis, lists methods used throughout the thesis, and ties these methods to specific chapters. (The research designs of specific chapters or studies appear in the relevant chapter.)
 
-Chapter \ref{ch:xai} responds to common criticisms of post-hoc xAI and explores this approach as a scholarship selection DST via PD workshops with selectors from Rise. Chapter \ref{ch:genai} engages selectors from Rise in an AR process and explore the role of generative AI in selection decisions. Chapter \ref{ch:diversity} engages selectors from both Rise and Ellison Scholars in participatory design to explore selector notions of diversity and potential ways to support these considerations; this chapter ultimately develops 6 design prototypes. Chapter \ref{ch:spf} implements one of these prototypes in a field deployment with Rise; we find that, when using the probe, selectors select a more diverse cohort composed of higher-performing applicants. 
+Chapter \ref{ch:xai} responds to common criticisms of post-hoc xAI and explores this approach as a scholarship selection DST via PD workshops with selectors from Rise. Chapter \ref{ch:genai} engages selectors from Rise in an AR process and explore the role of generative AI in selection decisions. Chapter \ref{ch:diversity} engages selectors from both Rise and Ellison Scholars in participatory design to explore selector notions of diversity and potential ways to support these considerations; this chapter ultimately develops 6 design prototypes. Chapter \ref{ch:spf} implements one of these prototypes in a field deployment with Rise, evaluates that deployment, and explores other applications of the technology.
 
 Chapter \ref{ch:discussion} discusses: the scope of the thesis, including references to critical theory work falling outside the scope; the SOAI paradigm; design recommendations that developers can use to follow SOAI; methodological and technical limitations of the work herein; and this thesis's broader significance in a quickly changing landscape. 
 

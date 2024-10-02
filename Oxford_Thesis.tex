@@ -110,6 +110,7 @@
 
 % For correct real number formatting
 \usepackage{amssymb}
+\usepackage{amsthm}
 
 % For theorems in body
 \newtheorem{theorem}{Theorem}
@@ -174,12 +175,7 @@
 
 \DeclareLanguageMapping{latin}{english}
 
-\newcommand\blfootnote[1]{%
-  \begingroup
-  \renewcommand\thefootnote{}\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \endgroup
-}
+\counterwithout{footnote}{chapter}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
@@ -295,7 +291,7 @@
 %    page that just says "Appendices" to signal the end of your main text.
 \startappendices
 % Add or remove any appendices you'd like here:
-\include{text/appendices/app-programs}
+\include{text/appendices/app-programmes}
 \include{text/appendices/app-protocols}
 \include{text/appendices/app-math}
 \include{text/appendices/app-figures}
