@@ -13,9 +13,9 @@
 % as specified in the MIT License included in this distribution's LICENSE file.
 %
 
-% I've (John) tried to comment this file extensively, so read through it to see how to use the various options.  Remember
-% that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
-% out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
+% I've (John) tried to comment on this file extensively, so read through it to see how to use the various options.  Remember
+% that in LaTeX, any line starting with a % is NOT executed.  In several places below, you have a choice of which line to use
+% out of multiple options (eg draft vs final, PDF vs binding, etc.)  When you pick one, add a % to the beginning of
 % the lines you don't want.
 
 
@@ -23,29 +23,29 @@
 % The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
 
 % This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
-\documentclass[a4paper,twoside]{ociamthesis}
+% \documentclass[a4paper,twoside]{ociamthesis}
 % This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
 % This one will format for PDF output (ie equal margins, no extra blank pages):
-%\documentclass[a4paper,nobind]{ociamthesis} 
+\documentclass[a4paper,nobind]{ociamthesis} 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
 % generating a PDF to send to the printer!
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
+% \fancyfoot[C]{\emph{DRAFT Printed on \today}}  
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
-% your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
-\correctionstrue
+% of your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
+% \correctionstrue
 
 
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
-% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
-% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% The options included below are basic "sciencey" and "humanities" options to get started.
+% If you've not used LaTeX before, I recommend reading about biblatex/biber and getting started with it.
 % If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
@@ -76,7 +76,7 @@
 % Required for inserting images
 \usepackage{tabularx} 
 
-% For subfigures; subfig and subfigure are both superceded by subcaption
+% For subfigures; subfigure and subfigure are both superseded by subscription
 \usepackage{subcaption}
 % \usepackage{subfig}
 % \usepackage{subfigure}
@@ -112,11 +112,11 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
-% For theorems in body
+% For theorems in the body
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}{Proposition}
-\newenvironment{proof}[1][Proof]
+% \newenvironment{proof}[1][Proof]
 
 % \usepackage{dcolumn} % Booktabs column spacing
 % \usepackage{etoolbox}
@@ -146,7 +146,7 @@
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{Selection-Oriented AI: The Role of HCI in Supporting Solutions to Explainability, Diversity, and Plagiarism in Global Scholarship Selection}
+\title{Selection-Oriented AI: The Role of HCI in Supporting Solutions to Explainability, Plagiarism, and Diversity in Global Scholarship Selection}
 \author{Neil Natarajan}
 \college{New College}
 
@@ -164,8 +164,8 @@
 \degreedate{Trinity 2024}
 
 
-%%%%% YOUR OWN PERSONAL MACROS
-% This is a good place to dump your own LaTeX macros as they come up.
+%%%%% YOUR MACROS
+% This is a good place to dump your LaTeX macros as they come up.
 
 % To make text superscripts shortcuts
 	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
@@ -183,10 +183,10 @@
 %%%%% CHOOSE YOUR LINE SPACING HERE
 % This is the official option.  Use it for your submission copy and library copy:
 \setlength{\textbaselineskip}{22pt plus2pt}
-% This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
+% This is closer spacing (about 1.5-spaced) that you might prefer for your copies:
 %\setlength{\textbaselineskip}{18pt plus2pt minus1pt}
 
-% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+% You can set the spacing here for the Roman-numbered pages (acknowledgements, table of contents, etc.)
 \setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
 
 % Leave this line alone; it gets things started for the real document.
@@ -206,14 +206,14 @@
 
 
 %%%%% ABSTRACT SEPARATE
-% This is used to create the separate, one-page abstract that you are required to hand into the Exam
+% This is used to create the separate, one-page abstract that you are required to hand to the Exam
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
 % \begin{abstractseparate}
 % 	\input{text/abstract} % Create an abstract.tex file in the 'text' folder for your abstract.
 % \end{abstractseparate}
 
 
-% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
+% JEM: Pages are Roman numbered from here, though page numbers are invisible until ToC.  This is in
 % keeping with most typesetting conventions.
 \begin{romanpages}
 
@@ -242,7 +242,7 @@
 \end{abstract}
 
 %%%%% MINI TABLES
-% This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
+% This lays the groundwork for per-chapter, mini tables of contents.  Comment on the following line
 % (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
 % next two lines if you want a per-chapter list of figures or tables.
 \dominitoc % include a mini table of contents
