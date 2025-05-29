@@ -1,8 +1,12 @@
 \chapter{\label{ch:intro}Introduction} 
 
+% As noted below, your introduction does a nice job in setting the scene for the overall thesis. However, it could do better with properly clarifying what the research questions of the thesis are, and how all the chapters included fit into the overall narrative. 
+
 \minitoc
 
 \section{Motivation}
+
+% Cohort/Team Selection vs Aspirational Quota Selection – The football example used to open the introduction is a fun example, but it would seem to differ significantly from the selection scenarios you focus on in the thesis. How does choosing candidates for scholarship applications, hiring, or university admissions differ from team/cohort selection, as in the football case?  For instance, this often requires assembling groups with specific, predefined compositions. In contrast, the other scenarios generally aim to meet aspirational diversity goals across the entire intake, with metrics analysed post-hoc rather than determining each group’s precise makeup. This raises an important question: how do the methods presented in your thesis apply to strict compositional requirements compared to broader, trend-focused selection goals?  (You may, in fact, want to discuss this in 1.2. Scope and Terms as well–as all selection problems aren’t equal, it might be useful to introduce fundamental terms relating to different kinds of candidate selection to better define the scope. )
 
 Consider a group of children gathering to play a game of pick-up football. Before they can play, the children must first divide themselves into two teams. Two children may first be selected as captains, and these captains will then select, in order, the remainder of their team. Who these captains select and in what order will depend on their goals. Captains may select the best football player present, one of their friends, or someone who would otherwise not be selected at all.
 
@@ -14,7 +18,12 @@ In a world flattened by the global proliferation of technology \cite{Friedman_20
 
 \section{Scope and Terms}
 \subsection{Scope}
+
+% Scope – Despite the title, the section doesn’t establish a scope – e.g. what is in and what is out of scope of this thesis.  What sort of selection problems are within scope and what is not? More importantly, the questions you present in this section read like research questions; indeed, it is appropriate for introductions of theses to articulate a set of central research questions for the entire thesis.  However, it is unclear that these questions relate to some of the chapters; ensure they are be able to admit and support the work on explanations (Ch 4), AI based plagiarism (Ch5), or even very much to Chapter 6.  Also, in RQ1 you mention applicant-based decisions and cohort-based decisions interchangeably – are they both in scope?
+
 These global scholarship programs face daunting challenges. Differing relative prioritisation of values leads to different interpretations of the ``best'' cohort. Systems rarely fairly compare applicants from vastly different contexts. And programmes risk applicants ``gaming'' the system to improve their chances at selection (e.g., by using generative AI to produce application materials misrepresentative of their aptitude for the programme). Taken together, these problems render impossible an already difficult problem. Existing low-tech decision-making systems are unequipped to handle these newfound complexities \cite{Latzer_Hollnbuchner_Just_Saurwein_2014}. While selection practitioners (selectors) design innovative solutions to some of these challenges, they often lack easy access to information needed to support their decision-making.
+
+% You discuss “competing values” abstractly. Can you give some examples of values?  Please include “values” as a key term, and examples of these.
 
 We term this the primary decision point: \emph{Selection}. But in real selection pipelines, competing values and interpretations of these values lead to vastly different understandings of the ``best'' cohort between and within organisations \cite{zimmerman_research_2014}. But how can selectors make and evaluate decisions when the ultimate goal of selection is thus obscured? Thus, the central decision of a selection process, selecting the most apt cohort of applicants, is supported by many other decisions. Two of these decisions are: 
 
@@ -26,6 +35,8 @@ We term this the primary decision point: \emph{Selection}. But in real selection
 However, each subordinate decision is itself supported by several other decisions. For example, the decisions about selection criteria are supported by decisions about programme purpose and scope (e.g., is the programme needs-based?). Decisions about how to apply these criteria are supported by decisions about which metrics to use and how much to rely on each metric. Thus, the central decision of \emph{Selection} is supported by multitudes of subordinate decisions. 
 
 This thesis' scope is building and evaluating DSTs to support \emph{Selection}; to achieve this, we research with two scholarship organisations, Rise and Ellison Scholars, to build DSTs to support three groups of subordinate decisions: decisions supported by explainable AI algorithms, decisions about applicant usage of genAI, and decisions about the diversity of selected cohorts.
+
+% Terms – Instead of listing terms in an arbitrary order here without a connecting narrative, it may be better to include such terms in a simple alphabetised glossary, and spend time here discussing key background elements, separating key terms from methods (which would be better placed in a Methods chapter). This section also introduces new terms, such as SOAI which might be better done under Contributions.
 
 \subsection{Terms}
 We introduce a number of key domain-specific terms; they appear throughout the thesis (though they are sometimes again spelt out for clarity). We define them here – note that our definitions may differ from those in other works.
@@ -52,13 +63,17 @@ AI is variously defined as the study of intelligent behaviour in computers \cite
 XAI is a subfield of AI that develops and assesses explanations that make AI systems more legible to a group of humans. Chapter \ref{ch:xai}, in particular, engages in a debate over the usefulness of xAI.
 
 \paragraph{Generative Artificial Intelligence (GenAI)}
-GenAI is a subfield of AI that develops and assesses AI systems, usually large machine learning models, that generate new data, such as text, images, or audio. Chapter \ref{ch:genai} concerns itself with genAI and the detection of genAI
+GenAI is a subfield of AI that develops and assesses AI systems, usually large machine learning models, that generate new data, such as text, images, or audio. Chapter \ref{ch:genai} concerns itself with genAI and the detection of genAI.
+
+% Diversity – The definition provided for such an essential and central concept of your thesis seems a tad inadequate. You use the quote “The heterogeneity of elements in a set about a class that takes different values, such as species in an eco-environment, or ethnicity in a population” – but do not discuss what is a class, what are the values and how does this map to selection problem?  What about non-set theoretic definitions of diversity – e.g. group diversity, intersectional/individual uniqueness and diversity?  There should be an expanded discussion of diversity including multiple disciplinary perspectives, including those discussing challenges of applying straightforward set-theoretic diversity metrics to human beings.
 
 \paragraph{Diversity}
 Diversity is: ``The heterogeneity of elements in a set about a class that takes different values, such as species in an eco-environment, or ethnicity in a population'' \cite{page_diversity_2010}. Chapter \ref{ch:diversity} seeks to refine and support this definition, while Chapter \ref{ch:spf} seeks to improve organisational considerations of diversity.
 
 \paragraph{Human-Centred Artificial Intelligence (HCAI)}
 HCAI is a subfield of HCC that concerns itself with AI systems, rather than all computer systems. This thesis's central contribution (Selection-Oriented AI) is offered in contrast to HCAI.
+
+% Selection – May be useful to scope that this thesis explicitly deals with positive discrimination in talent selection (in the cohort or individual contexts as discussed above) as opposed to other aspects of selection.
 
 \paragraph{Selection}
 Selection occurs in a variety of forms throughout society, from recruitment to matchmaking. In this thesis, we are exclusively interested in the selection processes of scholarships and other academic or talent investment opportunities. We speak of selection often in this thesis; when we speak of selection in this thesis, we are speaking only of this kind of selection.
@@ -68,6 +83,7 @@ Selection teams and organisations are composed of teams of practitioners respons
 
 \paragraph{Selection-Oriented AI (SOAI)} 
 This thesis proposes SOAI, defined here as a family of methodologies designed to achieve the social values of properly selecting scholars. In contrast to HCAI (or even Selector-Centred-AI), which would centre the point of view of selectors, SOAI orients itself around the social benefits of selection, deviating from the point of view of the selectors when their values differ.
+% Section 1.2: I don’t entirely agree that HCAI would centre the task around Selectors. It would centre around anyone involved in the process: selectors, their team/bosses, the applicants, etc…. if done properly! Perhaps it is correct to say that many people would choose to centre it around selection?
 
 \section{Contributions} 
 The contributions of this thesis are twofold. There are meta-level conceptual distinctions introduced, and also some substantive contributions associated with body chapters.

@@ -1,5 +1,7 @@
 \chapter[A Possibility Frontier Approach to Diverse Talent Selection]{\label{ch:spf}A Possibility Frontier Approach to Diverse Talent Selection\footnote{This chapter is based on two papers showcasing research done in concert with Kadeem Noray. Both contributed equally to the research. One paper is currently under review as: Kadeem Noray and Neil Natarajan. 2024. “Selecting for Diverse Talent: Theory and Evidence.” Under review at Economics of Talent Meeting, Fall 2024. The other is being prepared for submission as: Neil Natarajan and Kadeem Noray. 2024. “SPF: A Technology Probe Examining Diversity in Selection Processes.”. This version draws from both publications; in doing so, it borrows from the rich tradition of talent-related research in economics, as well as the HCI work referenced in Chapters \ref{ch:xai}, \ref{ch:genai}, and \ref{ch:diversity}.}}
 
+% Cohort optimality – this chapter seems to focus on the optimal “cohort/team” form of selection rather than the aspirational/post-hoc; only in this context does the NP-completeness and complexity seem relevant.
+
 \minitoc
 % To-do:
 % Relation to HCI – “Not fully trusting the user’s surface level intuitions is a key part of HCI research”
@@ -153,6 +155,8 @@ Now that we have established the necessary restrictions on functions $F(D,P)$, w
 \end{algorithm}
 
 It is well-known that the greedy algorithm yields a $\bigl( 1-\frac{1}{e} \bigr)$-approximation of any submodular, monotonic set function \cite{bordeaux_submodular_2014}. That is, the algorithm selects cohorts whose $f_\iota$ values are at least $\frac{1}{1-\frac{1}{e}}$ of the maximum $f_\iota$ any cohort of that size selected from the same applicant pool. For the avoidance of doubt, a proof of these approximation bounds is presented in Theorem \ref{thm:greedy-approximation} in Appendix \ref{app:greedy-proof}. Thus, the Greedy Frontier Optimisation algorithm returns points on a curve that $\bigl( 1-\frac{1}{e} \bigr)$-approximates the true SPF\footnote{In practice, the outputs of the greedy algorithm do not always themselves form a convex curve. We remove produced points that do not sit on the convex curve.}. We note that this is a worst-case approximation ratio and that the actual approximation ratio may be much better.
+
+% The experiment design needs significantly more information about how the DSTs were used: what were the participants given? Just the graph plus the info? Are these the only cohorts? What happened if they wanted to substitute people etc.? Could they get feedback on these? In short, this is not replicable as is – just requires more detail to make it so.
 
 \section{A Field Study with Rise}\label{sec:spfresults}
 
