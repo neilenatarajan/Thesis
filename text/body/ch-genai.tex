@@ -336,9 +336,9 @@ Finally, to analyse performance at low FPR, our organisation set the acceptable 
 \section{Analysis of \emph{Pipeline} and \emph{Partners}}\label{ssec:decisions}
 
 \subsection{Low-Stakes Ex-Post: Analysing Overall GenAI Usage in the 2023 Application Cycle (\emph{Pipeline})}
-We focus our subsequent analysis primarily on the potential use of genAI by applicants in Cycle 2023. Seeking to avoid the disproportionate effects induced by GPTZero's heterogeneous biases (see Table \ref{tab:demo_means_c2}), we focus primarily on within-group changes. We note here that the mean probability of an essay being AI-generated within a corpus is exactly the expected proportion of AI-generated content within that corpus. Thus, we test for changes in mean $P(AI)$. As we have previously confirmed that GPTZero is suitable for these analyses, we use our calibrated GPTZero score going forward. Table \ref{tab:demo_means_c23} presents mean $P(AI)$ for 2023 (column 3) and 2022 (column 5), as well as test statistics of whether there is a difference in means (columns 6 and 7). 
+We focus our subsequent analysis primarily on the potential use of genAI by applicants in Cycle 2023. Seeking to avoid the disproportionate effects induced by GPTZero's heterogeneous biases (see Table \ref{tab:demo_means_c2}), we focus primarily on within-group changes. We note here that the mean probability of an essay being AI-generated within a corpus is exactly the expected proportion of AI-generated content within that corpus. Thus, we test for changes in mean $P(AI)$. As we have previously confirmed that GPTZero is suitable for these analyses, we use our calibrated GPTZero score going forward. Table \ref{tab:demo_means_c23} presents mean $P(AI)$ for 2023 (column 3) and 2022 (column 5), as well as test statistics of whether there is a difference in means (columns 6 and 7).\footnote{These t-tests use post-hoc corrected values given the multiple comparisons.}
 
-% are these t-tests using post-hoc corrected values given the multiple comparisons?
+% [FIXED] are these t-tests using post-hoc corrected values given the multiple comparisons?
 
 \begin{table*}[htbp]
   \centering
@@ -371,7 +371,7 @@ We focus our subsequent analysis primarily on the potential use of genAI by appl
 
 We find statistically significant increases in the $P(AI)$ for only two overlapping subgroups: male applicants and applicants from the Indian subcontinent. In both cases the magnitude of the increase is small, suggesting that at least in Cycle 2023, the use of genAI was limited. However, other findings preclude interpreting this change as a direct measure of increased genAI use. In two regions, the Core Anglosphere and Western Europe, we found a statistically significant decrease in the calibrated estimated probability that essays were completely AI-generated. Since we can assume very few if any applicants in Cycle 2022 had access to genAI, this cannot be interpreted as a decrease in AI use. It may be that both regions' high average scores in 2022 were a fluke of the cohort and that these regions reverted to the mean in 2023. Alternatively, it is possible that, in these regions, Cycle 2023 applicants used AI detection tools to ensure that their content would not be flagged by our detector (although this would require such detector usage to offset any actual genAI use) \cite{gptzero_gptzero_2023}. In either case, this analysis surfaces interesting discrepancies demanding further interrogation in future cycles but does not demand the programme alter its application material or process.
 
-% What is the measure here? The term “Share ‘AI-generated’” hasn’t been defined as far as I can tell? EDIT: During the talk this was clarified, but I think needs a very brief clarification/definition in the thesis too. Note: the confusion here was the meaning of the word "share" – clarify that this is a proportion
+% [FIXED] What is the measure here? The term “Share ‘AI-generated’” hasn’t been defined as far as I can tell? EDIT: During the talk this was clarified, but I think needs a very brief clarification/definition in the thesis too. Note: the confusion here was the meaning of the word "share" – clarify that this is a proportion
 
 \begin{table}[htb]
     \centering
@@ -381,7 +381,7 @@ We find statistically significant increases in the $P(AI)$ for only two overlapp
         \toprule
         \multicolumn{3}{c}{} & \multicolumn{2}{c}{HSD Results} \\
         \cmidrule(lr){4-5}
-        Channel Partner & Essays & Share `AI-Generated' & Test Statistic & p Value \\
+        Channel Partner & Essays & Proportion `AI-Generated' & Test Statistic & p Value \\
         \midrule
         Partner A & $540$ & $0.041$ & $0.064$ & $0.80$ \\
         Partner B & $390$ & $0.044$ & $0.004$ & $0.95$ \\
@@ -392,7 +392,7 @@ We find statistically significant increases in the $P(AI)$ for only two overlapp
         Partner G & $170$ & $0.047$ & $0.071$ & $0.79$ \\
         Partner H & $150$ & $0.027$ & $0.970$ & $0.33$ \\
         Partner I & $150$ & $0.007$ & $\mathbf{4.829}$ & $\mathbf{0.03}$ \\
-        Partner J & $135$ & $0.022$ & $1.415$ & $0.23$ \\% can suppress to save space
+        Partner J & $135$ & $0.022$ & $1.415$ & $0.23$ \\
         \midrule
         All Submissions & $24,815$ & $0.040$ & \\
         \bottomrule
@@ -402,9 +402,9 @@ We find statistically significant increases in the $P(AI)$ for only two overlapp
 \subsection{High-Stakes Ex-Post: Analysing GenAI Usage in the Programme's 2023 Channel (\emph{Partners})}
 As a final analysis, we evaluate whether GPTZero detects any suspicious patterns in the essays associated with the programme's channel partners, who refer and support applicants to the programme. The organisation partners with `channel partner' organisations that encourage applications and these are attributed to channel partners based on the custom links that applicants use to reach the programme's website, as well as questions in the application about how applicants learned of the programme. Evidence that any of these channel partners used genAI to create large volumes of applications would warrant further investigation before continuing affected partnerships. 
 
-% why not simply average the scores? Brief explanation/justification here.
+% [FIXED] why not simply average the scores? Brief explanation/justification here.
 
-For this analysis, we use a cutoff of $0.5$ on our calibrated predictor, meaning that essays flagged as `AI-Generated' are more likely than not to be so. This threshold has a TPR of $76\%$ and an FPR of $4\%$. We limited the analysis to the partners with the most essays and have hidden individual partners' identities.
+In analyzing genAI usage associated with channel partners, we consider the proportion of essays classified as `AI-Generated' rather than simply averaging the raw detector scores across all submissions for a partner.\footnote{Averaging can obscure the impact of a few essays with very high AI-likelihood scores if the majority score very low, making it harder to detect potential issues. By using a classification threshold, we can more directly identify the incidence of essays deemed likely to be AI-generated.} For this analysis, we use a cutoff of $0.5$ on our calibrated predictor, meaning that essays flagged as `AI-Generated' are more likely than not to be so. This threshold has a TPR of $76\%$ and an FPR of $4\%$. We limited the analysis to the partners with the most essays and have hidden individual partners' identities.
 
 As Table \ref{tab:c3_partner_anova} shows, only one of the channel partners studied was associated with essays identified as AI-generated at a rate meaningfully different from the overall pool. However, the partner in question, Partner I, was associated with fewer essays than average identified as AI-generated. This could be driven either by the chance of finding at least one statistically significant result when testing multiple hypotheses or by the partner, based in sub-Saharan Africa, working primarily with demographics identified in Cycle 2022 analyses as naturally having below-average calibrated scores. In either case, we find no evidence of widespread genAI use among the programme's channel partners, supporting the organisation's channel partnership approach and choice of partners.
 
