@@ -96,8 +96,8 @@
 \renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
 \renewcommand{\headrulewidth}{0pt}
 \fancyhead[LO]{\emph{\leftmark}} 
-\fancyhead[RE]{\emph{\rightmark}} 
-\fancyhead[RO,LE]{\emph{\thepage}}
+\fancyhead[R]{\emph{\rightmark}} 
+\fancyhead[RO,L]{\emph{\thepage}}
 
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
 

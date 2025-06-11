@@ -14,14 +14,15 @@
     \begin{equation}
         \label{eq:submodularity_additive}
         \begin{split}
-            \forall Y \subseteq U, X \subseteq Y, x \in U \setminus Y, a \geq 0, b \geq 0: & F_1(X \cup \{x\}) - F_1(X) \leq F_1(Y \cup \{x\}) - F_1(Y) \\
-            &\land F_2(X \cup \{x\}) - F_2(X) \leq F_2(Y \cup \{x\}) - F_2(Y) \\
+            & \forall Y \subseteq U, X \subseteq Y, x \in U \setminus Y, a \geq 0, b \geq 0: \\
+            & \quad F_1(X \cup \{x\}) - F_1(X) \leq F_1(Y \cup \{x\}) - F_1(Y) \\
+            & \quad \land F_2(X \cup \{x\}) - F_2(X) \leq F_2(Y \cup \{x\}) - F_2(Y) \\
             \implies & a*F_1(X \cup \{x\}) - a*F_1(X) \leq a*F_1(Y \cup \{x\}) - a*F_1(Y) \\
-            &\land b*F_2(X \cup \{x\}) - b*F_2(X) \leq b*F_2(Y \cup \{x\}) - b*F_2(Y) \\
+            & \quad \land b*F_2(X \cup \{x\}) - b*F_2(X) \leq b*F_2(Y \cup \{x\}) - b*F_2(Y) \\
             \implies & a*F_1(X \cup \{x\}) - a*F_1(X) + b*F_2(X \cup \{x\}) - b*F_2(X) \\
-            &\leq a*F_1(Y \cup \{x\}) - a*F_1(Y) + b*F_2(Y \cup \{x\}) - b*F_2(Y) \\
+            & \quad \leq a*F_1(Y \cup \{x\}) - a*F_1(Y) + b*F_2(Y \cup \{x\}) - b*F_2(Y) \\
             \implies & a*F_1+b*F_2(X \cup \{x\}) - a*F_1+b*F_2(X) \\
-            &\leq a*F_1+b*F_2(Y \cup \{x\}) - a*F_1+b*F_2(Y) \\ \nonumber
+            & \quad \leq a*F_1+b*F_2(Y \cup \{x\}) - a*F_1+b*F_2(Y) \\ \nonumber
         \end{split}
     \end{equation}
     \end{proof}
